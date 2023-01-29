@@ -22,8 +22,6 @@ def get_location_file_info(locfile):
         # parse the json data into a directory in Python format
         parsed_locations = json.loads(unparsed_locations)
         
-        # TO DO: apply the parsed data to the location objects in the map
-
     return parsed_locations
 
 
@@ -49,6 +47,8 @@ def create_location_file(location_data, game_number):
         # dump the data in json format into the json file
         with open(file_name, "w") as outfile:
             outfile.write(location_json)
+            
+        # TO DO: apply the parsed data to the location objects in the map
 
     return None
 
