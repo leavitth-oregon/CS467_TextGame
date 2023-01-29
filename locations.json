@@ -1,0 +1,347 @@
+{
+  "desert_camp":
+  {
+    "name": "desert camp",
+    "is_start": true,
+    "north": "path_1",
+    "east": "desert_wilderness",
+    "south": "desert_wilderness",
+    "west": "desert_wilderness",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "The desert camp has a low fire burning. There is a ragged tent and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness.",
+    "short_description": "The desert camp has a low fire ",
+    "forgotten_description": "The desert camp has a low fire burning. There is a ragged tent and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness. It seems familiar somehow.",
+    "features":
+      [
+        "fire",
+        "tent",
+        "path",
+        "wilderness"
+      ]
+  },
+  "desert_wilderness":
+  {
+    "name": "desert wilderness",
+    "is_start": false,
+    "north": "desert_camp",
+    "east": "desert_camp",
+    "south": null,
+    "west": "desert_camp",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. There is something moving in the distance, though.",
+    "short_description": "The sandy desert wilderness goes on as far as the eye can see.",
+    "forgotten_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. It seems familiar, in some way.",
+    "features":
+      [
+        "hog"
+      ]
+  },
+  "path_1":
+  {
+    "name": "path 1",
+    "is_start": false,
+    "north": "path_2",
+    "east": null,
+    "south": "desert_camp",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "path_2":
+  {
+    "name": "path 2",
+    "is_start": false,
+    "north": "path_3",
+    "east": null,
+    "south": "desert_camp",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "path_3":
+  {
+    "name": "path 3",
+    "is_start": false,
+    "north": "city_gates",
+    "east": null,
+    "south": "path_2",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "city_gates":
+  {
+    "name": "city gates",
+    "is_start": false,
+    "north": "city_road_2",
+    "east": null,
+    "south": "path_3",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "city_road_1":
+  {
+    "name": "city road 1",
+    "is_start": false,
+    "north": "secret_passage",
+    "east": null,
+    "south": null,
+    "west": "city_road_2",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "city_road_2":
+  {
+    "name": "city road 2",
+    "is_start": false,
+    "north": "palace_walls",
+    "east": "city_road_3",
+    "south": "city_gates",
+    "west": "city_road_1",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "city_road_3":
+  {
+    "name": "city road 3",
+    "is_start": false,
+    "north": "marketplace",
+    "east": null,
+    "south": null,
+    "west": "city_road_2",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "palace_walls":
+  {
+    "name": "palace walls",
+    "is_start": false,
+    "north": null,
+    "east": null,
+    "south": "city_road_2",
+    "west": "marketplace",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "marketplace":
+  {
+    "name": "marketplace",
+    "is_start": false,
+    "north": null,
+    "east": null,
+    "south": "city_road_3",
+    "west": "palace_walls",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "secret_passage":
+  {
+    "name": "secret passage",
+    "is_start": false,
+    "north": "gardens",
+    "east": null,
+    "south": "city_road_1",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "gardens":
+  {
+    "name": "gardens",
+    "is_start": false,
+    "north": null,
+    "east": "tower",
+    "south": "secret_passage",
+    "west": "well",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "well":
+  {
+    "name": "well",
+    "is_start": false,
+    "north": null,
+    "east": "gardens",
+    "south": null,
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "tower":
+  {
+    "name": "tower",
+    "is_start": false,
+    "north": "great_hall",
+    "east": "bedroom",
+    "south": null,
+    "west": "gardens",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "bedroom":
+  {
+    "name": "bedroom",
+    "is_start": false,
+    "north": null,
+    "east": "tower",
+    "south": null,
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "great_hall":
+  {
+    "name": "great hall",
+    "is_start": false,
+    "north": "throne_room",
+    "east": "dining_hall",
+    "south": "tower",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "throne_room":
+  {
+    "name": "throne room",
+    "is_start": false,
+    "north": null,
+    "east": null,
+    "south": "great_hall",
+    "west": null,
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  },
+  "dining_hall":
+  {
+    "name": "dining hall",
+    "is_start": false,
+    "north": null,
+    "east": null,
+    "south": null,
+    "west": "great_hall",
+    "times_visited": 0,
+    "was_forgotten": false,
+    "long_description": "",
+    "short_description": "",
+    "forgotten_description": "",
+    "features":
+      [
+        ""
+      ]
+  }
+}
