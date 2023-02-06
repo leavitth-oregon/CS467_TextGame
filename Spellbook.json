@@ -1,0 +1,8 @@
+{
+  "spell name" : 
+  {
+    "spell description" : "this spell does X - displayed to the user", 
+    "spell damage" : 10, 
+    "other info" : ""
+  }
+}
