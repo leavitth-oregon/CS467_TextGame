@@ -1,0 +1,14 @@
+{
+  "item_name" : 
+  {
+    "description" : "item description, blah blah blah", 
+    "item location" : "location name", 
+    "any other info" : "describe that info here"
+  }
+  "another item" : 
+  {
+    "description" : "", 
+    "item location" : "", 
+    "other info" : ""
+  } 
+}
