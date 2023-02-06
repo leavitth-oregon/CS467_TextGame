@@ -6,8 +6,7 @@ game_num = 0
 game_files = ['locations.json']
 current_location = None
 
-
-def get_location_file_info(locfile):
+def get_location_file_info(locfile) -> dict:
     """
     :param locfile: the json file where the location data is stored
     :return parsed_locations: a directory containing the parsed data inside the locations json file
@@ -21,11 +20,10 @@ def get_location_file_info(locfile):
 
         # parse the json data into a directory in Python format
         parsed_locations = json.loads(unparsed_locations)
-        
+
     return parsed_locations
 
-
-def create_location_file(location_data, game_number):
+def create_location_file(location_data, game_number: int) -> None:
     """
     :arg location_data: a directory that contains the location data we want to write to a file
     :arg game_number: the number of the game we are creating a file for
@@ -47,20 +45,20 @@ def create_location_file(location_data, game_number):
         # dump the data in json format into the json file
         with open(file_name, "w") as outfile:
             outfile.write(location_json)
-            
-        # TO DO: apply the parsed data to the location objects in the map
 
-    return None
+    return 
 
 
 class Fugue_Location:
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         """
         :param name: the string name of the location
         :returns None:
 
         Sets up all the variables of the location
         """
+        self.game_number = 0
+
         self.name = name
         self.is_start = False
 
@@ -76,14 +74,41 @@ class Fugue_Location:
         self.short_description = ""
         self.forgotten_description = ""
 
-        self.features = []
-        self.npcs = []
-        self.items = []
+        self.features = {}
+        self.npcs = {}
+        self.items = {}
 
-    def get_description(self):
+        self.location_array = (self.game_number, self.name, self.is_start, self.north, self.east, self.south, self.west, self.times_visited, self.was_forgotten, 
+                               self.long_description, self.short_description, self.forgotten_description, self.features, self.npcs, self.items)
+
+        return 
+
+    def load_info(self, location_info: dict) -> None:
+        """
+        :param location_info: a dictionary that contains the json data to be loaded into the location variables
+        """
+        self.game_number = location_info.get("game_number")
+        self.is_start = location_info.get("is_start")
+
+        self.north    = location_info.get("north")
+        self.east     = location_info.get("east")
+        self.south    = location_info.get("south")
+        self.west     = location_info.get("west")
+
+        self.long_description  = location_info.get("long_description")
+        self.short_description = location_info.get("short_description")
+        self.forgotten_description = location_info.get("forgotten_description")
+
+        self.features = location_info.get("features")
+        self.npcs     = location_info.get("npcs")
+        self.items    = location_info.get("items")
+
+        return
+
+    def get_description(self) -> str:
         """
         :param self: the location
-        :return location_description: the description of the location being visited, relative to when and how it
+        :return location_description: the string description of the location being visited, relative to when and how it
         is being visited
         """
         location_description = self.short_description
@@ -95,7 +120,7 @@ class Fugue_Location:
 
         return location_description
 
-    def get_direction(self, direction):
+    def get_direction(self, direction: str) -> str:
         """
         :param direction: the input requesting what is in a certain direction
         :return location_info:
@@ -116,13 +141,21 @@ class Fugue_Location:
 
         return location_info
 
-    def is_npc_here(self, npc):
-        if npc in self.npcs:
+    def is_npc_here(self, npc_name: str) -> bool:
+        """
+        :param npc_name: a string input of the name or identifier of an NPC
+        :return bool: return a true or false depending on whether the NPC is found or not
+        """
+        if npc_name in self.npcs:
             return True
         else:
             return False
 
-    def is_item_here(self, item):
+    def is_item_here(self, item: str) -> bool:
+        """
+        :param itme: a string input of the name or identifier of an item
+        :return bool: return a true or false depending on whether the item is found or not
+        """
         if item in self.items:
             return True
         else:
@@ -130,34 +163,98 @@ class Fugue_Location:
 
 
 class Fugue_Map:
-    def prep_data(self):
+    def __init__(self) -> None:
+        """
+        Sets up all of the variables for the map object, including all of the locations
+        """
+        # create all locations in the map
+        self.desert_camp       = Fugue_Location("desert camp")
+        self.desert_wilderness = Fugue_Location("desert wilderness")
+        self.path_1            = Fugue_Location("path 1")
+        self.path_2            = Fugue_Location("path 2")
+        self.path_3            = Fugue_Location("path 3")
+        self.city_gates        = Fugue_Location("city gates")
+        self.city_road_1       = Fugue_Location("city road 1")
+        self.city_road_2       = Fugue_Location("city road 2")
+        self.city_road_3       = Fugue_Location("city road 3")
+        self.palace_walls      = Fugue_Location("palace walls")
+        self.marketplace       = Fugue_Location("marketplace")
+        self.secret_passage    = Fugue_Location("secret passage")
+        self.gardens           = Fugue_Location("gardens")
+        self.well              = Fugue_Location("well")
+        self.tower             = Fugue_Location("tower")
+        self.bedroom           = Fugue_Location("bedroom")
+        self.great_hall        = Fugue_Location("great hall")
+        self.throne_room       = Fugue_Location("throne room")
+        self.dining_hall       = Fugue_Location("dining hall")
+
+        # create location tracking data
+        self.start   = self.desert_camp
+        self.current = self.start
+
+        self.map_key = {"desert_camp" :       self.desert_camp,
+                             "desert_wilderness" : self.desert_wilderness, 
+                             "path_1" :            self.path_1, 
+                             "path_2":             self.path_2, 
+                             "path_3":             self.path_3, 
+                             "city_gates" :        self.city_gates,
+                             "city_road_1" :       self.city_road_1, 
+                             "city_road_2" :       self.city_road_2, 
+                             "city_road_3" :       self.city_road_3, 
+                             "palace_walls" :      self.palace_walls, 
+                             "marketplace" :       self.marketplace, 
+                             "secret_passage" :    self.secret_passage, 
+                             "gardens" :           self.gardens, 
+                             "well" :              self.well, 
+                             "tower" :             self.tower, 
+                             "bedroom" :           self.bedroom, 
+                             "great_hall" :        self.great_hall, 
+                             "throne_room" :       self.throne_room, 
+                             "dining_hall" :       self.dining_hall, 
+                             None :                None
+                            }
+
+        self.map_array = [self.desert_camp, 
+                          self.desert_wilderness, 
+                          self.path_1, 
+                          self.path_2, 
+                          self.path_3, 
+                          self.city_gates, 
+                          self.city_road_1, 
+                          self.city_road_2, 
+                          self.city_road_3, 
+                          self.palace_walls, 
+                          self.marketplace, 
+                          self.secret_passage, 
+                          self.gardens, 
+                          self.well, 
+                          self.tower, 
+                          self.bedroom, 
+                          self.great_hall, 
+                          self.throne_room, 
+                          self.dining_hall]
+
+        return
+    
+    def prep_data(self, map_dictionary: dict) -> None:
+        """
+        :param map_dictionary: a dictionary that contains all of the json data that has not yet been prepared to be loaded into the location variables 
+        """
         # get the data from the original location json file (template)
         location_data = get_location_file_info(game_files[0])
 
-        # parse the location data out into the locations
+        # replace the strings for node pointers with location objects 
+        for location in map_dictionary:
+            north = location.get("north")
+            east = location.get("east")
+            south = location.get("south")
+            west = location.get("west")
 
-    def __init__(self):
-        # create all locations in the map
-        self.desert_camp = Fugue_Location("desert camp")
-        self.desert_wilderness = Fugue_Location("desert wilderness")
-        self.path_1 = Fugue_Location("path 1")
-        self.path_2 = Fugue_Location("path 2")
-        self.path_3 = Fugue_Location("path 3")
-        self.city_gates = Fugue_Location("city gates")
-        self.city_road_1 = Fugue_Location("city road 1")
-        self.city_road_2 = Fugue_Location("city road 2")
-        self.city_road_3 = Fugue_Location("city road 3")
-        self.palace_walls = Fugue_Location("palace walls")
-        self.marketplace = Fugue_Location("marketplace")
-        self.secret_passage = Fugue_Location("secret passage")
-        self.gardens = Fugue_Location("gardens")
-        self.well = Fugue_Location("well")
-        self.tower = Fugue_Location("tower")
-        self.bedroom = Fugue_Location("bedroom")
-        self.great_hall = Fugue_Location("great hall")
-        self.throne_room = Fugue_Location("throne room")
-        self.dining_hall = Fugue_Location("dining hall")
+            direction_array = [north, south, east, west]
 
-        # create location tracking data
-        self.start = self.desert_camp
-        self.current = self.start
+            # swap the string north/east/south/west for location nodes 
+            for direction in direction_array:
+                if direction: 
+                    direction = self.map_key.get(direction)
+        
+        return
