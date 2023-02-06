@@ -1,6 +1,7 @@
 {
   "desert_camp":
   {
+    "game_numer": 0,
     "name": "desert camp",
     "is_start": true,
     "north": "path_1",
@@ -9,19 +10,22 @@
     "west": "desert_wilderness",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The desert camp has a low fire burning. There is a ragged tent and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness.",
-    "short_description": "The desert camp has a low fire ",
-    "forgotten_description": "The desert camp has a low fire burning. There is a ragged tent and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness. It seems familiar somehow.",
+    "long_description": "You awaken at an abandoned desert camp. As far as the eye can see, there is the red horizon, with the view of a city to the far north. Beside you, a low fire is burning out. There is also a ragged tent and a small satchel. There is a path to a north, which must lead to the city. Beyond this camp is wilderness. Standing nearby is a shrouded stranger.",
+    "short_description": "The desert camp has a low fire and a ragged tent. The path to the city lies to the north.",
+    "forgotten_description": "You awaken to see a desert camp, long since abandoned. Beside you there are the remnants of a fire, a knocked over tent, and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness. It seems familiar somehow.",
     "features":
-      [
-        "fire",
-        "tent",
-        "path",
-        "wilderness"
-      ]
+      {
+        "fire" : "The fire is smoldering, low embers whisping up into the air. Inside it there are some red-hot coals that once were logs.",
+        "tent" : "The tent is made of a ragged red cloth, propped up by a dry branch.",
+        "path" : "The shifting sands have been shuffled and settled to make this compacted trail. It leads north to the city.",
+        "wilderness" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water."
+      },
+    "npcs" : {}, 
+    "items": {}
   },
   "desert_wilderness":
   {
+    "game_numer": 0,
     "name": "desert wilderness",
     "is_start": false,
     "north": "desert_camp",
@@ -33,13 +37,13 @@
     "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. There is something moving in the distance, though.",
     "short_description": "The sandy desert wilderness goes on as far as the eye can see.",
     "forgotten_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. It seems familiar, in some way.",
-    "features":
-      [
-        "hog"
-      ]
+    "features": {}, 
+    "npcs" : {}, 
+    "items": {}
   },
   "path_1":
   {
+    "game_numer": 0,
     "name": "path 1",
     "is_start": false,
     "north": "path_2",
@@ -48,16 +52,20 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "Just outside the camp is a shifting, sandy road. Along the side of the road is a palm tree and some flowering cacti, whose blooms shine a bright reddish pink color in the moonlight.",
+    "short_description": "There is a shifting sandy road, just outside the desert camp. You can smell the cacti blooms",
+    "forgotten_description": "Just outside the desert camp is a familiar road, though it seems fairly untravelled. There's a palm tree on the side of the road, as well as a few cacti that are blooming bright reddish pink.",
     "features":
-      [
-        ""
-      ]
+      {
+        "palm tree" : "The palm tree leans and sways in the gentle breeze. From it hang a few coconuts.", 
+        "cacti" : "The cactus is covered in long spikes. It has a few sweet-smelling reddish-pink flowers that are blooming."
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "path_2":
   {
+    "game_numer": 0,
     "name": "path 2",
     "is_start": false,
     "north": "path_3",
@@ -66,16 +74,16 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
-    "features":
-      [
-        ""
-      ]
+    "long_description": "The path is long and winds through the dunes. There isn't much but sand and open sky. To the south is the camp, and to the north lies the city.",
+    "short_description": "The path is vacant, winding through the sandy dunes. To the south is the camp and to the north is the city.",
+    "forgotten_description": "The sandy path winds through the dunes in a rhythm that seems familiar. To the north is the city, and to the south is the camp.",
+    "features": {}, 
+    "npcs" : {}, 
+    "items": {}
   },
   "path_3":
   {
+    "game_numer": 0,
     "name": "path 3",
     "is_start": false,
     "north": "city_gates",
@@ -84,16 +92,16 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
-    "features":
-      [
-        ""
-      ]
+    "long_description": "The sandy dunes gives way to sandstone, short scrubby bushes cling on for life in the cracks of the rock. In the distance you can see the city gates.",
+    "short_description": "Scrubby bushes cling to the sandstone. In the distance, the city gates loom.",
+    "forgotten_description": "The sandy dunes gives way to sandstone, short scrubby bushes cling on for life in the cracks of the rock. In the distance you can see the city gates. It feels like coming home.",
+    "features":{}, 
+    "npcs" : {}, 
+    "items": {}
   },
   "city_gates":
   {
+    "game_numer": 0,
     "name": "city gates",
     "is_start": false,
     "north": "city_road_2",
@@ -102,16 +110,19 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The city gates are tall, made from a similar sandstone to that beneath your feet. Pillars are carved intricately, supporting stacked bricks of sandstone and marble. Leaning against a pillar is a guard sleepily keeping watch.",
+    "short_description": "The city gates are made of tall sandstone pillars. Leaning against the gates is a sleepy guard. ",
+    "forgotten_description": "The city gates loom over you, the intricate pattern carved into the sandstone pillars sparks a memory in the back of your mind. The guard at the gate looks confused.",
     "features":
-      [
-        ""
-      ]
+      {
+        "gates" : "The gates themselves are made from dry, pale wood clearly worn from the weather. Rough wrought iron hinges and clasps are used to support the wooden gates. On either side of the gates are sandstone pillars filled with intricrate patterned carvings of native animals."
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "city_road_1":
   {
+    "game_numer": 0,
     "name": "city road 1",
     "is_start": false,
     "north": "secret_passage",
@@ -120,16 +131,22 @@
     "west": "city_road_2",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The city road winds westward through a dense residential area. Several clothes lines hang between buildings, and a cat sits perched on a windowsill overhead. Children play around outside in the street, running along the palace walls. Outside the palace walls a few fountains shaped like fish heads dispense water out into the trough that carries water around the city.",
+    "short_description": "The city road winds through a residential area, clothes lines hanging overhead. Children play in the street and the palace walls dispense water into the city water troughs from fountains shaped like fish heads.",
+    "forgotten_description": "The city road winds westward through an eerily familiar residential area. Several clothes lines hang between buildings, and a cat sits perched on a windowsill overhead. Children play around outside in the street, running along the palace walls. Outside the palace walls a few fountains shaped like fish heads dispense water out into the trough that carries water around the city.",
     "features":
-      [
-        ""
-      ]
+      {
+        "clotheslines" : "The clothesline overhead hangs between two buildings, holding up a few yellow and blue shirts, a red dress, a pair of pants, and a single white sock.", 
+        "cat" : "The cat is a tuxedo cat that sits in the windowsill, sprawled out in the sun whilst grooming itself. It seems utterly uninterested in you.", 
+        "fountain" : "The fountain is shaped like the head of a carp, scales carved with care. Years of sediment have built up in the mouth of the fish. Behind the water is a deep shadow.", 
+        "shadow" : "The shadow leads to a small opening in the palace walls. It looks like you could fit if you crouched."
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "city_road_2":
   {
+    "game_numer": 0,
     "name": "city road 2",
     "is_start": false,
     "north": "palace_walls",
@@ -138,16 +155,26 @@
     "west": "city_road_1",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
+    "long_description": "The gates lead through a portcullis into a town square. The buildings and road are hewn from clay and stone, with water trickling through a trough that spans the roof of each building. Ahead is a small public sitting area with pergolas to provide shade. Beyond that lies the palace walls. You can hear the hustle and bustle of the marketplace to the northeast. The road continues to the east and to the west under stone archways, crowned by carvings of animal heads. Ahead of you a friendly guide seems to be trying to get your attention.",
+    "short_description": "The road comes to a town square in the center of the village. To the north is a sitting area under a shaded pergola, beyond that lies the city walls. To the northeast you can hear the marketplace.",
     "forgotten_description": "",
     "features":
-      [
-        ""
-      ]
+      {
+        "water trough" : "The water trough is carefully crafted from baked clay. Gravity is used to propel the water to each building, with the trough dropping a few inches over several feet. Individual spouts spill water into copper basins by each home. Colorful designs of greenery and flowers are painted along the rim of the trough.",
+        "pergola" : "The wooden pergolas feature hardy vines growing on them, with small yellow and red flowers just beginning to bloom thanks to the water provided by the water troughs overhead. These vines offer plenty of shade for the benches below.", 
+        "benches" : "There are several benches and tables hewn from desert wood under the pergolas. A gentle breeze passes through, and the shade makes the desert heat tolerable.", 
+        "east arch" : "The eastern arch leads towards the marketplace and is constructed from the same material as the city walls. Crowning the arch is a carving of an eagle head.", 
+        "west arch" : "The western arch leads to a residential sector and is constructed from the same material as the city walls. Crowning the arch is a carving of a mountain lion's head."
+      }, 
+    "npcs" : 
+      {
+        "guide" : "The friendly guide waves at you. She has short red hair and is wearing a yellow apron. She smiles and bows her head as you approach."
+      }, 
+    "items": {}
   },
   "city_road_3":
   {
+    "game_numer": 0,
     "name": "city road 3",
     "is_start": false,
     "north": "marketplace",
@@ -156,16 +183,16 @@
     "west": "city_road_2",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
-    "features":
-      [
-        ""
-      ]
+    "long_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands.",
+    "short_description": "The cobbled road heads eastward towards the marketplace.",
+    "forgotten_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands. Over all of the music and talking, you can hear something, like your name is being called.",
+    "features": {}, 
+    "npcs" : {}, 
+    "items": {}
   },
   "palace_walls":
   {
+    "game_numer": 0,
     "name": "palace walls",
     "is_start": false,
     "north": null,
@@ -174,16 +201,19 @@
     "west": "marketplace",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The palace walls loom high overhead. The sandstone walls are double-thick, with guard towers spaced every twenty feet or so. There appears to be a walkway along the topside, where guards transport goods for the royal palace and keep watch on civilians below.",
+    "short_description": "The palace walls are guarded, with guards patrolling between guard towers spaced every twenty feet or so.",
+    "forgotten_description": "The palace walls loom over you, blocking your view of the royal palace. The guards above your head stare at you from the towers spaced every twenty feet or so. It feels like they know something you don't.",
     "features":
-      [
-        ""
-      ]
+      {
+        "guard tower" : "The guard towers are covered, with small portholes allowing the guards an outward view. On either side of the towards are mounted heavy crossbows."
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "marketplace":
   {
+    "game_numer": 0,
     "name": "marketplace",
     "is_start": false,
     "north": null,
@@ -192,16 +222,22 @@
     "west": "palace_walls",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The marketplace is cramped and crowded, filled with stall after stall of goods being sold by local and traveler alike. Exotic meats, rare fruit, gemstones and jewelry, fine cloth, spices, herbal medicines, tinctures, and even armor and weapons can be found in the market. As you walk through the aisles, an old woman in a lonely corner stall stares at you with a single gray eye.",
+    "short_description": "The marketplace is cramped and crowded. All manner of goods can be found, from food and clothing to armor and weapons. An old woman watches you from a corner stall with her single gray eye. She smiles at you.",
+    "forgotten_description": "The marketplace is cramped and crowded, filled with stall after stall of goods being sold by local and traveler alike. Exotic meats, rare fruit, gemstones and jewelry, fine cloth, spices, herbal medicines, tinctures, and even armor and weapons can be found in the market. As you walk through the aisles, an old woman in a lonely corner stall stares at you with a single gray eye. She frowns and shakes her head, beckoning you over.",
     "features":
-      [
-        ""
-      ]
+      {
+        "" : ""
+      }, 
+    "npcs" : 
+      {
+        "Merchant" : "The old lady beckons you over with a knobby, arthritic finger. Her stall is shrouded by thick curtains of purple silk lined with gold and cobwebs. She waves for you to sit down."
+      }, 
+    "items": {}
   },
   "secret_passage":
   {
+    "game_numer": 0,
     "name": "secret passage",
     "is_start": false,
     "north": "gardens",
@@ -210,16 +246,19 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The small hole is a tight fit, but you manage to crouch enough to not hit your head. It is dark, seeming to stretch deep into the palace walls. There is a thick dampness in the air, small drips dropping from the plumbing system that is housed inside the walls. The walls of the passage are textured, the sandstone clearly scratched away by some metal tool like a pickaxe.",
+    "short_description": "The passage is small, dark, and damp. The rough walls lead through to the otherside of the palace walls.",
+    "forgotten_description": "The small hole is a tight fit, but you manage to crouch enough to not hit your head. It is dark, seeming to stretch deep into the palace walls. There is a thick dampness in the air, small drips dropping from the plumbing system that is housed inside the walls. The walls of the passage are textured, the sandstone clearly scratched away by some metal tool like a pickaxe. The textures give way to patterned dots. A-S-H-I-R-A.",
     "features":
-      [
-        ""
-      ]
+      {
+        "walls" : ""
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "gardens":
   {
+    "game_numer": 0,
     "name": "gardens",
     "is_start": false,
     "north": null,
@@ -228,16 +267,22 @@
     "west": "well",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The light is bright as soon as you emerge from the passage, and suddenly you are surrounded by lush greenery. Long trailing vines of red-tipped green leaves dangle on either side of you, shrubs and flowers in front of you. The lawn spawns for dozens of yards, and a grand three-tiered fountain sits at the center of it. To the east is a tower taller than the palace walls, and to the west there is a large, covered well. Birds fly overhead, singing and chirping. A beatiful siamese cat chases the birds playfully before stopping to look at you.",
+    "short_description": "The gardens are massive and lucious. In the center of the lawn sits a 3-tiered grand fountain, to the east stands a tall tower, and to the west is a large well. To the south, through the veil of vinery, a secret passage to the outside city is hiddin in the palace walls. The birds sing and chirp from the trees and bushes. The pretty siamese comes up to meow at you for attention.",
+    "forgotten_description": "The light is bright as soon as you emerge from the passage, and suddenly you are surrounded by lush greenery. Long trailing vines of red-tipped green leaves dangle on either side of you, shrubs and flowers in front of you. The lawn spawns for dozens of yards, and a grand three-tiered fountain sits at the center of it. To the east is a tower taller than the palace walls, and to the west there is a large, covered well. Birds fly overhead, singing and chirping. These gardens feel like home. Your cat comes and rubs against your legs.",
     "features":
-      [
-        ""
-      ]
+      {
+        "fountain" : ""
+      }, 
+    "npcs" : 
+      {
+        "cat" : "The cat is a beautiful blue-eyed siamese cat. She is friendly and paws at you in the hopes of being pet."
+      }, 
+    "items": {}
   },
   "well":
   {
+    "game_numer": 0,
     "name": "well",
     "is_start": false,
     "north": null,
@@ -246,16 +291,19 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The well is large, round, and deep, carefully constructed from riverstone and copper, expensive imported materials. Overhead an awning crafted from fine hardwoods and thatch roofing protects the well from the sweltering glare of the sun. From the basin of the well several copper pipes run up and out of the gardens, over the palace walls. The pipes are disguised by hedges and flowering vines.",
+    "short_description": "The well is large, round, and deep. It rests under an awning made from imported hardwoods and thatched roofing, which protects the well from the sun. The well feeds the water throughout the whole city.",
+    "forgotten_description": "The well digs deep under the city to source water from an ancient spring that has sustained the city for many years. The aged awning with the thatched roof protects the well from the harsh sunlight. You remember.",
     "features":
-      [
-        ""
-      ]
+      {
+        "basin" : ""
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "tower":
   {
+    "game_numer": 0,
     "name": "tower",
     "is_start": false,
     "north": "great_hall",
@@ -264,16 +312,19 @@
     "west": "gardens",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The tower pierces the sky, the outside walls following a stair-step spiralling pattern, twisting upwards. Every ten verticle feet or so there is a window and balcony. Inside there is a lavish sitting area on the first floor, with a warm fireplace just in front of the spiral staircase.",
+    "short_description": "The tower is tall and ornate. Inside there is a lavish sitting area complete with warm fireplace right in front of the spiral staircase.",
+    "forgotten_description": "The tower welcomes you back, the warm fire inside sounds the same. Your chair sits by the fire just close enough to keep you warm on a cold desert night, but not so close as to scald you during the day. The spiral stairscase leads upstairs.",
     "features":
-      [
-        ""
-      ]
+      {
+        "" : ""
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "bedroom":
   {
+    "game_numer": 0,
     "name": "bedroom",
     "is_start": false,
     "north": null,
@@ -282,16 +333,22 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The bedroom is larger than one would expect, clean and airy. The four poster bed has a canopy to protect its occupant from the harsh desert sun, and several tables and chairs are scattered around the space. In the corner of the room is a writing desk with a diary on it, and to the side of it sits a large trunk.",
+    "short_description": "The bedroom is large, with a four poster bed and a writing desk. Downstais is the rest of the tower.",
+    "forgotten_description": "Your bedroom is just as it should be.",
     "features":
-      [
-        ""
-      ]
+      {
+        "bed" : "", 
+        "desk" : "", 
+        "diary" : "", 
+        "trunk" : "The trunk is constructed from high quality materials, oak and buffalo leather, and a sturdy lock made from steel. The trunk is locked."
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "great_hall":
   {
+    "game_numer": 0,
     "name": "great hall",
     "is_start": false,
     "north": "throne_room",
@@ -300,16 +357,21 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The great hall has a vaulted ceiling, allowing cool air to flow through, and the hot air to rise away from the occupants. The floor is polished and checkered, fit for a ball, and leading past rows of armor suits mounted and displayed inside niches carved into the walls. There is a doorway to the east and an even larger double doorway straight ahead. ",
+    "short_description": "The great hall is fit for a ball, with its high ceilings and polished floor. To the east there is a doorway to the dining hall, and to the north is an even larger doorway to the throne room.",
+    "forgotten_description": "The great hall is empty, but has been kept in good shape. The suits of armor have been recently polished. To the east there is a doorway that is dwarfed in comparison to the large double doorway ahead.",
     "features":
-      [
-        ""
-      ]
+      {
+        "armor" : "", 
+        "small door" : "", 
+        "large door" : ""
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "throne_room":
   {
+    "game_numer": 0,
     "name": "throne room",
     "is_start": false,
     "north": null,
@@ -318,16 +380,21 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The throne room you enter is long and ominous. Black drapery hangs over the windows, obscuring the sun, and several advisors turn to look at you as you enter. The throne itself is atop a platform, with several rows of stairs leading up to it. Torches light the room, held from brass and amber sconces. It looks like someone is sitting on the throne. ",
+    "short_description": "The throne room is long and dark. Black drapery hangs over the windows, blocking out the sun. The throne sits atop a platform with several stairs leading up to it. The room is lit by torches in brass and amber sconces.",
+    "forgotten_description": "The throne room does not welcome you as it once did. Black drapery blocks the windows, torches dimly lighting the room are hung from brass and amber sconces. The throne is occupied, sitting at a platform with several stairs leading up to it.",
     "features":
-      [
-        ""
-      ]
+      {
+        "drapery" : "",
+        "throne" : "", 
+        "torches" : ""
+      }, 
+    "npcs" : {}, 
+    "items": {}
   },
   "dining_hall":
   {
+    "game_numer": 0,
     "name": "dining hall",
     "is_start": false,
     "north": null,
@@ -336,12 +403,16 @@
     "west": "great_hall",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "",
-    "short_description": "",
-    "forgotten_description": "",
+    "long_description": "The dining hall is surprisingly empty, considering the amount of food and drink generously sprawled out across the table. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked.",
+    "short_description": "The dining hall is still empty. The table spans the whole room, covered in an array of food and drink. On the wall, there is a large painting depicting a far away forested place.",
+    "forgotten_description": "The dining hall is not bustling like it once was, though the table is set with a lavish spread. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked.",
     "features":
-      [
-        ""
-      ]
+      {
+        "candelabra" : "", 
+        "food" : "", 
+        "painting" : ""
+      }, 
+    "npcs" : {}, 
+    "items": {}
   }
 }
