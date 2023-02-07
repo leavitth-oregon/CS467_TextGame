@@ -1,17 +1,18 @@
 class InventoryItem:
-    def __init__(self, name, description, item_type, equipable, equipped, cost):
+    def __init__(self, name, description, item_type, equippable, equipped, cost, synonym):
         self.name = name
         self.description = description
         self.item_type = item_type
-        self.equipable = equipable
+        self.equippable = equippable
         self.equipped = equipped
         self.cost = cost
+        self.synonym = synonym
 
 
 class Gear(InventoryItem):
-    def __init__(self, name, description, item_type, equipable, equipped, cost,
+    def __init__(self, name, description, item_type, equippable, equipped, cost, synonym,
                  hp_mod, atk_mod, def_mod, mag_mod, mana_mod):
-        super().__init__(name, description, item_type, equipable, equipped, cost)
+        super().__init__(name, description, item_type, equippable, equipped, cost, synonym)
         self.hp_mod = hp_mod
         self.atk_mod = atk_mod
         self.def_mod = def_mod
@@ -20,10 +21,10 @@ class Gear(InventoryItem):
 
 
 class Spell(InventoryItem):
-    def __init__(self, name, description, item_type, equipable, equipped, cost,
+    def __init__(self, name, description, item_type, equippable, equipped, cost, synonym,
                  mana_cost, hp_mod, atk_mod, def_mod, mag_mod, dmg_per_turn,
                  duration, effect, effect_pct, casts, lvl, lvl_reqs):
-        super().__init__(name, description, item_type, equipable, equipped, cost)
+        super().__init__(name, description, item_type, equippable, equipped, cost, synonym)
         self.mana_cost = mana_cost
         self.hp_mod = hp_mod
         self.atk_mod = atk_mod
@@ -37,11 +38,20 @@ class Spell(InventoryItem):
         self.lvl = lvl
         self.lvl_reqs = lvl_reqs
 
+    def Cast(self):
+        self.casts += 1
+
+        if self.casts > self.lvl_reqs[1]:
+            self.lvl = 2
+
+        if self.casts > self.lvl_reqs[2]:
+            self.lvl = 3
+
 
 class Item(InventoryItem):
-    def __init__(self, name, description, item_type, equipable, equipped, cost,
+    def __init__(self, name, description, item_type, equippable, equipped, cost, synonym,
                  qty, hp_mod, mana_mod):
-        super().__init__(name, description, item_type, equipable, equipped, cost)
+        super().__init__(name, description, item_type, equippable, equipped, cost, synonym)
         self.qty = qty
         self.hp_mod = hp_mod
         self.mana_mod = mana_mod

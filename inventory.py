@@ -3,19 +3,19 @@ import os
 
 class Inventory:
     def __init__(self):
-        self._swords = []
-        self._armors = []
-        self._staffs = []
-        self._spells = []
-        self._items = []
+        self.swords = []
+        self.armors = []
+        self.staffs = []
+        self.spells = []
+        self.items = []
 
-    def _DisplayItemList(self, inventory_list, equipable):
+    def DisplayItemList(self, inventory_list, equippable):
         # Creates a string of inventory list item names to be printed to the console.
         # Items are displayed in columns of 20 characters in length.
         #
         # Inputs:
         # inventory_list - list of the category of items to display
-        # equipable - True/False if the list contains items that can be equipped
+        # equippable - True/False if the list contains items that can be equipped
 
         inv_str = ""
         inv_str_temp = ""
@@ -24,7 +24,7 @@ class Inventory:
             # Check for new line
             if len(inv_str_temp) == 80:
                 if len(inv_str) == 0:
-                    inv_str += inv_str_temp                    
+                    inv_str += inv_str_temp
                 else:
                     inv_str += "\n" + inv_str_temp
                 inv_str_temp = ""
@@ -33,7 +33,7 @@ class Inventory:
             inv_str_temp += item.name
 
             # Show if item is equipped
-            if equipable:
+            if equippable:
                 if item.equipped:
                     inv_str_temp += " (E)"
 
@@ -45,9 +45,9 @@ class Inventory:
             # Align items in columns of 20 characters
             item_char_count = len(inv_str_temp) % 20
             for i in range(20 - item_char_count):
-                inv_str_temp += " "            
+                inv_str_temp += " "
 
-        # Add final temp string
+                # Add final temp string
         if len(inv_str) == 0:
             inv_str += inv_str_temp
         else:
@@ -60,19 +60,19 @@ class Inventory:
 
         os.system("cls")
         print('Swords')
-        print(self._DisplayItemList(self._swords, True))
+        print(self.DisplayItemList(self.swords, True))
         print()
         print('Armors')
-        print(self._DisplayItemList(self._armors, True))
+        print(self.DisplayItemList(self.armors, True))
         print()
         print('Staffs')
-        print(self._DisplayItemList(self._staffs, True))
+        print(self.DisplayItemList(self.staffs, True))
         print()
         print('Spell Book')
-        print(self._DisplayItemList(self._spells, False))
+        print(self.DisplayItemList(self.spells, False))
         print()
         print('Items')
-        print(self._DisplayItemList(self._items, False))
+        print(self.DisplayItemList(self.items, False))
 
     def AddItem(self, item):
         # Adds an item to the inventory
@@ -81,19 +81,19 @@ class Inventory:
         # item - the item object to be added
 
         if item.item_type == 'sword':
-            self._swords.append(item)
+            self.swords.append(item)
 
         if item.item_type == 'armor':
-            self._armors.append(item)
+            self.armors.append(item)
 
         if item.item_type == 'staff':
-            self._staffs.append(item)
+            self.staffs.append(item)
 
         if item.item_type == 'spell':
-            self._spells.append(item)
+            self.spells.append(item)
 
         if item.item_type == 'item':
-            self._items.append(item)
+            self.items.append(item)
 
     def RemoveItem(self, item):
         # Removes an item from the inventory
@@ -102,39 +102,55 @@ class Inventory:
         # item - the item object to be removed
 
         if item.item_type == 'sword':
-            self._swords.remove(item)
+            self.swords.remove(item)
 
         if item.item_type == 'armor':
-            self._armors.remove(item)
+            self.armors.remove(item)
 
         if item.item_type == 'staff':
-            self._staffs.remove(item)
+            self.staffs.remove(item)
 
         if item.item_type == 'spell':
-            self._spells.remove(item)
+            self.spells.remove(item)
 
         if item.item_type == 'item':
-            self._items.remove(item)
+            self.items.remove(item)
 
     def GetItem(self, name):
-        for item in self._swords:
+        for item in self.swords:
             if item.name == name:
                 return item
 
-        for item in self._armors:
+        for item in self.armors:
             if item.name == name:
                 return item
 
-        for item in self._staffs:
+        for item in self.staffs:
             if item.name == name:
                 return item
 
-        for item in self._spells:
+        for item in self.spells:
             if item.name == name:
                 return item
 
-        for item in self._items:
+        for item in self.items:
             if item.name == name:
                 return item
 
         return None
+
+    def HasSpell(self, name):
+        for item in self.spells:
+            if item.name == name:
+                return True
+
+        return False
+
+    def CanCastSpell(self, name, cur_mana):
+        for item in self.spells:
+            if item.name == name:
+                if item.mana_cost <= cur_mana:
+                    return True
+
+        return False
+
