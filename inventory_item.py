@@ -1,3 +1,5 @@
+import math
+
 class InventoryItem:
     def __init__(self, name, description, item_type, equippable, equipped, cost, synonym):
         self.name = name
@@ -22,30 +24,18 @@ class Gear(InventoryItem):
 
 class Spell(InventoryItem):
     def __init__(self, name, description, item_type, equippable, equipped, cost, synonym,
-                 mana_cost, hp_mod, atk_mod, def_mod, mag_mod, dmg_per_turn,
-                 duration, effect, effect_pct, casts, lvl, lvl_reqs):
+                 mana_cost, base_dmg, duration, casts, lvl_up):
         super().__init__(name, description, item_type, equippable, equipped, cost, synonym)
         self.mana_cost = mana_cost
-        self.hp_mod = hp_mod
-        self.atk_mod = atk_mod
-        self.def_mod = def_mod
-        self.mag_mod = mag_mod
-        self.dmg_per_turn = dmg_per_turn
+        self.base_dmg = base_dmg
         self.duration = duration
-        self.effect = effect
-        self.effect_pct = effect_pct
         self.casts = casts
-        self.lvl = lvl
-        self.lvl_reqs = lvl_reqs
+        self.lvl_up = lvl_up
 
     def Cast(self):
         self.casts += 1
+        return self.base_dmg * (math.ceil(self.casts / self.lvl_up))
 
-        if self.casts > self.lvl_reqs[1]:
-            self.lvl = 2
-
-        if self.casts > self.lvl_reqs[2]:
-            self.lvl = 3
 
 
 class Item(InventoryItem):

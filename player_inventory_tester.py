@@ -6,38 +6,38 @@ class TestCases(unittest.TestCase):
 
     def test_1(self):  # Test adding items
         inv = MakeInventory()
-        self.assertTrue(len(inv._swords) == 4)
-        self.assertTrue(len(inv._armors) == 2)
-        self.assertTrue(len(inv._staffs) == 2)
-        self.assertTrue(len(inv._spells) == 1)
-        self.assertTrue(len(inv._items) == 5)
+        self.assertTrue(len(inv.swords) == 4)
+        self.assertTrue(len(inv.armors) == 2)
+        self.assertTrue(len(inv.staffs) == 2)
+        self.assertTrue(len(inv.spells) == 1)
+        self.assertTrue(len(inv.items) == 5)
 
     def test_2(self):  # Test removing items
         inv = MakeInventory()
-        self.assertTrue(len(inv._swords) == 4)
-        self.assertTrue(len(inv._armors) == 2)
-        self.assertTrue(len(inv._staffs) == 2)
-        self.assertTrue(len(inv._spells) == 1)
-        self.assertTrue(len(inv._items) == 5)
+        self.assertTrue(len(inv.swords) == 4)
+        self.assertTrue(len(inv.armors) == 2)
+        self.assertTrue(len(inv.staffs) == 2)
+        self.assertTrue(len(inv.spells) == 1)
+        self.assertTrue(len(inv.items) == 5)
         sword = inv.GetItem("Katana")
         inv.RemoveItem(sword)
-        self.assertTrue(len(inv._swords) == 3)
-        self.assertTrue(len(inv._armors) == 2)
-        self.assertTrue(len(inv._staffs) == 2)
-        self.assertTrue(len(inv._spells) == 1)
-        self.assertTrue(len(inv._items) == 5)
+        self.assertTrue(len(inv.swords) == 3)
+        self.assertTrue(len(inv.armors) == 2)
+        self.assertTrue(len(inv.staffs) == 2)
+        self.assertTrue(len(inv.spells) == 1)
+        self.assertTrue(len(inv.items) == 5)
 
     def test_3(self):  # Test display strings
         inv = MakeInventory()
-        self.assertTrue(inv._DisplayItemList(inv._swords, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.swords, True) ==
                         "Wooden Sword        Long Sword          Katana              King's Sword        ")
-        self.assertTrue(inv._DisplayItemList(inv._armors, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.armors, True) ==
                         "Cloth Armor         King's Armor        ")
-        self.assertTrue(inv._DisplayItemList(inv._staffs, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.staffs, True) ==
                         "Weathered Staff     Royal Staff         ")
-        self.assertTrue(inv._DisplayItemList(inv._spells, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.spells, True) ==
                         "Fire Ball           ")
-        self.assertTrue(inv._DisplayItemList(inv._items, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.items, True) ==
                         "Health Potion (5)   Mana Potion (3)     Tattered Photo      Everburning Lamp    \nKing's Crown        ")
 
     def test_4(self):  # Test player is created
@@ -56,7 +56,7 @@ class TestCases(unittest.TestCase):
         self.assertTrue(player.armor_eqp is None)
         self.assertTrue(player.staff_eqp is None)
 
-    def test_5(self):  # Test equiping items
+    def test_5(self):  # Test equipping items
         player = MakePlayer()
         player.EquipItem("Long Sword")
         player.EquipItem("Cloth Armor")
@@ -97,19 +97,19 @@ class TestCases(unittest.TestCase):
         self.assertTrue(player.armor_eqp == player.inventory.GetItem("King's Armor"))
         self.assertTrue(player.staff_eqp == player.inventory.GetItem("Weathered Staff"))
 
-    def test_7(self):  # Test equiped items are displayed
+    def test_7(self):  # Test equipped items are displayed
         player = MakePlayer()
         player.EquipItem("Long Sword")
         player.EquipItem("Cloth Armor")
         player.EquipItem("Royal Staff")
         inv = player.inventory
-        self.assertTrue(inv._DisplayItemList(inv._swords, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.swords, True) ==
                         "Wooden Sword        Long Sword (E)      Katana              King's Sword        ")
-        self.assertTrue(inv._DisplayItemList(inv._armors, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.armors, True) ==
                         "Cloth Armor (E)     King's Armor        ")
-        self.assertTrue(inv._DisplayItemList(inv._staffs, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.staffs, True) ==
                         "Weathered Staff     Royal Staff (E)     ")
-        self.assertTrue(inv._DisplayItemList(inv._spells, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.spells, True) ==
                         "Fire Ball           ")
-        self.assertTrue(inv._DisplayItemList(inv._items, True) ==
+        self.assertTrue(inv.DisplayItemList(inv.items, True) ==
                         "Health Potion (5)   Mana Potion (3)     Tattered Photo      Everburning Lamp    \nKing's Crown        ")

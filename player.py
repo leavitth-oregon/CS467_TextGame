@@ -4,13 +4,14 @@ from character import Character
 
 class Player(Character):
     def __init__(self, inventory, hp, defense, atk, mag, mana,
-                 sword_eqp, armor_eqp, staff_eqp):
+                 sword_eqp, armor_eqp, staff_eqp, money):
         super().__init__(hp, defense, atk, mag, mana)
         self.name = "You"
         self.inventory = inventory
         self.sword_eqp = sword_eqp
         self.armor_eqp = armor_eqp
         self.staff_eqp = staff_eqp
+        self.money = money
 
     def EquipItem(self, name):
         # Equips item from player's inventory and updates player's stats
@@ -25,7 +26,7 @@ class Player(Character):
         if item is None:
             return "item not found"
 
-        if not item.equipable:
+        if not item.equippable:
             return "item not equippable"
 
         hp_pct = self.hp_cur / self.hp
@@ -92,6 +93,4 @@ class Player(Character):
 
     def CastSpell(self, name):
         spell = self.inventory.GetItem(name)
-        spell.Cast()
-        dmg_dealt = self.mag_cur * spell.dmg_per_turn[spell.lvl - 1] / 10
-        return dmg_dealt
+        return spell.Cast()

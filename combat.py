@@ -1,4 +1,5 @@
 import os
+#from commands import parse
 
 
 class Combat:
@@ -18,12 +19,11 @@ class Combat:
                     input()
 
             # player turn
-            if action[0] == "Run":
+            if action[0] == "run":
                 is_run = self.player.Run()
                 if is_run:
                     self.is_fighting = False
             else:
-                self.enemy.DamageOverTime()
                 self._PerformAction(action, self.player, self.enemy)
 
             # enemy turn
@@ -31,8 +31,6 @@ class Combat:
             self._PerformAction(enemy_action, self.enemy, self.player)
 
             self._BattleStatus()
-
-
 
     def _DisplayCurrentStats(self):
         os.system("cls")
@@ -46,41 +44,46 @@ class Combat:
         print()
         print("What would you like to do - Attack, Defend, Cast a spell, or Run? ")
         response = input()
-        # Parse response to get action and spell
+        # response = parse(response)
         return response
 
     def _VerifyValidAction(self, action):
-        valid_actions = ["Attack", "Defend", "Cast", "Run"]
+        valid_actions = ["attack", "defend", "cast", "run"]
         valid = False
 
         # Player chose a valid action word
         if action[0] in valid_actions:
             valid = True
 
-        # Player casts spell they don't have
-        if action[0] == "Cast" and not self.player.inventory.HasSpell(action[1]):
-            print("You can't cast a spell you haven't learned.")
+        # Player needs to have declared a spell
+        if action[0] == "cast" and len(action) < 2:
+            print("You need to declare what spell you want to cast.")
             valid = False
+        else:
+            # Player casts spell they don't have
+            if action[0] == "cast" and not self.player.inventory.HasSpell(action[1]):
+                print("You can't cast a spell you haven't learned.")
+                valid = False
 
-        # Player doesn't have mana to cast spell
-        if action[0] == "Cast" and not self.player.inventory.CanCastSpell(action[1], self.player.mana_cur):
-            print("You don't have enough mana to cast this spell.")
-            valid = False
+            # Player doesn't have mana to cast spell
+            if action[0] == "cast" and not self.player.inventory.CanCastSpell(action[1], self.player.mana_cur):
+                print("You don't have enough mana to cast this spell.")
+                valid = False
 
         return valid
 
     def _PerformAction(self, action, attacker, defender):
         print()
-        if action[0] == "Attack":
-            dmg_dealt = attacker.atk_cur / ((defender.def_cur + 100) / 100)
+        if action[0] == "attack":
+            dmg_dealt = round(attacker.atk_cur / ((defender.def_cur + 100) / 100))
             defender.DealDamage(dmg_dealt)
             print(attacker.name + " dealt " + str(dmg_dealt) + " damage to " + defender.name)
 
-        if action[0] == "Defend":
+        if action[0] == "defend":
             def_added = attacker.Defend()
             print("Defense rose by " + str(def_added))
 
-        if action[0] == "Cast":
+        if action[0] == "cast":
             dmg_dealt = attacker.CastSpell(action[1])
             defender.DealDamage(dmg_dealt)
             print(attacker.name + " dealt " + str(dmg_dealt) + " damage to " + defender.name)
