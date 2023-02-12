@@ -1,9 +1,6 @@
 # Fugue Jukebox
 # Hayley Leavitt 2023
-# Version 0.0
-# 
-# Jukebox is a microservice that runs alongside the Fugue Game to play the music for the game. 
-# Jukebox will receive location names from Fugue Map and play the corresponding music.
+# Version 1.0
 #     
 # References:
 # https://docs.python.org/3/library/subprocess.html 
@@ -18,7 +15,7 @@ import time
 
 # global variables
 mediaplayer = ["afplay ", "mpg123 "]
-song_files = ['fugue_song_1.mp3', 'fugue_memories.mp3', 'fugue_combat.mp3']
+song_files = ['fugue_song_1.mp3', 'fugue_paths_and_roads.mp3', 'fugue_tower_bedroom.mp3', 'fugue_memories.mp3', 'fugue_throne_room.mp3', 'fugue_combat.mp3', 'fugue_ending.mp3', 'fugue_credits.mp3']
 
 # classes 
 class Jukebox(): 
@@ -48,25 +45,3 @@ class Jukebox():
         # kill the process
         self._p.kill()
         return
-
-
-# main code
-def main():
-    jukebox = Jukebox()
-
-    jukebox.play_song(song_files[1])
-    print()
-    print("playing: " + song_files[1])
-    print("play for 2 seconds")
-    time.sleep(2)
-
-    print()
-    print("stopping music")
-    jukebox.stop_song()
-    print(f'Return code: {jukebox._return_code}')
-
-    return
-
-
-if __name__ == "__main__":
-    main()
