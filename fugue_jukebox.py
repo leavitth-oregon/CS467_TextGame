@@ -15,7 +15,7 @@ import time
 
 # global variables
 mediaplayer = ["afplay ", "mpg123 "]
-song_files = ['fugue_song_1.mp3', 'fugue_paths_and_roads.mp3', 'fugue_tower_bedroom.mp3', 'fugue_memories.mp3', 'fugue_throne_room.mp3', 'fugue_combat.mp3', 'fugue_ending.mp3', 'fugue_credits.mp3']
+song_files = ["fugue_combat.mp3", "fugue_credits.mp3", "fugue_ending.mp3", "fugue_memories.mp3", "fugue_paths_and_roads.mp3", "fugue_throne_room.mp3", "fugue_tower_bedroom.mp3"]
 
 # classes 
 class Jukebox(): 
@@ -45,3 +45,23 @@ class Jukebox():
         # kill the process
         self._p.kill()
         return
+
+
+def main():
+    juke = Jukebox()
+    for song in song_files:
+        print("Now playing " + song + " for 30 seconds.")
+        juke.play_song(song)
+
+        # let the song play for 30 seconds
+        time.sleep(30)
+
+        # stop the song and move on to the next
+        juke.stop_song()
+        print("Song stopped.\n")
+    
+    return
+
+
+if __name__ == "__main__":
+    main()
