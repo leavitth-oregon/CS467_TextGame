@@ -1,9 +1,17 @@
+"""
+Fugue Map 
+Hayley Leavitt 2023
+Version 1.0
+
+
+"""
+
 # libraries
 import json
 
 # global variables
 game_num = 0
-game_files = ['locations.json']
+game_files = ['fugue_locations.json']
 current_location = None
 
 def get_location_file_info(locfile) -> dict:
@@ -61,6 +69,7 @@ class Fugue_Location:
 
         self.name = name
         self.is_start = False
+        self.is_current_location = False
 
         self.north = None
         self.east = None
@@ -89,11 +98,6 @@ class Fugue_Location:
         """
         self.game_number = location_info.get("game_number")
         self.is_start = location_info.get("is_start")
-
-        self.north    = location_info.get("north")
-        self.east     = location_info.get("east")
-        self.south    = location_info.get("south")
-        self.west     = location_info.get("west")
 
         self.long_description  = location_info.get("long_description")
         self.short_description = location_info.get("short_description")
@@ -161,6 +165,12 @@ class Fugue_Location:
         else:
             return False
 
+    def been_to(self) -> bool: 
+        if self.times_visited > 0:
+            return True
+        else:
+            return False
+
 
 class Fugue_Map:
     def __init__(self) -> None:
@@ -188,10 +198,71 @@ class Fugue_Map:
         self.throne_room       = Fugue_Location("throne room")
         self.dining_hall       = Fugue_Location("dining hall")
 
+        # link all of the locations in the map 
+        self.desert_camp.north = self.path_1
+        self.desert_camp.east = self.desert_wilderness
+        self.desert_camp.south = self.desert_wilderness
+        self.desert_camp.west = self.desert_wilderness
+
+        self.desert_wilderness.north = self.desert_camp
+        self.desert_wilderness.east = self.desert_camp
+        self.desert_wilderness.west = self.desert_camp
+
+        self.path_1.north = self.path_2
+        self.path_1.south = self.desert_camp
+        
+        self.path_2.north = self.path_3
+        self.path_2.south = self.path_1
+
+        self.path_3.north = self.city_gates
+        self.path_3.south = self.path_2
+
+        self.city_gates.north = self.city_road_2
+        self.city_gates.south = self.path_3
+
+        self.city_road_1.north = self.secret_passage
+        self.city_road_1.west = self.city_road_2
+
+        self.city_road_2.north = self.palace_walls
+        self.city_road_2.east = self.city_road_3
+        self.city_road_2.south = self.city_gates
+        self.city_road_2.west = self.city_road_1
+
+        self.city_road_3.north = self.marketplace
+        self.city_road_3.west = self.city_road_2
+
+        self.palace_walls.south = self.city_road_2
+        self.palace_walls.west = self.marketplace
+
+        self.marketplace.south = self.city_road_3
+        self.marketplace.west = self.palace_walls
+
+        self.secret_passage.north = self.gardens
+        self.secret_passage.south = self.city_road_1
+
+        self.gardens.east = self.tower
+        self.gardens.south = self.secret_passage
+        self.gardens.west = self.well
+
+        self.well.east = self.gardens
+        
+        self.tower.west = self.gardens
+        self.tower.north = self.great_hall
+        self.tower.east = self.bedroom
+
+        self.great_hall.north = self.throne_room
+        self.great_hall.east = self.dining_hall
+        self.great_hall.south = self.tower
+
+        self.dining_hall.west = self.great_hall
+
+        self.throne_room.south = self.great_hall
+
         # create location tracking data
         self.start   = self.desert_camp
         self.current = self.start
 
+        # create a key for the dictionary
         self.map_key = {"desert_camp" :       self.desert_camp,
                              "desert_wilderness" : self.desert_wilderness, 
                              "path_1" :            self.path_1, 
@@ -214,6 +285,7 @@ class Fugue_Map:
                              None :                None
                             }
 
+        # create an array of our locations
         self.map_array = [self.desert_camp, 
                           self.desert_wilderness, 
                           self.path_1, 
@@ -236,25 +308,16 @@ class Fugue_Map:
 
         return
     
-    def prep_data(self, map_dictionary: dict) -> None:
+    def prep_data(self) -> None:
         """
         :param map_dictionary: a dictionary that contains all of the json data that has not yet been prepared to be loaded into the location variables 
         """
         # get the data from the original location json file (template)
-        location_data = get_location_file_info(game_files[0])
+        map_dictionary = get_location_file_info(game_files[0])
 
         # replace the strings for node pointers with location objects 
-        for location in map_dictionary:
-            north = location.get("north")
-            east = location.get("east")
-            south = location.get("south")
-            west = location.get("west")
-
-            direction_array = [north, south, east, west]
-
-            # swap the string north/east/south/west for location nodes 
-            for direction in direction_array:
-                if direction: 
-                    direction = self.map_key.get(direction)
+        for location in self.map_array:
+            location_name = location.name
+            location.load_info(map_dictionary.get(location_name))
         
         return
