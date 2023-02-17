@@ -1,8 +1,47 @@
 {
-  "spell name" : 
+  "Fire Ball" :
   {
-    "spell description" : "this spell does X - displayed to the user", 
-    "spell damage" : 10, 
-    "other info" : ""
+    "name" : "Fire Ball",
+    "synonym" : "flame ball, fire blast",
+    "description" : "Sends a ball of fire from your staff",
+    "item_type" : "spell",
+    "equippable" : "False",
+    "equipped" : "False",
+    "cost" : "10",
+    "mana_cost" : "10",
+    "duration" : "1",
+    "casts" : "0",
+    "lvl_up" : "25",
+    "base_dmg" : "10"
+  },
+  "Air Blast" :
+  {
+    "name" : "Air Blast",
+    "synonym" : "air ball",
+    "description" : "Sends a blast of air from your staff moving anything in hits.",
+    "item_type" : "spell",
+    "equippable" : "False",
+    "equipped" : "False",
+    "cost" : "10",
+    "mana_cost" : "12",
+    "duration" : "1",
+    "casts" : "0",
+    "lvl_up" : "30",
+    "base_dmg" : "12"
+  },
+  "Freeze" :
+  {
+    "name" : "Freeze",
+    "synonym" : "freeez",
+    "description" : "Sends a blast of cold air from your staff that can solidify any liquid.",
+    "item_type" : "spell",
+    "equippable" : "False",
+    "equipped" : "False",
+    "cost" : "10",
+    "mana_cost" : "15",
+    "duration" : "1",
+    "casts" : "0",
+    "lvl_up" : "35",
+    "base_dmg" : "15"
   }
 }

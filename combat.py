@@ -26,11 +26,14 @@ class Combat:
             else:
                 self._PerformAction(action, self.player, self.enemy)
 
-            # enemy turn
-            enemy_action = self.emeny.GetAction()
-            self._PerformAction(enemy_action, self.enemy, self.player)
-
+            # Check if enemy died
             self._BattleStatus()
+            if self.is_fighting:
+                # enemy turn
+                enemy_action = self.emeny.GetAction()
+                self._PerformAction(enemy_action, self.enemy, self.player)
+
+                self._BattleStatus()
 
     def _DisplayCurrentStats(self):
         os.system("cls")
