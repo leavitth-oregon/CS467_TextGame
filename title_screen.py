@@ -1,6 +1,7 @@
 import rooms
 import ascii_art
-import commands
+import textwrap
+import os
 
 
 def title_screen():
@@ -16,6 +17,12 @@ def title_screen():
     choice = input("What would you like to do?: \n")
 
     if choice == "1" or choice == "new game".lower():
-        current_room = rooms.campfire
-        commands.enter_room(current_room)
-    return
+        os.system('cls')
+        new_room = rooms.campfire
+        print("###############################################################################################")
+        print("\n".join(textwrap.wrap(new_room.description, width=100, replace_whitespace=False)))
+        print("###############################################################################################")
+        print(new_room.ascii_art.center(30) + "\n")
+        print("###############################################################################################")
+        new_room.been_to = True
+        return
