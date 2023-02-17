@@ -4,9 +4,8 @@ import inventory_item
 import os
 import textwrap
 
-current_room = rooms.campfire
+
 my_inventory = inventory.Inventory()
-room_items = current_room.room_items
 
 
 def enter_room(new_room):
@@ -16,25 +15,70 @@ def enter_room(new_room):
     depending if they have been to the room or not) ascii art, changes been_to room attribute to
     True and then prompts the player on what to do next.
     """
+    for room in rooms.rooms_list:
+        if room.in_current_room:
+            current_room = room
 
-    os.system('cls')
-    if not new_room.been_to:
-        print("###############################################################################################")
-        print("\n".join(textwrap.wrap(new_room.description, width=100, replace_whitespace=False)))
-        print("###############################################################################################")
-        print(new_room.ascii_art.center(30) + "\n")
-        print("###############################################################################################")
-        new_room.been_to = True
-        new_room.in_current_room = True
-        player_prompt()
+            if new_room == "north":
+                if current_room.north is not None:
+                    current_room.in_current_room = False
+                    current_room = current_room.north
+                    current_room.in_current_room = True
+                else:
+                    print("You can't go that way\n")
+                    return
 
-    else:
-        # Print short description
-        print(new_room.short_desc)
-        print(new_room.ascii_art + "\n")
-        player_prompt()
+            elif new_room == "south":
+                if current_room.south is not None:
+                    current_room.in_current_room = False
+                    current_room = current_room.south
+                    current_room.in_current_room = True
+                else:
+                    print("You can't go that way\n")
+                    return
 
-    print("You can't go that way\n")
+            elif new_room == "east":
+                if current_room.east is not None:
+                    current_room.in_current_room = False
+                    current_room = current_room.east
+                    current_room.in_current_room = True
+                else:
+                    print("You can't go that way\n")
+                    return
+
+            elif new_room == "west":
+                if current_room.west is not None:
+                    current_room.in_current_room = False
+                    current_room = current_room.west
+                    current_room.in_current_room = True
+                else:
+                    print("You can't go that way\n")
+                    return
+            else:
+                print("I don't know what that means\n")
+                return
+
+            if not current_room.been_to:
+                os.system('cls')
+                print("###############################################################################################")
+                print("\n".join(textwrap.wrap(current_room.description, width=100, replace_whitespace=False)))
+                print("###############################################################################################")
+                print(current_room.ascii_art.center(30) + "\n")
+                print("###############################################################################################")
+                current_room.been_to = True
+                player_prompt()
+
+            else:
+                # Print short description
+                os.system('cls')
+                print("###############################################################################################")
+                print(current_room.short_desc)
+                print("###############################################################################################")
+                print(current_room.ascii_art.center(30) + "\n")
+                print("###############################################################################################")
+                player_prompt()
+
+            print("You can't go that way\n")
 
 
 def take(noun):
@@ -46,37 +90,40 @@ def take(noun):
     from the room items list. Print messages saying we got the backpack, we picked it up,
     can't take it, need to get the backpack first, or that there is no such item in the current room.
     """
+    for room in rooms.rooms_list:
+        if room.in_current_room:
+            current_room = room
 
-    for i in range(len(inventory_item.game_items)):
-        if inventory_item.game_items[i].name == noun:
-            if inventory_item.game_items[i].equipable:
-                if inventory_item.game_items[i] in current_room.room_items:
+            for i in range(len(inventory_item.game_items)):
+                if inventory_item.game_items[i].name == noun:
+                    if inventory_item.game_items[i].equipable:
+                        if inventory_item.game_items[i] in current_room.room_items:
 
-                    # Getting the backpack
-                    if inventory_item.game_items[i] == inventory_item.backpack:
-                        my_inventory.AddItem(inventory_item.game_items[i])
-                        inventory_item.game_items[i].equipped = True
-                        current_room.room_items.remove(inventory_item.game_items[i])
-                        print("You now have your backpack! You can carry lots of things in this!\n")
-                        return
+                            # Getting the backpack
+                            if inventory_item.game_items[i] == inventory_item.backpack:
+                                my_inventory.AddItem(inventory_item.game_items[i])
+                                inventory_item.game_items[i].equipped = True
+                                current_room.room_items.remove(inventory_item.game_items[i])
+                                print("You now have your backpack! You can carry lots of things in this!\n")
+                                return
 
-                    # Need the backpack first to add more items
-                    elif inventory_item.backpack.equipped:
-                        my_inventory.AddItem(inventory_item.game_items[i])
-                        inventory_item.game_items[i].equipped = True
-                        current_room.room_items.remove(inventory_item.game_items[i])
-                        print("You now have", noun + "\n")
-                        return
+                            # Need the backpack first to add more items
+                            elif inventory_item.backpack.equipped:
+                                my_inventory.AddItem(inventory_item.game_items[i])
+                                inventory_item.game_items[i].equipped = True
+                                current_room.room_items.remove(inventory_item.game_items[i])
+                                print("You now have", noun + "\n")
+                                return
+
+                            else:
+                                print("You have no where to put", noun + "\n")
+                                return
 
                     else:
-                        print("You have no where to put", noun + "\n")
+                        print("You can't take", noun + "\n")
                         return
 
-            else:
-                print("You can't take", noun + "\n")
-                return
-
-    print("There is no", noun + "\n")
+            print("There is no", noun + "\n")
 
 
 def drop(noun):
@@ -85,15 +132,18 @@ def drop(noun):
     Basically the same approach as take but with removing items from my_inventory and adding
     items to the room inventory. Prints message saying we dropped it. Must have item to drop it.
     """
+    for room in rooms.rooms_list:
+        if room.in_current_room:
+            current_room = room
 
-    for i in range(len(inventory_item.game_items)):
-        if inventory_item.game_items[i].name == noun:
-            inventory_item.game_items[i].equipped = False
-            my_inventory.RemoveItem(inventory_item.game_items[i])
-            current_room.room_items.append(inventory_item.game_items[i])
-            print("You dropped", noun + "\n")
-            return
-    print("You don't have", noun + "\n")
+            for i in range(len(inventory_item.game_items)):
+                if inventory_item.game_items[i].name == noun:
+                    inventory_item.game_items[i].equipped = False
+                    my_inventory.RemoveItem(inventory_item.game_items[i])
+                    current_room.room_items.append(inventory_item.game_items[i])
+                    print("You dropped", noun + "\n")
+                    return
+            print("You don't have", noun + "\n")
 
 
 def look(noun):
@@ -105,26 +155,31 @@ def look(noun):
     Then prints the description of the noun.
     """
 
-    for i in range(len(inventory_item.game_items)):
-        if inventory_item.game_items[i].name == noun:
-            if inventory_item.game_items[i] in current_room.room_items:
-                if inventory_item.game_items[i] == inventory_item.tree and current_room == rooms.campfire:
-                    if inventory_item.backpack.equipped:
-                        print(rooms.campfire.short_desc)
-                        return
-                    else:
-                        print("You see your backpack on the tree's branch. It is as if someone had placed"
-                              " it there with care.\n")
-                        return
-                print(inventory_item.game_items[i].description)
-                return
+    for room in rooms.rooms_list:
+        if room.in_current_room:
+            current_room = room
 
-            # If the user wants to "look in backpack", display inventory
-            elif inventory_item.game_items[i] == inventory_item.backpack:
-                inventory.Inventory.DisplayInventory(my_inventory)
-                return
+            for i in range(len(inventory_item.game_items)):
+                if inventory_item.game_items[i].name == noun:
+                    if inventory_item.game_items[i] in current_room.room_items:
+                        if inventory_item.game_items[i] == inventory_item.tree and current_room == rooms.campfire:
+                            # if inventory_item.backpack.equipped:
+                            if inventory_item.backpack not in rooms.campfire.room_items:
+                                print(rooms.campfire.short_desc)
+                                return
+                            else:
+                                print("You see your backpack on the tree's branch. It is as if someone had placed"
+                                      " it there with care.\n")
+                                return
+                        print(inventory_item.game_items[i].description)
+                        return
 
-    print("There is no", noun + "\n")
+                    # If the user wants to "look in backpack", display inventory
+                    elif inventory_item.game_items[i] == inventory_item.backpack:
+                        inventory.Inventory.DisplayInventory(my_inventory)
+                        return
+
+            print("There is no", noun + "\n")
 
 
 # ###############################################################################################
@@ -150,41 +205,48 @@ def verb_return(word):
 
 
 def parse(user_input):
-    noun = None
-    verb = None
+    for room in rooms.rooms_list:
+        if room.in_current_room:
+            current_room = room
+            noun = None
+            verb = None
+            user_input = user_input.lower()
 
-    command_list = user_input.split(" ")
+            command_list = user_input.split(" ")
 
-    if "inventory" in command_list:
-        inventory.Inventory.DisplayInventory(my_inventory)
-        return
+            if "inventory" in command_list:
+                inventory.Inventory.DisplayInventory(my_inventory)
+                return
 
-    if len(command_list) == 1 and command_list[0] == "look":
-        print(current_room.short_desc)
-        return
+            if len(command_list) == 1 and command_list[0] == "look":
+                os.system('cls')
+                print("###############################################################################################")
+                print(current_room.short_desc)
+                print("###############################################################################################")
+                print(current_room.ascii_art.center(30) + "\n")
+                print("###############################################################################################")
+                return
 
-    for word in command_list:
-        if word in current_room.room_items:
-            noun = word
+            for word in command_list:
+                if word in rooms.Room().room_items:
+                    noun = word
 
-        elif my_inventory.GetItem(word) is not None:
-            noun = word
+                elif my_inventory.GetItem(word) is not None:
+                    noun = word
 
-        else:
-            noun = word
+                else:
+                    noun = word
 
-    for word in command_list:
-        if verb_return(word) is not None:
-            verb = verb_return(word)
-        else:
-            print("I don't know how to do that.\n")
-            return
-
-        return verb(noun)
-
-
-print(current_room.description)
-print(current_room.ascii_art + "\n")
+            for word in command_list:
+                if verb_return(word) is not None:
+                    verb = verb_return(word)
+                else:
+                    print("I don't know how to do that.\n")
+                    return
+                # if verb == enter_room:
+                #     enter_room(current_room, noun)
+                # else:
+                return verb(noun)
 
 
 def player_prompt():
