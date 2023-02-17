@@ -41,3 +41,6 @@ campfire.in_current_room = True
 woods_path.south = campfire
 woods_path.name = "Woods path"
 woods_path.description = "You head up a beaten path you see in the woods..."
+woods_path.ascii_art = ascii_art.woods_path
+
+
