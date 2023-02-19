@@ -93,4 +93,9 @@ class Player(Character):
 
     def CastSpell(self, name):
         spell = self.inventory.GetItem(name)
+        self.mana_cur -= spell.mana_cost
         return spell.Cast()
+
+    def Transaction(self, amount):
+        # Adds or spends player's money
+        self.money += amount

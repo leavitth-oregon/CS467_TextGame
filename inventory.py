@@ -74,6 +74,40 @@ class Inventory:
         print('Items')
         print(self.DisplayItemList(self.items, False))
 
+    def DisplaySpells(self):
+        # Creates a string of known spells and their mana costs
+
+        spell_str = ""
+        spell_str_temp = ""
+
+        for spell in self.spells:
+            # Check for new line
+            if len(spell_str_temp) == 80:
+                if len(spell_str) == 0:
+                    spell_str += spell_str_temp
+                else:
+                    spell_str += "\n" + spell_str_temp
+                spell_str_temp = ""
+
+            # Add item name
+            spell_str_temp += spell.name
+
+            # Show mana cost
+            spell_str_temp += " (" + str(spell.mana_cost) + ")"
+
+            # Align items in columns of 20 characters
+            item_char_count = len(spell_str_temp) % 20
+            for i in range(20 - item_char_count):
+                spell_str_temp += " "
+
+                # Add final temp string
+        if len(spell_str) == 0:
+            spell_str += spell_str_temp
+        else:
+            spell_str += "\n" + spell_str_temp
+
+        return spell_str
+
     def AddItem(self, item):
         # Adds an item to the inventory
         #
@@ -118,37 +152,37 @@ class Inventory:
 
     def GetItem(self, name):
         for item in self.swords:
-            if item.name == name:
+            if name.lower() == item.name.lower() or name.lower() in item.synonym:
                 return item
 
         for item in self.armors:
-            if item.name == name:
+            if name.lower() == item.name.lower() or name.lower() in item.synonym:
                 return item
 
         for item in self.staffs:
-            if item.name == name:
+            if name.lower() == item.name.lower() or name.lower() in item.synonym:
                 return item
 
         for item in self.spells:
-            if item.name == name:
+            if name.lower() == item.name.lower() or name.lower() in item.synonym:
                 return item
 
         for item in self.items:
-            if item.name == name:
+            if name.lower() == item.name.lower() or name.lower() in item.synonym:
                 return item
 
         return None
 
     def HasSpell(self, name):
         for item in self.spells:
-            if item.name == name:
+            if name.lower() == item.name.lower() or name.lower() in item.synonym:
                 return True
 
         return False
 
     def CanCastSpell(self, name, cur_mana):
         for item in self.spells:
-            if item.name == name:
+            if item.name.lower() == name.lower():
                 if item.mana_cost <= cur_mana:
                     return True
 

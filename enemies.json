@@ -1,0 +1,62 @@
+{
+  "Wild Hog" :
+  {
+    "name" : "Wild Hog",
+    "hp" : 20,
+    "atk" : 8,
+    "defense" : 5,
+    "mag" : 0,
+    "mana" : 0,
+    "prize" : 2
+  },
+  "Snake" :
+  {
+    "name" : "Snake",
+    "hp" : 30,
+    "atk" : 10,
+    "defense" : 5,
+    "mag" : 0,
+    "mana" : 0,
+    "prize" : 3
+  },
+  "Cat" :
+  {
+    "name" : "Cat",
+    "hp" : 40,
+    "atk" : 10,
+    "defense" : 10,
+    "mag" : 0,
+    "mana" : 0,
+    "prize" : 5
+  },
+  "Giant Spider" :
+  {
+    "name" : "Giant Spider",
+    "hp" : 50,
+    "atk" : 12,
+    "defense" : 10,
+    "mag" : 0,
+    "mana" : 0,
+    "prize" : 8
+  },
+  "Rat" :
+  {
+    "name" : "Rat",
+    "hp" : 60,
+    "atk" : 15,
+    "defense" : 15,
+    "mag" : 0,
+    "mana" : 0,
+    "prize" : 10
+  },
+  "Impostor" :
+  {
+    "name" : "Impostor",
+    "hp" : 200,
+    "atk" : 50,
+    "defense" : 50,
+    "mag" : 0,
+    "mana" : 0,
+    "prize" : 500
+  }
+}

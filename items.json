@@ -102,7 +102,7 @@
     "atk_mod" : "0",
     "def_mod" : "10",
     "mag_mod" : "20",
-    "mana_mod" : "20"
+    "mana_mod" : "30"
   },
   "King's Armor" :
   {
@@ -132,7 +132,7 @@
     "atk_mod" : "0",
     "def_mod" : "0",
     "mag_mod" : "5",
-    "mana_mod" : "5"
+    "mana_mod" : "10"
   },
   "Wand" :
   {
