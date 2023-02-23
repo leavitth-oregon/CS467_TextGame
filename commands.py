@@ -1,8 +1,8 @@
-import rooms
 import inventory
 import inventory_item
 import os
 import textwrap
+import fugue_map
 
 
 my_inventory = inventory.Inventory()
@@ -15,7 +15,7 @@ def enter_room(new_room):
     depending if they have been to the room or not) ascii art, changes been_to room attribute to
     True and then prompts the player on what to do next.
     """
-    for room in rooms.rooms_list:
+    for room in fugue_map.rooms_list:
         if room.in_current_room:
             current_room = room
 
@@ -58,10 +58,10 @@ def enter_room(new_room):
                 print("I don't know what that means\n")
                 return
 
-            if not current_room.been_to:
+            if fugue_map.Fugue_Location.been_to(current_room) == False:
                 os.system('cls')
                 print("###############################################################################################")
-                print("\n".join(textwrap.wrap(current_room.description, width=100, replace_whitespace=False)))
+                print("\n".join(textwrap.wrap(current_room.long_description, width=100, replace_whitespace=False)))
                 print("###############################################################################################")
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
@@ -72,7 +72,7 @@ def enter_room(new_room):
                 # Print short description
                 os.system('cls')
                 print("###############################################################################################")
-                print(current_room.short_desc)
+                print(current_room.short_description)
                 print("###############################################################################################")
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
@@ -90,20 +90,20 @@ def take(noun):
     from the room items list. Print messages saying we got the backpack, we picked it up,
     can't take it, need to get the backpack first, or that there is no such item in the current room.
     """
-    for room in rooms.rooms_list:
+    for room in fugue_map.rooms_list:
         if room.in_current_room:
             current_room = room
 
             for i in range(len(inventory_item.game_items)):
                 if inventory_item.game_items[i].name == noun:
                     if inventory_item.game_items[i].equipable:
-                        if inventory_item.game_items[i] in current_room.room_items:
+                        if inventory_item.game_items[i] in current_room.items:
 
                             # Getting the backpack
                             if inventory_item.game_items[i] == inventory_item.backpack:
                                 my_inventory.AddItem(inventory_item.game_items[i])
                                 inventory_item.game_items[i].equipped = True
-                                current_room.room_items.remove(inventory_item.game_items[i])
+                                current_room.items.remove(inventory_item.game_items[i])
                                 print("You now have your backpack! You can carry lots of things in this!\n")
                                 return
 
@@ -111,7 +111,7 @@ def take(noun):
                             elif inventory_item.backpack.equipped:
                                 my_inventory.AddItem(inventory_item.game_items[i])
                                 inventory_item.game_items[i].equipped = True
-                                current_room.room_items.remove(inventory_item.game_items[i])
+                                current_room.items.remove(inventory_item.game_items[i])
                                 print("You now have", noun + "\n")
                                 return
 
@@ -132,7 +132,7 @@ def drop(noun):
     Basically the same approach as take but with removing items from my_inventory and adding
     items to the room inventory. Prints message saying we dropped it. Must have item to drop it.
     """
-    for room in rooms.rooms_list:
+    for room in fugue_map.rooms_list:
         if room.in_current_room:
             current_room = room
 
@@ -140,7 +140,7 @@ def drop(noun):
                 if inventory_item.game_items[i].name == noun:
                     inventory_item.game_items[i].equipped = False
                     my_inventory.RemoveItem(inventory_item.game_items[i])
-                    current_room.room_items.append(inventory_item.game_items[i])
+                    current_room.items.append(inventory_item.game_items[i])
                     print("You dropped", noun + "\n")
                     return
             print("You don't have", noun + "\n")
@@ -155,17 +155,17 @@ def look(noun):
     Then prints the description of the noun.
     """
 
-    for room in rooms.rooms_list:
+    for room in fugue_map.rooms_list:
         if room.in_current_room:
             current_room = room
 
             for i in range(len(inventory_item.game_items)):
                 if inventory_item.game_items[i].name == noun:
-                    if inventory_item.game_items[i] in current_room.room_items:
-                        if inventory_item.game_items[i] == inventory_item.tree and current_room == rooms.campfire:
+                    if inventory_item.game_items[i] in current_room.items:
+                        if inventory_item.game_items[i] == inventory_item.tree and current_room == fugue_map.campfire:
                             # if inventory_item.backpack.equipped:
-                            if inventory_item.backpack not in rooms.campfire.room_items:
-                                print(rooms.campfire.short_desc)
+                            if inventory_item.backpack not in fugue_map.campfire.items:
+                                print(fugue_map.campfire.short_description)
                                 return
                             else:
                                 print("You see your backpack on the tree's branch. It is as if someone had placed"
@@ -205,7 +205,7 @@ def verb_return(word):
 
 
 def parse(user_input):
-    for room in rooms.rooms_list:
+    for room in fugue_map.rooms_list:
         if room.in_current_room:
             current_room = room
             noun = None
@@ -221,14 +221,14 @@ def parse(user_input):
             if len(command_list) == 1 and command_list[0] == "look":
                 os.system('cls')
                 print("###############################################################################################")
-                print(current_room.short_desc)
+                print(current_room.short_description)
                 print("###############################################################################################")
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
                 return
 
             for word in command_list:
-                if word in rooms.Room().room_items:
+                if word in fugue_map.Fugue_Location(current_room).items:
                     noun = word
 
                 elif my_inventory.GetItem(word) is not None:
@@ -249,7 +249,12 @@ def parse(user_input):
                 return verb(noun)
 
 
+# print(current_room.description)
+# print(current_room.ascii_art + "\n")
+
+
 def player_prompt():
     while True:
         user_input = input("What do you want to do? ")
         parse(user_input)
+
