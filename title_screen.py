@@ -1,7 +1,7 @@
-import rooms
 import ascii_art
 import textwrap
 import os
+import fugue_map
 
 
 def title_screen():
@@ -18,11 +18,12 @@ def title_screen():
 
     if choice == "1" or choice == "new game".lower():
         os.system('cls')
-        new_room = rooms.campfire
+        new_room = fugue_map.campfire
+        new_room.in_current_room = True
         print("###############################################################################################")
-        print("\n".join(textwrap.wrap(new_room.description, width=100, replace_whitespace=False)))
+        print("\n".join(textwrap.wrap(new_room.long_description, width=100, replace_whitespace=False)))
         print("###############################################################################################")
         print(new_room.ascii_art.center(30) + "\n")
         print("###############################################################################################")
-        new_room.been_to = True
+
         return
