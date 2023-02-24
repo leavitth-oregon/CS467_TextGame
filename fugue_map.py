@@ -82,6 +82,7 @@ class Fugue_Location:
         self.long_description = ""
         self.short_description = ""
         self.forgotten_description = ""
+        self.ascii_art = ""
 
         self.features = {}
         self.npcs = {}
@@ -96,13 +97,20 @@ class Fugue_Location:
         """
         :param location_info: a dictionary that contains the json data to be loaded into the location variables
         """
+        # load game info
         self.game_number = location_info.get("game_number")
-        self.is_start = location_info.get("is_start")
+        self.is_start    = location_info.get("is_start")
+        self.is_current_location = location_info.get("is_current_location")
 
-        self.long_description  = location_info.get("long_description")
-        self.short_description = location_info.get("short_description")
+        # load location descriptions 
+        self.long_description      = location_info.get("long_description")
+        self.short_description     = location_info.get("short_description")
         self.forgotten_description = location_info.get("forgotten_description")
+        
+        # load the location art
+        self.ascii_art = location_info.get("ascii_art")
 
+        # load location features, etc. 
         self.features = location_info.get("features")
         self.npcs     = location_info.get("npcs")
         self.items    = location_info.get("items")
@@ -200,13 +208,13 @@ class Fugue_Map:
 
         # link all of the locations in the map 
         self.desert_camp.north = self.path_1
-        self.desert_camp.east = self.desert_wilderness
+        self.desert_camp.east  = self.desert_wilderness
         self.desert_camp.south = self.desert_wilderness
-        self.desert_camp.west = self.desert_wilderness
+        self.desert_camp.west  = self.desert_wilderness
 
         self.desert_wilderness.north = self.desert_camp
-        self.desert_wilderness.east = self.desert_camp
-        self.desert_wilderness.west = self.desert_camp
+        self.desert_wilderness.east  = self.desert_camp
+        self.desert_wilderness.west  = self.desert_camp
 
         self.path_1.north = self.path_2
         self.path_1.south = self.desert_camp
@@ -224,34 +232,34 @@ class Fugue_Map:
         self.city_road_1.west = self.city_road_2
 
         self.city_road_2.north = self.palace_walls
-        self.city_road_2.east = self.city_road_3
+        self.city_road_2.east  = self.city_road_3
         self.city_road_2.south = self.city_gates
-        self.city_road_2.west = self.city_road_1
+        self.city_road_2.west  = self.city_road_1
 
         self.city_road_3.north = self.marketplace
-        self.city_road_3.west = self.city_road_2
+        self.city_road_3.west  = self.city_road_2
 
         self.palace_walls.south = self.city_road_2
-        self.palace_walls.west = self.marketplace
+        self.palace_walls.west  = self.marketplace
 
         self.marketplace.south = self.city_road_3
-        self.marketplace.west = self.palace_walls
+        self.marketplace.west  = self.palace_walls
 
         self.secret_passage.north = self.gardens
         self.secret_passage.south = self.city_road_1
 
-        self.gardens.east = self.tower
+        self.gardens.east  = self.tower
         self.gardens.south = self.secret_passage
-        self.gardens.west = self.well
+        self.gardens.west  = self.well
 
         self.well.east = self.gardens
         
-        self.tower.west = self.gardens
+        self.tower.west  = self.gardens
         self.tower.north = self.great_hall
         self.tower.east = self.bedroom
 
         self.great_hall.north = self.throne_room
-        self.great_hall.east = self.dining_hall
+        self.great_hall.east  = self.dining_hall
         self.great_hall.south = self.tower
 
         self.dining_hall.west = self.great_hall
@@ -323,7 +331,28 @@ class Fugue_Map:
 
     def print_info(self) -> None: 
         for location in self.map_array: 
+            print("The location: ")
             print(location.name)
+            print("Are we here?")
+            print(location.is_current_location)
+            print("Is this the beginning of the game?")
+            print(location.is_start)
+            print()
+
+            print("Long Description: ")
+            print(location.long_description)
+            print()
+
+            print("Short Description: ")
+            print(location.short_description)
+            print()
+
+            print("Forgotten Description: ")
+            print(location.short_description)
+            print()
+
+            print("Ascii Art: ")
+            print(location.ascii_art)
             print()
 
             if location.north: 
