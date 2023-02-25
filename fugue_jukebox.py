@@ -1,6 +1,6 @@
 # Fugue Jukebox
 # Hayley Leavitt 2023
-# Version 1.0
+# Version 2.0
 #     
 # References:
 # https://docs.python.org/3/library/subprocess.html 
