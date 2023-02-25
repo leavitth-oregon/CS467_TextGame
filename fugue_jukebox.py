@@ -18,17 +18,21 @@ import winsound
 # global variables
 mediaplayer = ["afplay ", "mpg123 "]
 song_files = ["fugue_combat.mp3", "fugue_credits.mp3", "fugue_ending.mp3", "fugue_memories.mp3", "fugue_paths_and_roads.mp3", "fugue_throne_room.mp3", "fugue_tower_bedroom.mp3"]
-operating_system = "MacOS"
 
 # classes 
 class Jukebox(): 
 
     def __init__(self) -> None:
         self.musicplayer = "mpg123"
+        self.operating_system = "Linux"
         self._p = None
 
-    def play_song(self, song_file) -> None:
-        if operating_system != "Windows":
+    def set_os(self, new_os: str) -> None: 
+        self.operating_system = new_os
+        return 
+
+    def play_song(self, song_file: str) -> None:
+        if self.operating_system != "Windows":
             # create the player process 
             self._p = subprocess.Popen([self.musicplayer,     # the music player, in this case, mpg123
                                     '-C',                     # Enable commands to be read from stdin
