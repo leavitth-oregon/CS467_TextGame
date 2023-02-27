@@ -153,6 +153,8 @@ def SetUpEnemies():
 if __name__ == "__main__":
     player = SetUpPlayer(2)
     enemies = SetUpEnemies()
+    player.inventory.SaveInventory()
+    player.inventory.LoadInventory()
     battle = Combat(player=player, enemy=enemies[5])
     battle.StartCombat()
     print()

@@ -1,4 +1,6 @@
+import json
 import os
+from inventory_item import Gear, Spell, Item
 
 
 class Inventory:
@@ -188,3 +190,167 @@ class Inventory:
 
         return False
 
+    def SaveInventory(self):
+        # Converts the contents of the inventory into JSON format and saves to inventory.json
+
+        # Create dictionary to store inventory that will be converted to JSON
+        inv = {}
+
+        # Add swords to dictionary
+        for item in self.swords:
+            info = {
+                "name": item.name,
+                "synonym": item.synonym,
+                "description": item.description,
+                "item_type": item.item_type,
+                "equippable": item.equippable,
+                "equipped": item.equipped,
+                "cost": item.cost,
+                "hp_mod": item.hp_mod,
+                "atk_mod": item.atk_mod,
+                "def_mod": item.def_mod,
+                "mag_mod": item.mag_mod,
+                "mana_mod": item.mana_mod}
+
+            inv[item.name] = info
+
+        # Add armors to dictionary
+        for item in self.armors:
+            info = {
+                "name": item.name,
+                "synonym": item.synonym,
+                "description": item.description,
+                "item_type": item.item_type,
+                "equippable": item.equippable,
+                "equipped": item.equipped,
+                "cost": item.cost,
+                "hp_mod": item.hp_mod,
+                "atk_mod": item.atk_mod,
+                "def_mod": item.def_mod,
+                "mag_mod": item.mag_mod,
+                "mana_mod": item.mana_mod}
+
+            inv[item.name] = info
+
+        # Add staffs to dictionary
+        for item in self.staffs:
+            info = {
+                "name": item.name,
+                "synonym": item.synonym,
+                "description": item.description,
+                "item_type": item.item_type,
+                "equippable": item.equippable,
+                "equipped": item.equipped,
+                "cost": item.cost,
+                "hp_mod": item.hp_mod,
+                "atk_mod": item.atk_mod,
+                "def_mod": item.def_mod,
+                "mag_mod": item.mag_mod,
+                "mana_mod": item.mana_mod}
+
+            inv[item.name] = info
+
+            # Add spells to dictionary
+            for item in self.spells:
+                info = {
+                    "name": item.name,
+                    "synonym": item.synonym,
+                    "description": item.description,
+                    "item_type": item.item_type,
+                    "equippable": item.equippable,
+                    "equipped": item.equipped,
+                    "cost": item.cost,
+                    "mana_cost": item.mana_cost,
+                    "duration": item.duration,
+                    "casts": item.casts,
+                    "lvl_up": item.lvl_up,
+                    "base_dmg": item.base_dmg}
+
+                inv[item.name] = info
+
+                # Add items to dictionary
+                for item in self.items:
+                    info = {
+                        "name": item.name,
+                        "synonym": item.synonym,
+                        "description": item.description,
+                        "item_type": item.item_type,
+                        "equippable": item.equippable,
+                        "equipped": item.equipped,
+                        "cost": item.cost,
+                        "qty": item.qty,
+                        "hp_mod": item.hp_mod,
+                        "mana_mod": item.mana_mod}
+
+                    inv[item.name] = info
+
+        inv_json = json.dumps(inv, indent=4)
+
+        with open("inventory.json", "w") as outfile:
+            outfile.write(inv_json)
+            
+    def LoadInventory(self):
+        # Clears the contents of the inventory then loads the contents of inventory.json, creates objects of the correct
+        # type for each item, and adds them to the inventory.
+
+        # Clear inventory
+        self.swords.clear()
+        self.armors.clear()
+        self.staffs.clear()
+        self.spells.clear()
+        self.items.clear()
+
+        # import item data from inventory.json file
+        with open("inventory.json") as in_file:
+            unparsed_inv = in_file.read()
+
+        # parse the json data into a dictionary in Python format
+        parsed_inv = json.loads(unparsed_inv)
+
+        # Create item objects and add to inventory
+        for key in parsed_inv:
+            if parsed_inv[key]["item_type"] == "item":
+                inv_item = Item(
+                    name=parsed_inv[key]["name"],
+                    synonym=parsed_inv[key]["synonym"],
+                    description=parsed_inv[key]["description"],
+                    item_type=parsed_inv[key]["item_type"],
+                    equippable=parsed_inv[key]["equippable"],
+                    equipped=parsed_inv[key]["equipped"],
+                    cost=parsed_inv[key]["cost"],
+                    qty=parsed_inv[key]["qty"],
+                    hp_mod=parsed_inv[key]["hp_mod"],
+                    mana_mod=parsed_inv[key]["mana_mod"]
+                )
+            elif parsed_inv[key]["item_type"] == "spell":
+                inv_spell = Spell(
+                    name=parsed_inv[key]["name"],
+                    synonym=parsed_inv[key]["synonym"],
+                    description=parsed_inv[key]["description"],
+                    item_type=parsed_inv[key]["item_type"],
+                    equippable=parsed_inv[key]["equippable"],
+                    equipped=parsed_inv[key]["equipped"],
+                    cost=parsed_inv[key]["cost"],
+                    mana_cost=parsed_inv[key]["mana_cost"],
+                    duration=parsed_inv[key]["duration"],
+                    casts=parsed_inv[key]["casts"],
+                    lvl_up=parsed_inv[key]["lvl_up"],
+                    base_dmg=parsed_inv[key]["base_dmg"]
+                )
+            else:
+                inv_item = Gear(
+                    name=parsed_inv[key]["name"],
+                    synonym=parsed_inv[key]["synonym"],
+                    description=parsed_inv[key]["description"],
+                    item_type=parsed_inv[key]["item_type"],
+                    equippable=parsed_inv[key]["equippable"],
+                    equipped=parsed_inv[key]["equipped"],
+                    cost=parsed_inv[key]["cost"],
+                    hp_mod=parsed_inv[key]["hp_mod"],
+                    atk_mod=parsed_inv[key]["atk_mod"],
+                    def_mod=parsed_inv[key]["def_mod"],
+                    mag_mod=parsed_inv[key]["mag_mod"],
+                    mana_mod=parsed_inv[key]["mana_mod"]
+                )
+
+            self.AddItem(inv_item)

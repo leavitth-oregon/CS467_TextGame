@@ -1,0 +1,10 @@
+{
+  "Inventory":
+  {
+    "text": "The inventory shows all of the gear, spells, and items you currently have.\nGear with a (E) next to the name indicate the gear that is currently equipped.\nTo equip a piece of gear type equip followed by the gear name. e.g. equip Wooden Sword\nTo get more information on something in the inventory type the item name followed by info or a question mark. e.g. Fire Ball info or photo ?"
+  },
+  "Combat":
+  {
+    "text": "Combat is turn based and alternates between you and the enemy.\nEach turn you can choose to attack, defend, cast a spell, or run.\nAttack: Attacks using your attack value and the enemies defense value to reduce damage.\nDefend: Increases your defense by 10% for the duration of combat.\nSpells: View the spells you have learned then enter the spell you want to cast.\nRun: Attempt to flee from the enemy."
+  }
+}
