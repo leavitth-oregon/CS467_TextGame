@@ -1,10 +1,11 @@
+import json
 import math
 from character import Character
 
 
 class Player(Character):
     def __init__(self, inventory, hp, defense, atk, mag, mana,
-                 sword_eqp, armor_eqp, staff_eqp, money):
+                 sword_eqp, armor_eqp, staff_eqp, money, cur_location):
         super().__init__(hp, defense, atk, mag, mana)
         self.name = "You"
         self.inventory = inventory
@@ -12,6 +13,7 @@ class Player(Character):
         self.armor_eqp = armor_eqp
         self.staff_eqp = staff_eqp
         self.money = money
+        self.cur_location = cur_location
 
     def EquipItem(self, name):
         # Equips item from player's inventory and updates player's stats
@@ -99,3 +101,55 @@ class Player(Character):
     def Transaction(self, amount):
         # Adds or spends player's money
         self.money += amount
+
+    def SavePlayer(self):
+        # Converts player data into JSON format and saves to player.json
+
+        # Save inventory
+        self.inventory.SaveInventory()
+
+        # Create dictionary to store inventory that will be converted to JSON
+        player = {
+            "name": self.name,
+            "hp": self.hp,
+            "defense": self.defense,
+            "atk": self.atk,
+            "mag": self.mag,
+            "mana": self.mana,
+            "sword_eqp": "None" if self.sword_eqp is None else self.sword_eqp.name,
+            "armor_eqp": "None" if self.armor_eqp is None else self.armor_eqp.name,
+            "staff_eqp": "None" if self.staff_eqp is None else self.staff_eqp.name,
+            "money": self.money,
+            "cur_location": self.cur_location
+        }
+
+        inv_json = json.dumps(player, indent=4)
+
+        with open("player.json", "w") as outfile:
+            outfile.write(inv_json)
+
+    def LoadPlayer(self):
+        # Loads the contents of player.json, loads player data, loads the saved inventory, and equips gear
+
+        # load inventory
+        self.inventory.LoadInventory()
+
+        # import player data from player.json file
+        with open("player.json") as in_file:
+            unparsed_player = in_file.read()
+
+        # parse the json data into a dictionary in Python format
+        parsed_player = json.loads(unparsed_player)
+
+        # Set player data
+        self.name = parsed_player["name"]
+        self.hp = parsed_player["hp"]
+        self.defense = parsed_player["defense"]
+        self.atk = parsed_player["atk"]
+        self.mag = parsed_player["mag"]
+        self.mana = parsed_player["mana"]
+        self.EquipItem(parsed_player["sword_eqp"])
+        self.EquipItem(parsed_player["armor_eqp"])
+        self.EquipItem(parsed_player["staff_eqp"])
+        self.money = parsed_player["money"]
+        self.cur_location=["cur_location"]

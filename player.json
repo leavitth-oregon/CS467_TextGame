@@ -1,0 +1,13 @@
+{
+    "name": "You",
+    "hp": 55,
+    "defense": 35,
+    "atk": 25,
+    "mag": 40,
+    "mana": 80,
+    "sword_eqp": "War Hammer",
+    "armor_eqp": "Chainmail",
+    "staff_eqp": "Wand",
+    "money": 50,
+    "cur_location": "desert_camp"
+}

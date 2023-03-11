@@ -109,7 +109,8 @@ def SetUpPlayer(item_set):
         sword_eqp=None,
         armor_eqp=None,
         staff_eqp=None,
-        money=50
+        money=50,
+        cur_location = "desert_camp"
     )
 
     if item_set == 1:
@@ -142,7 +143,8 @@ def SetUpEnemies():
             defense=enemies[key]["defense"],
             mag=enemies[key]["mag"],
             mana=enemies[key]["mana"],
-            prize=enemies[key]["prize"]
+            prize=enemies[key]["prize"],
+            image=enemies[key]["image"]
         )
 
         all_enemies.append(enemy)
@@ -151,10 +153,8 @@ def SetUpEnemies():
 
 
 if __name__ == "__main__":
-    player = SetUpPlayer(2)
+    player = SetUpPlayer(0)
     enemies = SetUpEnemies()
-    player.inventory.SaveInventory()
-    player.inventory.LoadInventory()
-    battle = Combat(player=player, enemy=enemies[5])
+    battle = Combat(player=player, enemy=enemies[1])
     battle.StartCombat()
     print()

@@ -13,6 +13,8 @@ class Combat:
         # is valid, performs the action, and performs the enemy's turn. If either player
         # dies or retreats the battle is over.
 
+        action = ""
+        spell = ""
         turn = 0
 
         while self.is_fighting:
