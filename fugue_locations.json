@@ -1,7 +1,6 @@
 {
   "desert_camp":
   {
-    "game_numer": 0,
     "name": "desert camp",
     "is_start": true,
     "is_current_location": true,
@@ -12,7 +11,7 @@
     "times_visited": 0,
     "was_forgotten": false,
     "long_description": "You awaken at an abandoned desert camp. As far as the eye can see, there is the red horizon, with the view of a city to the far north. Beside you, a low fire is burning out. There is also a ragged tent and a small satchel. There is a path to a north, which must lead to the city. Beyond this camp is wilderness. Standing nearby is a shrouded stranger.",
-    "short_description": "The desert camp has a low fire and a ragged tent. The path to the city lies to the north.",
+    "short_description": "The desert camp has a low fire and a ragged tent. The path to the city lies to the north. Nearby a shrouded man watches you. ",
     "forgotten_description": "You awaken to see a desert camp, long since abandoned. Beside you there are the remnants of a fire, a knocked over tent, and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness. It seems familiar somehow.",
     "ascii_art" : "", 
     "features": 
@@ -44,7 +43,6 @@
   },
   "desert_wilderness":
   {
-    "game_numer": 0,
     "name": "desert wilderness",
     "is_start": false,
     "is_current_location": false,
@@ -55,17 +53,18 @@
     "times_visited": 0,
     "was_forgotten": false,
     "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. There is something moving in the distance, though.",
-    "short_description": "The sandy desert wilderness goes on as far as the eye can see.",
+    "short_description": "The sandy desert wilderness goes on as far as the eye can see. Something rustles a dry bush in the distance. ",
     "forgotten_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. It seems familiar, in some way.",
     "ascii_art" : "", 
     "features": {}, 
-    "npcs" : ["wild_hog"], 
+    "npcs" : [], 
+    "enemies": ["wild_hog"],
     "items": []
   },
   "path_1":
   {
-    "game_numer": 0,
     "name": "path 1",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "path_2",
@@ -91,13 +90,14 @@
           "description": "The cactus is covered in long spikes. It has a few sweet-smelling reddish-pink flowers that are blooming."
       }
     }, 
-    "npcs" : ["guide"], 
+    "npcs" : [], 
+    "enemies" : [], 
     "items": []
   },
   "path_2":
   {
-    "game_numer": 0,
     "name": "path 2",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "path_3",
@@ -112,12 +112,13 @@
     "ascii_art" : "", 
     "features": {}, 
     "npcs" : [], 
+    "enemies" : [], 
     "items": []
   },
   "path_3":
   {
-    "game_numer": 0,
     "name": "path 3",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "city_gates",
@@ -131,13 +132,14 @@
     "forgotten_description": "The sandy dunes gives way to sandstone, short scrubby bushes cling on for life in the cracks of the rock. In the distance you can see the city gates. It feels like coming home.",
     "ascii_art" : "", 
     "features": {}, 
-    "npcs" : ["Impostor"], 
+    "npcs" : [], 
+    "enemies" : [],
     "items": []
   },
   "city_gates":
   {
-    "game_numer": 0,
     "name": "city gates",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "city_road_2",
@@ -159,12 +161,13 @@
       }
     }, 
     "npcs" : ["city_gate_guard"], 
+    "enemies" : [],
     "items": []
   },
   "city_road_1":
   {
-    "game_numer": 0,
     "name": "city road 1",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "secret_passage",
@@ -195,13 +198,14 @@
           "description" : "The shadow leads to a small opening in the palace walls. It looks like you could fit if you crouched."
       }
     }, 
-    "npcs" : ["Impostor"], 
+    "npcs" : [], 
+    "enemies" : [],
     "items": []
   },
   "city_road_2":
   {
-    "game_numer": 0,
     "name": "city road 2",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "palace_walls",
@@ -211,7 +215,7 @@
     "times_visited": 0,
     "was_forgotten": false,
     "long_description": "The gates lead through a portcullis into a town square. The buildings and road are hewn from clay and stone, with water trickling through a trough that spans the roof of each building. Ahead is a small public sitting area with pergolas to provide shade. Beyond that lies the palace walls. You can hear the hustle and bustle of the marketplace to the northeast. The road continues to the east and to the west under stone archways, crowned by carvings of animal heads. Ahead of you a friendly guide seems to be trying to get your attention.",
-    "short_description": "The road comes to a town square in the center of the village. To the north is a sitting area under a shaded pergola, beyond that lies the city walls. To the northeast you can hear the marketplace.",
+    "short_description": "The road comes to a town square in the center of the village. To the north is a sitting area under a shaded pergola, beyond that lies the city walls. To the northeast you can hear the marketplace. A friendly guide stands nearby offering trivia and directions to passersby. ",
     "forgotten_description": "",
     "ascii_art" : "", 
     "features": 
@@ -243,12 +247,13 @@
       }
     }, 
     "npcs" : ["city_guide"], 
+    "enemies" : [],
     "items": []
   },
   "city_road_3":
   {
-    "game_numer": 0,
     "name": "city road 3",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "marketplace",
@@ -257,18 +262,19 @@
     "west": "city_road_2",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands.",
-    "short_description": "The cobbled road heads eastward towards the marketplace.",
+    "long_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands. A small boy rattles a can asking for change. ",
+    "short_description": "The cobbled road heads eastward towards the marketplace. There is a small boy rattling a can asking for change. ",
     "forgotten_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands. Over all of the music and talking, you can hear something, like your name is being called.",
     "ascii_art" : "", 
     "features": {}, 
     "npcs" : ["little_boy"], 
+    "enemies" : [],
     "items": []
   },
   "palace_walls":
   {
-    "game_numer": 0,
     "name": "palace walls",
+    "song" : "fugue_paths_and_roads.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": null,
@@ -277,7 +283,7 @@
     "west": "marketplace",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The palace walls loom high overhead. The sandstone walls are double-thick, with guard towers spaced every twenty feet or so. There appears to be a walkway along the topside, where guards transport goods for the royal palace and keep watch on civilians below.",
+    "long_description": "The palace walls loom high overhead. The sandstone walls are double-thick, with guard towers spaced every twenty feet or so. There appears to be a walkway along the topside, where red-robed figures transport goods for the royal palace and keep watch on civilians below.",
     "short_description": "The palace walls are guarded, with guards patrolling between guard towers spaced every twenty feet or so.",
     "forgotten_description": "The palace walls loom over you, blocking your view of the royal palace. The guards above your head stare at you from the towers spaced every twenty feet or so. It feels like they know something you don't.",
     "ascii_art" : "", 
@@ -290,12 +296,13 @@
       }
     }, 
     "npcs" : ["wizard"], 
+    "enemies" : [],
     "items": []
   },
   "marketplace":
   {
-    "game_numer": 0,
     "name": "marketplace",
+    "song" : "shopkeepers_tune.mp3", 
     "is_start": false,
     "is_current_location": false,
     "north": null,
@@ -310,11 +317,11 @@
     "ascii_art" : "", 
     "features": {}, 
     "npcs" : ["merchant"], 
+    "enemies" : [],
     "items": []
   },
   "secret_passage":
   {
-    "game_numer": 0,
     "name": "secret passage",
     "is_start": false,
     "is_current_location": false,
@@ -341,12 +348,12 @@
           "description" : "You can barely make out the words: YOU'VE BEEN HERE BEFORE."
       }
     }, 
-    "npcs" : ["prisoner"], 
+    "npcs" : [], 
+    "enemies" : [],
     "items": []
   },
   "gardens":
   {
-    "game_numer": 0,
     "name": "gardens",
     "is_start": false,
     "is_current_location": false,
@@ -373,12 +380,12 @@
           "description" : "There are three koi fish. Each has unique orange and black markings on top of pearly white scales."
       }
     }, 
-    "npcs" : ["cat"], 
+    "npcs" : [], 
+    "enemies" : [],
     "items": []
   },
   "well":
   {
-    "game_numer": 0,
     "name": "well",
     "is_start": false,
     "is_current_location": false,
@@ -400,13 +407,14 @@
           "description" : "The basin is constructed carefully from copper. There seems to be a mechanical pump that pushes the water through to the city."
       }
     }, 
-    "npcs" : ["guide"], 
+    "npcs" : [], 
+    "enemies" : [],
     "items": []
   },
   "tower":
   {
-    "game_numer": 0,
     "name": "tower",
+    "song" : "fugue_tower_bedroom.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "great_hall",
@@ -415,67 +423,80 @@
     "west": "gardens",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The tower pierces the sky, the outside walls following a stair-step spiralling pattern, twisting upwards. Every ten verticle feet or so there is a window and balcony. Inside there is a lavish sitting area on the first floor, with a warm fireplace just in front of the spiral staircase.",
-    "short_description": "The tower is tall and ornate. Inside there is a lavish sitting area complete with warm fireplace right in front of the spiral staircase.",
+    "long_description": "The tower pierces the sky, the outside walls following a stair-step spiralling pattern, twisting upwards. Every ten verticle feet or so there is a window and balcony. Inside there is a lavish sitting area on the first floor, with a warm fireplace just in front of the spiral staircase. There seems to be something hiding under the staircase. ",
+    "short_description": "The tower is tall and ornate. Inside there is a lavish sitting area complete with warm fireplace right in front of the spiral staircase. There seems to be something hiding under the staircase. ",
     "forgotten_description": "The tower welcomes you back, the warm fire inside sounds the same. Your chair sits by the fire just close enough to keep you warm on a cold desert night, but not so close as to scald you during the day. The spiral stairscase leads upstairs.",
     "ascii_art" : "", 
     "features": 
     {
     }, 
     "npcs" : ["giant_spider"], 
+    "enemies" : [],
     "items": []
   },
   "bedroom":
   {
-    "game_numer": 0,
     "name": "bedroom",
+    "song" : "fugue_tower_bedroom.mp3",
     "is_start": false,
     "is_current_location": false,
+    "mirror_uncovered" : false, 
     "north": null,
     "east": "tower",
     "south": null,
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The bedroom is larger than one would expect, clean and airy. The four poster bed has a canopy to protect its occupant from the harsh desert sun, and several tables and chairs are scattered around the space. In the corner of the room is a writing desk with a diary on it, and to the side of it sits a large trunk.",
-    "short_description": "The bedroom is large, with a four poster bed and a writing desk. Downstais is the rest of the tower.",
-    "forgotten_description": "Your bedroom is just as it should be.",
+    "long_description": "The bedroom is larger than one would expect, clean and airy. The four poster bed has a canopy to protect its occupant from the harsh desert sun, and several tables and chairs are scattered around the space. In one corner of the room is a writing desk with a diary on it, and to the side of it sits a large trunk. On the other side of the room there is a large mirror. ",
+    "short_description": "The bedroom is large, with a four poster bed and a writing desk. Downstairs is the rest of the tower. In one of the corners of the room there is a large mirror.",
+    "forgotten_description": "Your bedroom is just as it should be, though the mirror is covered in cloth. ",
     "ascii_art" : "", 
     "features": 
     {
       "bed" : 
       {
           "name" : "bed",
-          "description" : "The four poster bed is made from a rich, dark wood. From the posters hangs a canopy made of red and white silk, lined in gold. There is a divot in the pillow on the right side of the bed, and to the right of the bed is a small bedside table made from matching wood."
+          "description" : "The four poster bed is made from a rich, dark wood. From the posters hangs a canopy made of red and white silk, lined in gold. There is a divot in the pillow on the right side of the bed, and to the right of the bed is a small bedside table made from matching wood. "
       }, 
       "bedside table": 
       {
           "name" : "bedisde table",
-          "description" : "The small bedside table is made from the same wood as the bed. Atop the table sits a carefully crafted oil lamp, and a signet ring in a small dish."
+          "description" : "The small bedside table is made from the same wood as the bed. Atop the table sits a carefully crafted oil lamp, and a signet ring in a small dish. "
       }, 
       "desk" : 
       {
           "name" : "desk",
-          "description" : "The desk is still set up with all manner of writing materials. A quill and an ink pot sit out, along with a damaged diary."
+          "description" : "The desk is still set up with all manner of writing materials. A quill and an ink pot sit out, along with a damaged diary. "
       }, 
       "diary" : 
       {
           "name" : "diary",
-          "description" : "The diary is bound in red leather, with a signet emblazoned on the cover. Flipping through reveals a lifetime of memories. But there are pages torn out. You recognize the handwriting."
+          "description" : "The diary is bound in red leather, with a signet emblazoned on the cover. Flipping through reveals a lifetime of memories. But there are pages torn out. You recognize the handwriting. "
       }, 
       "trunk" : 
       {
           "name" : "trunk",
-          "description" : "The trunk is constructed from high quality materials, oak and buffalo leather, and a sturdy lock made from steel. The trunk is locked."
+          "description" : "The trunk is constructed from high quality materials, oak and buffalo leather, and a sturdy lock made from steel. The trunk is locked. "
+      }, 
+      "covered object": 
+      {
+        "name" : "covered object", 
+        "description" : "The cloth is a heavy canvas that has collected quite a bit of dust. The object it covers is about as tall as you are. "
+      }, 
+      "mirror" : 
+      {
+        "name" : "mirror", 
+        "description" : "The mirror is tall and ornate, gilded gold scrolls holding gently onto the fogged surface. It's odd, wiping the surface doesn't seem to remove the fog. Suddenly, a figure appears. "
       }
     }, 
-    "npcs" : ["guide_in_mirror"], 
+    "npcs" : ["person_in_the_mirror"], 
+    "enemies" : [],
     "items": ["signet_ring"]
   },
   "great_hall":
   {
-    "game_numer": 0,
     "name": "great hall",
+    "song" : "fugue_throne_room.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "throne_room",
@@ -484,8 +505,8 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The great hall has a vaulted ceiling, allowing cool air to flow through, and the hot air to rise away from the occupants. The floor is polished and checkered, fit for a ball, and leading past rows of armor suits mounted and displayed inside niches carved into the walls. There is a doorway to the east and an even larger double doorway straight ahead. ",
-    "short_description": "The great hall is fit for a ball, with its high ceilings and polished floor. To the east there is a doorway to the dining hall, and to the north is an even larger doorway to the throne room.",
+    "long_description": "The great hall has a vaulted ceiling, allowing cool air to flow through, and the hot air to rise away from the occupants. The floor is polished and checkered, fit for a ball, and leading past rows of armor suits mounted and displayed inside niches carved into the walls. There is a doorway to the east and an even larger double doorway straight ahead. By the armor there is a spectral figure, the ghost of a soldier. ",
+    "short_description": "The great hall is fit for a ball, with its high ceilings and polished floor. To the east there is a doorway to the dining hall, and to the north is an even larger doorway to the throne room. The ghost of a soldier floats near the armor. ",
     "forgotten_description": "The great hall is empty, but has been kept in good shape. The suits of armor have been recently polished. To the east there is a doorway that is dwarfed in comparison to the large double doorway ahead.",
     "ascii_art" : "", 
     "features": 
@@ -506,13 +527,14 @@
           "description" : "The large doudle doors are grand, with inscriptions carved into them, hung carefully from animal-shaped hinges made of wrought iron plated in gold."
       }
     }, 
-    "npcs" : ["soldier_ghost", "guide"], 
+    "npcs" : ["soldier_ghost"], 
+    "enemies" : [],
     "items": []
   },
   "throne_room":
   {
-    "game_numer": 0,
     "name": "throne room",
+    "song" : "fugue_throne_room.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": null,
@@ -522,7 +544,7 @@
     "times_visited": 0,
     "was_forgotten": false,
     "long_description": "The throne room you enter is long and ominous. Black drapery hangs over the windows, obscuring the sun, and several advisors turn to look at you as you enter. The throne itself is atop a platform, with several rows of stairs leading up to it. Torches light the room, held from brass and amber sconces. It looks like someone is sitting on the throne. ",
-    "short_description": "The throne room is long and dark. Black drapery hangs over the windows, blocking out the sun. The throne sits atop a platform with several stairs leading up to it. The room is lit by torches in brass and amber sconces.",
+    "short_description": "The throne room is long and dark. Black drapery hangs over the windows, blocking out the sun. The throne sits atop a platform with several stairs leading up to it. The room is lit by torches in brass and amber sconces. Someone is sitting on the throne. ",
     "forgotten_description": "The throne room does not welcome you as it once did. Black drapery blocks the windows, torches dimly lighting the room are hung from brass and amber sconces. The throne is occupied, sitting at a platform with several stairs leading up to it.",
     "ascii_art" : "", 
     "features":
@@ -543,13 +565,14 @@
           "description" : "Wooden torches wicked in tar burn brightly, flickering and sparking embers off onto the floor below. There are two in each copper sconce, crossed in the middle to for an X-shape."
       }
     }, 
-    "npcs" : ["boss", "guide"], 
+    "npcs" : [], 
+    "enemies" : ["Impostor"],
     "items": []
   },
   "dining_hall":
   {
-    "game_numer": 0,
     "name": "dining hall",
+    "song" : "fugue_tower_bedroom.mp3", 
     "is_start": false,
     "is_current_location": false,
     "north": null,
@@ -558,8 +581,8 @@
     "west": "great_hall",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The dining hall is surprisingly empty, considering the amount of food and drink generously sprawled out across the table. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked.",
-    "short_description": "The dining hall is still empty. The table spans the whole room, covered in an array of food and drink. On the wall, there is a large painting depicting a far away forested place.",
+    "long_description": "The dining hall is surprisingly empty, considering the amount of food and drink generously sprawled out across the table. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked. In front of the door sits a rat, squeaking and chewing on a piece of toast. ",
+    "short_description": "The dining hall is still empty. The table spans the whole room, covered in an array of food and drink. On the wall, there is a large painting depicting a far away forested place. In front of the back door sits a rat chewing on a piece of toast. ",
     "forgotten_description": "The dining hall is not bustling like it once was, though the table is set with a lavish spread. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked.",
     "ascii_art" : "", 
     "features":
@@ -580,7 +603,8 @@
           "description" : "The painting is a fine oil painting, depicting a forested mountainside. The sky is a light blue, depicting sunrise, glinting off of the river flowing through the valley."
       }
     }, 
-    "npcs" : ["rat"], 
+    "npcs" : [], 
+    "enemies" : ["rat"],
     "items": []
   }
 }
