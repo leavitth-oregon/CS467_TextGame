@@ -1,11 +1,13 @@
 import inventory
 import inventory_item
-import os
-import textwrap
 import fugue_map
+import os
+import sys
+import textwrap
 
 
 my_inventory = inventory.Inventory()
+
 
 
 def enter_room(new_room):
@@ -19,7 +21,7 @@ def enter_room(new_room):
         if room.in_current_room:
             current_room = room
 
-            if new_room == "north":
+            if new_room == "north" or new_room == "up":
                 if current_room.north is not None:
                     current_room.in_current_room = False
                     current_room = current_room.north
@@ -28,7 +30,7 @@ def enter_room(new_room):
                     print("You can't go that way\n")
                     return
 
-            elif new_room == "south":
+            elif new_room == "south" or new_room == "down":
                 if current_room.south is not None:
                     current_room.in_current_room = False
                     current_room = current_room.south
@@ -37,7 +39,7 @@ def enter_room(new_room):
                     print("You can't go that way\n")
                     return
 
-            elif new_room == "east":
+            elif new_room == "east" or new_room == "right":
                 if current_room.east is not None:
                     current_room.in_current_room = False
                     current_room = current_room.east
@@ -46,7 +48,7 @@ def enter_room(new_room):
                     print("You can't go that way\n")
                     return
 
-            elif new_room == "west":
+            elif new_room == "west" or new_room == "left":
                 if current_room.west is not None:
                     current_room.in_current_room = False
                     current_room = current_room.west
@@ -187,7 +189,7 @@ def look(noun):
 # user could use.
 
 commands = {drop: ["drop", "leave"],
-            take: ["grab", "pick up", "pickup", "pick", "take"],
+            take: ["take", "pick up", "pickup", "pick", "grab"],
             look: ["look", "examine", "check"],
             enter_room: ["go", "head"]
             }
@@ -214,9 +216,30 @@ def parse(user_input):
 
             command_list = user_input.split(" ")
 
+            # The user wants to exit
+
+            if command_list[0] == "exit" and len(command_list) == 1:
+                quit_ans = input("Do you really want to quit? Y or N:  ")
+                if quit_ans.lower() == "yes" or quit_ans.lower() == 'y':
+                    sys.exit("Thank you for playing!")
+                else:
+                    return
+
+            if command_list[0] == "exit" and command_list[1] == "game":
+                quit_ans = input("Do you really want to quit? Y or N:  ")
+                if quit_ans.lower() == "yes" or quit_ans.lower() == 'y':
+                    sys.exit("Thank you for playing!")
+                else:
+                    return
+
+            # The user wants to look at their inventory
+
             if "inventory" in command_list:
                 inventory.Inventory.DisplayInventory(my_inventory)
                 return
+
+            
+            # If the user only enters "look" then display the short description of the room
 
             if len(command_list) == 1 and command_list[0] == "look":
                 os.system('cls')
@@ -226,6 +249,8 @@ def parse(user_input):
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
                 return
+            
+            # Add words to the command list
 
             for word in command_list:
                 if word in fugue_map.Fugue_Location(current_room).items:
@@ -243,14 +268,9 @@ def parse(user_input):
                 else:
                     print("I don't know how to do that.\n")
                     return
-                # if verb == enter_room:
-                #     enter_room(current_room, noun)
-                # else:
                 return verb(noun)
 
 
-# print(current_room.description)
-# print(current_room.ascii_art + "\n")
 
 
 def player_prompt():
