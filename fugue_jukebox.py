@@ -13,11 +13,10 @@
 import subprocess 
 from threading import Thread
 import time
-import winsound
 
 # global variables
 mediaplayer = ["afplay ", "mpg123 "]
-song_files = ["fugue_combat.mp3", "fugue_credits.mp3", "fugue_ending.mp3", "fugue_memories.mp3", "fugue_paths_and_roads.mp3", "fugue_throne_room.mp3", "fugue_tower_bedroom.mp3"]
+song_files = ["shopkeepers_tune.mp3", "fugue_combat.mp3", "fugue_credits.mp3", "fugue_ending.mp3", "fugue_memories.mp3", "fugue_paths_and_roads.mp3", "fugue_throne_room.mp3", "fugue_tower_bedroom.mp3"]
 
 # classes 
 class Jukebox(): 
@@ -27,8 +26,12 @@ class Jukebox():
         self.operating_system = "Linux"
         self._p = None
 
-    def set_os(self, new_os: str) -> None: 
-        self.operating_system = new_os
+    def set_os(self) -> None: 
+        user_os = input("What OS are you running? \n 1.) Windows \n 2.) MacOS \n 3.) Linux \n")
+
+        if (user_os == "1") or (user_os.lower() == "windows"):
+            self.operating_system = "Windows"
+
         return 
 
     def play_song(self, song_file: str) -> None:
@@ -46,6 +49,7 @@ class Jukebox():
             self._p.stdin.flush()
         
         else: 
+            import winsound
             self._p = subprocess.Popen(winsound.PlaySound(song_file, winsound.SND_FILENAME),   # the music player, in this case, winsound
                                        stdin = subprocess.PIPE,                                # pipe the subprocess
                                        stderr = None)                                          # no error
@@ -68,6 +72,7 @@ class Jukebox():
 
 def main():
     juke = Jukebox()
+    juke.set_os() 
     for song in song_files:
         print("Now playing " + song + " for 30 seconds.")
         juke.play_song(song)
