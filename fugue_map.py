@@ -1,60 +1,74 @@
 """
 Fugue Map 
 Hayley Leavitt 2023
-Version 1.0
+Version 3.0
 
 
 """
 
 # libraries
 import json
+from fugue_jukebox import Jukebox
 
 # global variables
-game_num = 0
-game_files = ['fugue_locations.json']
-current_location = None
+location_file = "fugue_locations.json"
+npc_file = "npc.json"
+enemy_file = "enemies.json"
+item_file = "items.json"
+game_files = [location_file, npc_file, enemy_file, item_file]
+jukebox = Jukebox()
 
-def get_location_file_info(locfile) -> dict:
+def get_file_info(nfile) -> dict:
     """
-    :param locfile: the json file where the location data is stored
-    :return parsed_locations: a directory containing the parsed data inside the locations json file
+    :param nfile: the json file where the data is stored
+    :return parsed_info: a directory containing the parsed data inside the nfile json file
 
     Uses json.loads() to read a json file and convert it into a directory in python format. This allows
     the data to be stored externally in a JSON file.
     """
     # import location data from location json file
-    with open(locfile) as in_file:
-        unparsed_locations = in_file.read()
+    with open(nfile) as in_file:
+        unparsed_info = in_file.read()
 
         # parse the json data into a directory in Python format
-        parsed_locations = json.loads(unparsed_locations)
+        parsed_info = json.loads(unparsed_info)
 
-    return parsed_locations
+    return parsed_info
 
-def create_location_file(location_data, game_number: int) -> None:
-    """
-    :arg location_data: a directory that contains the location data we want to write to a file
-    :arg game_number: the number of the game we are creating a file for
-    :return None:
+def save_file_info(ofile, file_dict) -> None: 
+    # prep info for json writing
+    json_object = json.dumps(file_dict, indent = 4)
 
-    Uses open() to create a new location json file with the current data
+    # write the info to the json file
+    with open(ofile) as out_file:
+        out_file.write(file_dict)
 
-    Source:
-    https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/
-    """
-    # create a new game file
-    file_name = "locations" + str(game_number) + ".json"
-    new_file = open(file_name, "x")
 
-    if new_file:
-        # parse the dictionary into a json object
-        location_json = json.dumps(location_data, indent = 2)
+class Fugue_NPC: 
+    def __init__(self, id:str) -> None: 
+        self.id = id
+        self.aliases = None
+        self.name = None
+        self.description = None
+        self.location = None 
+        self.is_impostor = False
+        self.dialogue = None
 
-        # dump the data in json format into the json file
-        with open(file_name, "w") as outfile:
-            outfile.write(location_json)
+    def load_info(self, npc_info:dict) -> None: 
+        self.aliases = npc_info.get("aliases")
+        self.name = npc_info.get("name")
+        self.description = npc_info.get("description")
+        self.location = npc_info.get("location") 
+        self.is_impostor = npc_info.get("is_impostor")
+        self.dialogue = npc_info.get("dialogue")
 
-    return 
+    def talk_to(self, keyword) -> str: 
+        says = self.dialogue.get("other")
+
+        if keyword in self.dialogue: 
+            says = self.dialogue.get(keyword)
+
+        return says
 
 
 class Fugue_Location:
@@ -65,8 +79,6 @@ class Fugue_Location:
 
         Sets up all the variables of the location
         """
-        self.game_number = 0
-
         self.name = name
         self.is_start = False
         self.is_current_location = False
@@ -86,10 +98,8 @@ class Fugue_Location:
 
         self.features = {}
         self.npcs = {}
+        self.enemies = {}
         self.items = {}
-
-        self.location_array = (self.game_number, self.name, self.is_start, self.north, self.east, self.south, self.west, self.times_visited, self.was_forgotten, 
-                               self.long_description, self.short_description, self.forgotten_description, self.features, self.npcs, self.items)
 
         return 
 
@@ -98,7 +108,6 @@ class Fugue_Location:
         :param location_info: a dictionary that contains the json data to be loaded into the location variables
         """
         # load game info
-        self.game_number = location_info.get("game_number")
         self.is_start    = location_info.get("is_start")
         self.is_current_location = location_info.get("is_current_location")
 
@@ -109,10 +118,12 @@ class Fugue_Location:
         
         # load the location art
         self.ascii_art = location_info.get("ascii_art")
+        self.song = location_info.get("song")
 
         # load location features, etc. 
         self.features = location_info.get("features")
         self.npcs     = location_info.get("npcs")
+        self.enemies  = location_info.get("enemies")
         self.items    = location_info.get("items")
 
         return
@@ -127,7 +138,9 @@ class Fugue_Location:
 
         if (self.times_visited <= 0) and (self.was_forgotten is False):
             location_description = self.long_description
-        elif (self.times_visited <= 0) and (self.was_forgotten is True):
+        elif (self.times_visited <= 0) and (self.was_forgotten is True): 
+            location_description = self.forgotten_description
+        else:
             location_description = self.short_description
 
         return location_description
@@ -178,6 +191,10 @@ class Fugue_Location:
             return True
         else:
             return False
+        
+    def play_music(self) -> None: 
+        jukebox.stop_song()
+        jukebox.play_song(self.song)
 
 
 class Fugue_Map:
@@ -311,6 +328,20 @@ class Fugue_Map:
                           self.great_hall, 
                           self.throne_room, 
                           self.dining_hall]
+        
+        # create all of our npcs
+        self.impostor = Fugue_NPC("Impostor")
+        self.city_gate_guard = Fugue_NPC("City Gate Guard")
+        self.city_guide = Fugue_NPC("City Guide")
+        self.little_boy = Fugue_NPC("Little Boy")
+        self.wizard = Fugue_NPC("Wizard")
+        self.merchant = Fugue_NPC("Merchant")
+        self.person_in_mirror = Fugue_NPC("Person in the Mirror")
+        self.soldier_ghost = Fugue_NPC("Soldier Ghost")
+
+        # create an array of our npcs ids and npc objects
+        self.npc_ids = ["Impostor", "City Gate Guard", "City Guide", "Little Boy", "Wizard", "Merchant", "Person in the Mirror", "Soldier Ghost"]
+        self.npc_array = [self.impostor, self.city_gate_guard, self.city_guide, self.little_boy, self.wizard, self.merchant, self.person_in_mirror, self.soldier_ghost]
 
         return
     
@@ -319,66 +350,75 @@ class Fugue_Map:
         :param map_dictionary: a dictionary that contains all of the json data that has not yet been prepared to be loaded into the location variables 
         """
         # get the data from the original location json file (template)
-        map_dictionary = get_location_file_info(game_files[0])
+        map_dictionary = get_file_info(game_files[0])
+        npc_dictionary = get_file_info(game_files[1])
 
-        # replace the strings for node pointers with location objects 
+        # fill in the location data, correcting strings to objects as needed
         for i in range(len(self.map_array)):
             location = self.map_array[i]
             location_name = self.map_key[i]
             location.load_info(map_dictionary.get(location_name))
+
+        # fill in the npc data
+        for i in range(len(self.npc_array)): 
+            npc = self.npc_array[i]
+            npc.location(npc_dictionary.get(self.npc_ids[i]))
         
         return
+    
+    def save_map(self):
+        # Converts the contents of the inventory into JSON format and saves to inventory.json
 
-    def print_info(self) -> None: 
-        for location in self.map_array: 
-            print("The location: ")
-            print(location.name)
-            print("Are we here?")
-            print(location.is_current_location)
-            print("Is this the beginning of the game?")
-            print(location.is_start)
-            print()
+        # Create dictionaries to store inventory that will be converted to JSON
+        location_dict = {}
+        npc_dict = {}
 
-            print("Long Description: ")
-            print(location.long_description)
-            print()
+        # Add locations to dictionary
+        for item in self.map_array:
+            info = {
+                "name": item.name,
+                "song" : item.song, 
+                "is_start": item.is_start,
+                "is_current_location": item.is_current_location,
+                "north": item.north,
+                "east": item.east,
+                "south": item.south,
+                "west": item.west,
+                "times_visited": item.times_visited,
+                "was_forgotten": item.was_forgotten,
+                "long_description": item.long_description,
+                "short_description": item.short_description,
+                "forgotten_description": item.forgotten_description, 
+                "ascii_art": item.ascii_art, 
+                "features": item.features, 
+                "npcs": item.npcs,
+                "enemies": item.enemies, 
+                "items": item.items
+                }
 
-            print("Short Description: ")
-            print(location.short_description)
-            print()
+            location_dict[item.name] = info
 
-            print("Forgotten Description: ")
-            print(location.short_description)
-            print()
+        # Add npcs to dictionary
+        for item in self.npc_array:
+            info = {
+                "name": item.name,
+                "aliases": item.aliases,
+                "description": item.description,
+                "location": item.location,
+                "is_impostor": item.is_impostor,
+                "dialogue": item.dialogue
+                }
 
-            print("Ascii Art: ")
-            print(location.ascii_art)
-            print()
+            npc_dict[item.name] = info
 
-            if location.north: 
-                print("North: " + location.north.name)
+        loc_json = json.dumps(location_dict, indent=4)
+        npc_json = json.dumps(npc_dict, indent=4)
 
-            if location.east:
-                print("East: " + location.east.name)
+        with open("fugue_locations.json", "w") as outfile:
+            outfile.write(loc_json)
 
-            if location.south: 
-                print("South: " + location.south.name)
-
-            if location.west: 
-                print("West: " + location.west.name)
-
-            print("Location Features: ")
-            print(location.features)
-            
-            print("Location Items: ")
-            print(location.items)
-
-            print("Location NPCs: ")
-            print(location.npcs)
-
-            print()
-        
-        return
+        with open("npc.json", "w") as outfile: 
+            outfile.write(npc_json)
 
 
 def main():
