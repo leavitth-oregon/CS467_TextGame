@@ -1,0 +1,165 @@
+{
+  "Impostor" : 
+  {
+    "aliases" : ["Guide", "Boss", "Proteus"], 
+    "name" : "Proteus",
+    "description" : "The man is tall, handsome, and broad-shouldered, with short blond hair worn slicked back. A friendly, gentle smile shines on his freckled face. ", 
+    "location" : "desert_camp", 
+    "is_impostor" : true,
+    "dialogue" : 
+    {
+      "name" : "My name is Proteus! ",
+      "name 2" : "Like I said before, my name is Proteus. ", 
+      "name 3": "Friend, are you teasing me, or have you really forgotten again? My name is Proteus, nevertheless. ",  
+      "pc name" : "You don't even remember your own name? Basile...your name is Basile.", 
+      "Basile" : "Your mother would know better than I as to why she named you that. ", 
+      "age" : "I'm 32, two years younger than you. ", 
+      "from" : "I am from the city, Moni Kiva, same as you. ", 
+      "city" : "The city's name is Moni Kiva, friend. ",
+      "relation" : "I am an old friend of yours! ", 
+      "pc memory" : "I'm afraid I don't know what happened to you, Basile. ", 
+      "you made me forget" : "Basile, you and I both know I would never do something to hurt you. Look, you are here, alive and well. Don't let this line of questioning get you in trouble. ",
+      "why did you do this" : "Because you weren't fit for the role of King, Basile. It is bettery this way. ", 
+      "before combat" : "Fine. You leave me no choice, brother. ", 
+      "bye" : "Goodbye, Basile. ", 
+      "other" : "Let's not waste time, now. "
+    }
+  }, 
+  "City Gate Guard": 
+  {
+    "aliases" : ["City Guard", "Guard", "Jace"],
+    "name" : "Jace", 
+    "description": "The guard is decked from head to toe in shiny armor, face obscured by a helmet bearing a large blue feather crest. The breastplate of the guard's armor is emblazoned with the symbol of the city. ", 
+    "location" : "city_gates", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "name" : "My, my name? Why do you want my name? Ugh, fine, my name is Jace if you must know. ", 
+      "name 2" : "You forgot already? Ugh. My name is Jace, don't forget it this time. ", 
+      "name 3" : "Nope. I told you not to forget it. It's four letters! J-A-C-E. ", 
+      "pc" : "If you don't know who you are, how should I know?! ", 
+      "age" : "I am not telling you my age! I don't have to! ", 
+      "from" : "I'm from the next town over, Katoliss, and you're making want to go back right about now. ", 
+      "Katoliss" : "Katoliss is a small village, mostly farmers and craftspeople live there. It's a sleepy place. ", 
+      "leave" : "I left Katoliss because I needed to support my family, same for most guards here. Except the high guards, they're a different breed. ", 
+      "high guards" : "The high guards were born and raised here, trained since their youth to protect the king. They're kinda scary, so that's all I can say. ", 
+      "bye" : "Fare well, traveler. ", 
+      "other" : "What do I look like, an encyclopedia? "
+    }
+  }, 
+  "City Guide":
+  {
+    "aliases" : ["City Guide", "Town Guide", "Tour Guide", "Artie"], 
+    "name" : "Artie", 
+    "description" : "", 
+    "location" : "", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "name" : "I'm Artie! It's a pleasure to meet you! ", 
+      "name 2" : "I'm Artie, I know it's a funny name for a girl. ", 
+      "name 3" : "I'm Arte. Do you have any questions about the city? ",
+      "Artie" : "Artie! I know, an interesting name for a girl, but it's short for Artemis! ",
+      "Artemis" : "Yep! That's my name! It means butcher haha...  ",
+      "Butcher" : "Yeah, my name mean butcher. Ironic because my dad's a butcher, but I was actually named after my grandmother. ",  
+      "pc" : "Why, you're my wonderful guest! That's who you are! ", 
+      "age" : "I've been giving these tours of the city since I was just a little girl! So, about 20 years now. ", 
+      "from" : "I'm from Moni Kiva! I was born and raised here. ", 
+      "king" : "Oh! The King of Moni Kiva died a few years ago, he was assassinated but left no heirs, so now his brother rules in his stead. He's going to be crowned soon, actually! ",
+      "brother" : "Yes, the late King's brother, his name is Proteus.",
+      "coronation" : "Proteus will be crowned as King in 3 days, the whole city is preparing a festival for the event! ",
+      "festival" : "Oh it'll be grand! There will be a parade and a feast, music and dancing throughout the whole city! All sponsored by the king, it'll be very fun. ", 
+      "Katoliss" : "Oh! Katoliss is a small village about 50 miles to the south of here! They built their village around an oasis, the same as us. They mainly export cactus fruit and textiles. ", 
+      "bye" : "Well I hope you enjoyed the tour! Have fun in the city, and feel free to come back and ask any questions you like! ", 
+      "other" : "Hmm, I'm not certain? I'll have to read about it in the city library! "
+    }
+  }, 
+  "Little Boy":
+  {
+    "aliases" : ["boy", "child", "kid", "Luca"], 
+    "name" : "Luca", 
+    "description" : "The little boy is clothed in rags, holding out a cup to ask for change. ", 
+    "location" : "", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "intro" : "Do you have any change sir? ", 
+      "give change" : "Oh? Thank you! ", 
+      "no change" : "It's ok... ", 
+      "name" : "Oh, me? Uhm, my name is Luca. ", 
+      "age" : "I'm seven. ", 
+      "parents" : "I don't have any parents. ", 
+      "King" : "I think we have one, I don't really know. ", 
+      "bye" : "Bye bye ", 
+      "other" : "I dunno. "
+    }
+  }, 
+  "Wizard":
+  {
+    "game_numer" : 0, 
+    "aliases" : ["witch", "magician", "Alex", "red robed figure"], 
+    "name" : "Alex", 
+    "description" : "The red-robed figure stands still, looking down from the palace walls", 
+    "location" : "palace_walls", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "name" : "My name is Alex, citygoer. ", 
+      "pc" : "I have not but an inkling of who you might be. ", 
+      "high guards" : "I am a high guard, yes. We are trained in the decorum and special magics of the city. ", 
+      "magic" : "It is a complex system, I would not expect a commoner like yourself to know it. ", 
+      "bye" : "Fare well, traveler. ",
+      "other" : "You have no concern with this matter. "
+    }
+  }, 
+  "Merchant":
+  {
+    "aliases" : ["old woman", "store owner", "shopkeep", "shopkeeper", "Marianna"], 
+    "name" : "Marianna", 
+    "description" : "The old woman sits at a stall behind crystal bead chains hanging from the frame of her tent. She catches your eye and beckons you over. She has a beautiful face, with striking blue eyes and dark hair. She offers you her wares. ", 
+    "location" : "marketplace", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "name" : "My name is Marianna, it is my pleasure to serve you. ", 
+      "pc" : "You are my humble guest! ", 
+      "bye" : "Be back soon, dear! ", 
+      "selling" : "I have many wares for sale, you see? Spellscrolls, food, weapons, clothing, and more! Take a look! ",
+      "other" : "Well, I can't turn a buck on that, now can I? "
+    }
+  }, 
+  "Person in the Mirror":
+  {
+    "aliases" : ["mirror self", "mirror man", "Elisab", "man in mirror", "man in the mirror", "person in the mirror", "person in mirror"], 
+    "name" : "Elisab", 
+    "description" : "The man in the mirror hardly notices you, standing there in a robe waxing poetic amongst the shadows. He's muttering to himself, but the slightest twitch of your hand catches his attention. His attention snaps to you and he rushes towards you. ", 
+    "location" : "bedroom", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "intro" : ".erew uoy ohw togrof ouy erofeb morf ouy m'I ,elisaB si eman ruoY !gniK laer eht era ouY !suetorP gninworc morf meht pots ot evah ouY !em to nestil ,ereh emoc ckiuQ !uoy s'tI " ,
+      "name" : ".elisaB si eman ruO ", 
+      "pc" : "!gniK eht era uoy dna ,uoy ma I", 
+      "age" : ".43 era eW",  
+      "bye" : "!efas eB ",
+      "other" : ".wonk ton od I diarfa ma I "
+    }
+  }, 
+  "Solider Ghost":
+  {
+    "aliases" : ["Cecilia", "ghost", "soldier"], 
+    "name" : "Cecilia", 
+    "description" : "A floating figure appears in the hall. The ghostly woman is dressed in armor bearing the city crest, and she seems to be reminiscing, looking over the hall. She turns to see you and startles.", 
+    "location" : "great_hall", 
+    "is_impostor" : false, 
+    "dialogue" : 
+    {
+      "intro" : "My lord! You live? ", 
+      "name" : "I am Cecilia, I was your personal guard. ", 
+      "pc" : "You are my king, Basile. ", 
+      "relation" : "I was your personal guard. I was with you until the end, when- I'm sorry, I thought you had died. Perhaps I was wrong, but it is a relief to see that you yet live. ", 
+      "bye" : "Goodbye, my lord, best of luck to you! ", 
+      "other" : "Apologies, my lord, I am unaware. "
+    }
+  }
+}
