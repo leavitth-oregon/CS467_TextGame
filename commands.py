@@ -8,6 +8,9 @@ import textwrap
 my_map = fugue_map.Fugue_Map()
 my_map.prep_data()
 
+world_inventory = inventory.Inventory()
+world_inventory.LoadAllInventory()
+
 my_inventory = inventory.Inventory()
 
 
@@ -91,72 +94,16 @@ def take(noun):
     from the room items list. Print messages saying we got the backpack, we picked it up,
     can't take it, need to get the backpack first, or that there is no such item in the current room.
     """
-    for room in my_map.map_array:
-        if room.is_current_location:
-            current_room = room
-            new_list=[]
 
-            print(current_room.items)
-            for item in current_room.items:
-                new_list.append(item)
-                for i in range(len(new_list)):
-                    new_list[i] = new_list[i].lower()
-
-                    for item in new_list:
-                        if noun == item:
-                            print("Y")
-                        else:
-                            print("no")
+    if world_inventory.GetItem(noun) is not None:
+        noun = world_inventory.GetItem(noun)
+        my_inventory.AddItem(noun)
+        print("You picked up", noun.name)
 
 
+    else:
+        print("There is no", noun)
 
-                # else:
-                #     print("n")
-                #     print(noun)
-                #     print(current_room.items)
-
-            # for item in current_room.items:
-            #     print(item.name)
-                # if noun == item.lower():
-                    # print("okay")
-                    # my_inventory.AddItem(noun)
-                    # my_inventory.DisplayInventory()
-                    # return
-                    # print(my_inventory)
-                # else:
-                #     print("Don't see it")
-
-
-            # for i in range(len(inventory_item.game_items)):
-            #     if inventory_item.game_items[i].name == noun:
-            #         if inventory_item.game_items[i].equipable:
-            #             if inventory_item.game_items[i] in current_room.items:
-            #
-            #                 # Getting the backpack
-            #                 if inventory_item.game_items[i] == inventory_item.backpack:
-            #                     my_inventory.AddItem(inventory_item.game_items[i])
-            #                     inventory_item.game_items[i].equipped = True
-            #                     current_room.items.remove(inventory_item.game_items[i])
-            #                     print("You now have your backpack! You can carry lots of things in this!\n")
-            #                     return
-            #
-            #                 # Need the backpack first to add more items
-            #                 elif inventory_item.backpack.equipped:
-            #                     my_inventory.AddItem(inventory_item.game_items[i])
-            #                     inventory_item.game_items[i].equipped = True
-            #                     current_room.items.remove(inventory_item.game_items[i])
-            #                     print("You now have", noun + "\n")
-            #                     return
-            #
-            #                 else:
-            #                     print("You have no where to put", noun + "\n")
-            #                     return
-            #
-            #         else:
-            #             print("You can't take", noun + "\n")
-            #             return
-            #
-            # print("There is no", noun + "\n")
 
 
 def drop(noun):
@@ -168,14 +115,11 @@ def drop(noun):
         if room.is_current_location:
             current_room = room
 
-            for i in range(len(inventory_item.game_items)):
-                if inventory_item.game_items[i].name == noun:
-                    inventory_item.game_items[i].equipped = False
-                    my_inventory.RemoveItem(inventory_item.game_items[i])
-                    current_room.items.append(inventory_item.game_items[i])
-                    print("You dropped", noun + "\n")
-                    return
-            print("You don't have", noun + "\n")
+            my_inventory.RemoveItem(noun)
+            print("You dropped the", noun.name)
+            current_room.items.append(noun)
+
+
 
 
 def look(noun):
@@ -186,31 +130,40 @@ def look(noun):
     Then prints the description of the noun.
     """
 
-    for room in my_map.map_array:
-        if room.is_current_location:
-            current_room = room
+    if noun == "satchel":
+        print("You see a wooden sword, some cloth armor and an everburning lamp!")
+        my_inventory.AddItem(world_inventory.GetItem('Wooden Sword'))
+        my_inventory.AddItem(world_inventory.GetItem('Cloth Armor'))
+        my_inventory.AddItem(world_inventory.GetItem('Everburning Lamp'))
 
-            for i in range(len(inventory_item.game_items)):
-                if inventory_item.game_items[i].name == noun:
-                    if inventory_item.game_items[i] in current_room.items:
-                        if inventory_item.game_items[i] == inventory_item.tree and current_room == fugue_map.campfire:
-                            # if inventory_item.backpack.equipped:
-                            if inventory_item.backpack not in my_map.desert_camp.items:
-                                print(fugue_map.campfire.short_description)
-                                return
-                            else:
-                                print("You see your backpack on the tree's branch. It is as if someone had placed"
-                                      " it there with care.\n")
-                                return
-                        print(inventory_item.game_items[i].description)
-                        return
+    # for room in my_map.map_array:
+    #     if room.is_current_location:
+    #         current_room = room
+    #
+    #         if noun in current_room.items:
+    #             print(current_room)
 
-                    # If the user wants to "look in backpack", display inventory
-                    elif inventory_item.game_items[i] == inventory_item.backpack:
-                        inventory.Inventory.DisplayInventory(my_inventory)
-                        return
-
-            print("There is no", noun + "\n")
+            # for i in range(len(inventory_item.game_items)):
+            #     if inventory_item.game_items[i].name == noun:
+            #         if inventory_item.game_items[i] in current_room.items:
+            #             if inventory_item.game_items[i] == inventory_item.tree and current_room == fugue_map.campfire:
+            #                 # if inventory_item.backpack.equipped:
+            #                 if inventory_item.backpack not in my_map.desert_camp.items:
+            #                     print(fugue_map.campfire.short_description)
+            #                     return
+            #                 else:
+            #                     print("You see your backpack on the tree's branch. It is as if someone had placed"
+            #                           " it there with care.\n")
+            #                     return
+            #             print(inventory_item.game_items[i].description)
+            #             return
+            #
+            #         # If the user wants to "look in backpack", display inventory
+            #         elif inventory_item.game_items[i] == inventory_item.backpack:
+            #             inventory.Inventory.DisplayInventory(my_inventory)
+            #             return
+            #
+            # print("There is no", noun + "\n")
 
 
 # ###############################################################################################
@@ -279,14 +232,19 @@ def parse(user_input):
                 print("###############################################################################################")
                 return
 
+
             # Add words to the command list
 
             for word in command_list:
-                if word in fugue_map.Fugue_Location(current_room).items:
+                if word in current_room.items:
+                    noun = word
+                    # my_inventory.AddItem(noun)
+
+                elif word in current_room.npcs:
                     noun = word
 
                 elif my_inventory.GetItem(word) is not None:
-                    noun = word
+                    noun = my_inventory.GetItem(word)
 
                 else:
                     noun = word
