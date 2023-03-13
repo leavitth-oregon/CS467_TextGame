@@ -26,42 +26,51 @@ def enter_room(new_room):
 
             if new_room == "north" or new_room == "up":
                 if current_room.north is not None:
-                    current_room.in_current_room = False
+                    current_room.is_current_location = False
                     current_room = current_room.north
-                    current_room.in_current_room = True
+                    current_room.is_current_location = True
+                    print(current_room.name)
+                    # return
                 else:
                     print("You can't go that way\n")
                     return
 
             elif new_room == "south" or new_room == "down":
                 if current_room.south is not None:
-                    current_room.in_current_room = False
+                    current_room.is_current_location = False
                     current_room = current_room.south
-                    current_room.in_current_room = True
+                    current_room.is_current_location = True
+                    print(current_room.name)
+                    # return
                 else:
                     print("You can't go that way\n")
                     return
 
             elif new_room == "east" or new_room == "right":
                 if current_room.east is not None:
-                    current_room.in_current_room = False
+                    current_room.is_current_location = False
                     current_room = current_room.east
-                    current_room.in_current_room = True
+                    current_room.is_current_location = True
+                    print(current_room.name)
+                    # return
                 else:
                     print("You can't go that way\n")
                     return
 
             elif new_room == "west" or new_room == "left":
                 if current_room.west is not None:
-                    current_room.in_current_room = False
+                    current_room.is_current_location = False
                     current_room = current_room.west
-                    current_room.in_current_room = True
+                    current_room.is_current_location = True
+                    print(current_room.name)
+                    # return
                 else:
                     print("You can't go that way\n")
                     return
             else:
-                print("I don't know what that means\n")
+                print("You can't go that way\n")
                 return
+
 
             if current_room.been_to == False:
                 os.system('cls')
@@ -77,13 +86,12 @@ def enter_room(new_room):
                 # Print short description
                 os.system('cls')
                 print("###############################################################################################")
-                print(current_room.short_description)
+                print("\n".join(textwrap.wrap(current_room.short_description, width=100, replace_whitespace=False)))
                 print("###############################################################################################")
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
                 player_prompt()
 
-            print("You can't go that way\n")
 
 
 def take(noun):
@@ -262,3 +270,4 @@ def player_prompt():
     while True:
         user_input = input("What do you want to do? ")
         parse(user_input)
+
