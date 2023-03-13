@@ -11,6 +11,7 @@ class Inventory:
         self.spells = []
         self.items = []
 
+
     def DisplayItemList(self, inventory_list, equippable):
         # Creates a string of inventory list item names to be printed to the console.
         # Items are displayed in columns of 20 characters in length.
@@ -301,6 +302,82 @@ class Inventory:
 
         # import item data from inventory.json file
         with open("inventory.json") as in_file:
+            unparsed_inv = in_file.read()
+
+        # parse the json data into a dictionary in Python format
+        parsed_inv = json.loads(unparsed_inv)
+
+        # Create item objects and add to inventory
+        for key in parsed_inv:
+            if parsed_inv[key]["item_type"] == "item":
+                inv_item = Item(
+                    name=parsed_inv[key]["name"],
+                    synonym=parsed_inv[key]["synonym"],
+                    description=parsed_inv[key]["description"],
+                    item_type=parsed_inv[key]["item_type"],
+                    equippable=parsed_inv[key]["equippable"],
+                    equipped=parsed_inv[key]["equipped"],
+                    cost=parsed_inv[key]["cost"],
+                    qty=parsed_inv[key]["qty"],
+                    hp_mod=parsed_inv[key]["hp_mod"],
+                    mana_mod=parsed_inv[key]["mana_mod"]
+                )
+            elif parsed_inv[key]["item_type"] == "spell":
+                inv_item = Spell(
+                    name=parsed_inv[key]["name"],
+                    synonym=parsed_inv[key]["synonym"],
+                    description=parsed_inv[key]["description"],
+                    item_type=parsed_inv[key]["item_type"],
+                    equippable=parsed_inv[key]["equippable"],
+                    equipped=parsed_inv[key]["equipped"],
+                    cost=parsed_inv[key]["cost"],
+                    mana_cost=parsed_inv[key]["mana_cost"],
+                    duration=parsed_inv[key]["duration"],
+                    casts=parsed_inv[key]["casts"],
+                    lvl_up=parsed_inv[key]["lvl_up"],
+                    base_dmg=parsed_inv[key]["base_dmg"]
+                )
+            else:
+                inv_item = Gear(
+                    name=parsed_inv[key]["name"],
+                    synonym=parsed_inv[key]["synonym"],
+                    description=parsed_inv[key]["description"],
+                    item_type=parsed_inv[key]["item_type"],
+                    equippable=parsed_inv[key]["equippable"],
+                    equipped=parsed_inv[key]["equipped"],
+                    cost=parsed_inv[key]["cost"],
+                    hp_mod=parsed_inv[key]["hp_mod"],
+                    atk_mod=parsed_inv[key]["atk_mod"],
+                    def_mod=parsed_inv[key]["def_mod"],
+                    mag_mod=parsed_inv[key]["mag_mod"],
+                    mana_mod=parsed_inv[key]["mana_mod"]
+                )
+
+            if inv_item.equippable == "True":
+                inv_item.equippable = True
+            else:
+                inv_item.equippable = False
+
+            if inv_item.equipped == "True":
+                inv_item.equipped = True
+            else:
+                inv_item.equipped = False
+
+            self.AddItem(inv_item)
+
+    def LoadAllInventory(self):
+        # Clears the contents of the inventory then loads the contents of inventory.json, creates objects of the correct
+        # type for each item, and adds them to the inventory.
+
+        # Clear inventory
+        self.swords.clear()
+        self.armors.clear()
+        self.staffs.clear()
+        self.spells.clear()
+        self.items.clear()
+
+        # import item data from inventory.json file
+        with open("all_inventory.json") as in_file:
             unparsed_inv = in_file.read()
 
         # parse the json data into a dictionary in Python format

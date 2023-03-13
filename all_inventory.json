@@ -1,0 +1,287 @@
+{
+    "Wooden Sword": {
+        "name": "Wooden Sword",
+        "synonym": [
+            "wood sword",
+            "sword of wood",
+            "wood sord",
+            "wodden sord"
+        ],
+        "description": "A stick found on the ground.",
+        "item_type": "sword",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 10,
+        "hp_mod": 0,
+        "atk_mod": 5,
+        "def_mod": 0,
+        "mag_mod": 0,
+        "mana_mod": 0
+    },
+    "War Hammer": {
+        "name": "War Hammer",
+        "synonym": [
+            "war hamer",
+            "hammer",
+            "hamer"
+        ],
+        "description": "A mighty hammer used in battle.",
+        "item_type": "sword",
+        "equippable": "True",
+        "equipped": true,
+        "cost": 20,
+        "hp_mod": 10,
+        "atk_mod": 15,
+        "def_mod": 5,
+        "mag_mod": 0,
+        "mana_mod": 0
+    },
+    "Katana": {
+        "name": "Katana",
+        "synonym": [
+            "kat"
+        ],
+        "description": "A magical katana.",
+        "item_type": "sword",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 25,
+        "hp_mod": 5,
+        "atk_mod": 10,
+        "def_mod": 5,
+        "mag_mod": 10,
+        "mana_mod": 20
+    },
+    "King's Sword": {
+        "name": "King's Sword",
+        "synonym": [
+            "kings sword",
+            "king sword",
+            "king sord",
+            "kings sord"
+        ],
+        "description": "The sword of the true king.",
+        "item_type": "sword",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 500,
+        "hp_mod": 100,
+        "atk_mod": 100,
+        "def_mod": 100,
+        "mag_mod": 100,
+        "mana_mod": 100
+    },
+    "Cloth Armor": {
+        "name": "Cloth Armor",
+        "synonym": [
+            "cloth",
+            "rag armor"
+        ],
+        "description": "Tattered rags sewn together.",
+        "item_type": "armor",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 10,
+        "hp_mod": 10,
+        "atk_mod": 0,
+        "def_mod": 5,
+        "mag_mod": 0,
+        "mana_mod": 0
+    },
+    "Chainmail": {
+        "name": "Chainmail",
+        "synonym": [
+            "chain mail"
+        ],
+        "description": "Metal rings linked together to form a suit.",
+        "item_type": "armor",
+        "equippable": "True",
+        "equipped": true,
+        "cost": 20,
+        "hp_mod": 25,
+        "atk_mod": 0,
+        "def_mod": 20,
+        "mag_mod": 0,
+        "mana_mod": 0
+    },
+    "Wizard's Robe": {
+        "name": "Wizard's Robe",
+        "synonym": [
+            "wizards robe",
+            "wizard robe",
+            "robe"
+        ],
+        "description": "A robe that enhances magical abilities.",
+        "item_type": "armor",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 20,
+        "hp_mod": 20,
+        "atk_mod": 0,
+        "def_mod": 10,
+        "mag_mod": 20,
+        "mana_mod": 30
+    },
+    "King's Armor": {
+        "name": "King's Armor",
+        "synonym": [
+            "kings armor",
+            "king armor"
+        ],
+        "description": "The finest armor in the kingdom.",
+        "item_type": "armor",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 500,
+        "hp_mod": 100,
+        "atk_mod": 100,
+        "def_mod": 100,
+        "mag_mod": 100,
+        "mana_mod": 100
+    },
+    "Weathered Staff": {
+        "name": "Weathered Staff",
+        "synonym": [
+            "whether staff",
+            "weather staff"
+        ],
+        "description": "Looks like there may still be a spark of magic left.",
+        "item_type": "staff",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 10,
+        "hp_mod": 0,
+        "atk_mod": 0,
+        "def_mod": 0,
+        "mag_mod": 5,
+        "mana_mod": 10
+    },
+    "Fire Ball": {
+        "name": "Fire Ball",
+        "synonym": [
+            "flame ball",
+            "fire blast"
+        ],
+        "description": "Sends a ball of fire from your staff",
+        "item_type": "spell",
+        "equippable": "False",
+        "equipped": "False",
+        "cost": 10,
+        "mana_cost": 10,
+        "duration": 1,
+        "casts": 0,
+        "lvl_up": 25,
+        "base_dmg": 10
+    },
+    "Tattered Photo": {
+        "name": "Tattered Photo",
+        "synonym": [
+            "photo",
+            "tatered photo"
+        ],
+        "description": "A damaged photo that appears to show two people.",
+        "item_type": "item",
+        "equippable": "False",
+        "equipped": "False",
+        "cost": 0,
+        "qty": 1,
+        "hp_mod": 0,
+        "mana_mod": 0
+    },
+    "Everburning Lamp": {
+        "name": "Everburning Lamp",
+        "synonym": [
+            "ever burning lamp",
+            "lamp"
+        ],
+        "description": "A lamp that is said to never extinguish.",
+        "item_type": "item",
+        "equippable": "False",
+        "equipped": "False",
+        "cost": 0,
+        "qty": 1,
+        "hp_mod": 0,
+        "mana_mod": 0
+    },
+    "King's Crown": {
+        "name": "King's Crown",
+        "synonym": [
+            "kings crown",
+            "king crown",
+            "crown"
+        ],
+        "description": "The crown of the king.",
+        "item_type": "item",
+        "equippable": "False",
+        "equipped": "False",
+        "cost": 0,
+        "qty": 1,
+        "hp_mod": 100,
+        "mana_mod": 100
+    },
+    "Air Blast": {
+        "name": "Air Blast",
+        "synonym": [
+            "air ball"
+        ],
+        "description": "Sends a blast of air from your staff moving anything in hits.",
+        "item_type": "spell",
+        "equippable": "False",
+        "equipped": "False",
+        "cost": 10,
+        "mana_cost": 12,
+        "duration": 1,
+        "casts": 0,
+        "lvl_up": 30,
+        "base_dmg": 12
+    },
+    "Freeze": {
+        "name": "Freeze",
+        "synonym": [
+            "freeez"
+        ],
+        "description": "Sends a blast of cold air from your staff that can solidify any liquid.",
+        "item_type": "spell",
+        "equippable": "False",
+        "equipped": "False",
+        "cost": 10,
+        "mana_cost": 15,
+        "duration": 1,
+        "casts": 0,
+        "lvl_up": 35,
+        "base_dmg": 15
+    },
+    "Wand": {
+        "name": "Wand",
+        "synonym": [
+            "wand"
+        ],
+        "description": "11 inches long, made of holly, and possessed a phoenix feather core.",
+        "item_type": "staff",
+        "equippable": "True",
+        "equipped": true,
+        "cost": 20,
+        "hp_mod": 0,
+        "atk_mod": 0,
+        "def_mod": 0,
+        "mag_mod": 30,
+        "mana_mod": 50
+    },
+    "Royal Staff": {
+        "name": "Royal Staff",
+        "synonym": [
+            "kings staff",
+            "king staff"
+        ],
+        "description": "Able to cast magic only known to the royal family.",
+        "item_type": "staff",
+        "equippable": "True",
+        "equipped": "False",
+        "cost": 500,
+        "hp_mod": 100,
+        "atk_mod": 100,
+        "def_mod": 100,
+        "mag_mod": 100,
+        "mana_mod": 100
+    }
+}
