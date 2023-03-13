@@ -60,7 +60,6 @@ class Inventory:
     def DisplayInventory(self):
         # Displays contents of the inventory to the user
 
-        os.system("cls")
         print('Swords')
         print(self.DisplayItemList(self.swords, True))
         print()
@@ -323,7 +322,7 @@ class Inventory:
                     mana_mod=parsed_inv[key]["mana_mod"]
                 )
             elif parsed_inv[key]["item_type"] == "spell":
-                inv_spell = Spell(
+                inv_item = Spell(
                     name=parsed_inv[key]["name"],
                     synonym=parsed_inv[key]["synonym"],
                     description=parsed_inv[key]["description"],
@@ -352,5 +351,15 @@ class Inventory:
                     mag_mod=parsed_inv[key]["mag_mod"],
                     mana_mod=parsed_inv[key]["mana_mod"]
                 )
+
+            if inv_item.equippable == "True":
+                inv_item.equippable = True
+            else:
+                inv_item.equippable = False
+
+            if inv_item.equipped == "True":
+                inv_item.equipped = True
+            else:
+                inv_item.equipped = False
 
             self.AddItem(inv_item)
