@@ -141,14 +141,12 @@
     "long_description": "The city gates are tall, made from a similar sandstone to that beneath your feet. Pillars are carved intricately, supporting stacked bricks of sandstone and marble. Leaning against a pillar is a guard sleepily keeping watch.",
     "short_description": "The city gates are made of tall sandstone pillars. Leaning against the gates is a sleepy guard. ",
     "forgotten_description": "The city gates loom over you, the intricate pattern carved into the sandstone pillars sparks a memory in the back of your mind. The guard at the gate looks confused.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n    *********    ,,**,***%   ##(//***   ,******\n    ***************************,****,%%%****,,,\n    ,,****,,**********/////,,*%,,******,***,*,,\n    *****,,**%,,,#****%////***************,,,,,\n    **,#%%/***#(((((((#////(((((((,*********,*,\n    *******///(((#             ((((///*********\n    ***,##*((#%                   //((****,,,,,\n    ,,,,*%////                     *///%*******\n    *******((%                     (((**,,,,***\n    *****%/*//                     ////%*******\n    ****#**##%                     (((*****%,,,\n    **,*(%((((                     ////%***%,,,\n    ******/##%                     ###*********\n    *****%((((                     /(((#*******\n    ****//%##%                     ###(***%****\n    //**#(%%%%                     %%%%*%******\n    *****####%                     ###%*/******\n    //////###%                     ###%////////\n\n", 
     "features": 
     {
-      "gates" : 
-      {
-          "name" : "gates",
-          "description" : "The gates themselves are made from dry, pale wood clearly worn from the weather. Rough wrought iron hinges and clasps are used to support the wooden gates. On either side of the gates are sandstone pillars filled with intricrate patterned carvings of native animals."
-      }
+      "gates" : "The gates themselves are made from dry, pale wood clearly worn from the weather. Rough wrought iron hinges and clasps are used to support the wooden gates. On either side of the gates are sandstone pillars filled with intricrate patterned carvings of native animals.", 
+      "wall" : "The walls of the city are made of several layers of sandstone brick, held together with concrete and mortar. There is a painted pattern running along the top of the wall, deep reds and blues showing different symbols like a sword, a moon, a flower, and a wand.",
+      "guard" : "The guard looks like he's almost asleep. He leans against one of the pillars, resting, though he takes notice of you as you approach. "
     }, 
     "npcs" : ["city_gate_guard"], 
     "enemies" : [],
@@ -166,30 +164,19 @@
     "west": "city_road_2",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The city road winds westward through a dense residential area. Several clothes lines hang between buildings, and a cat sits perched on a windowsill overhead. Children play around outside in the street, running along the palace walls. Outside the palace walls a few fountains shaped like fish heads dispense water out into the trough that carries water around the city.",
+    "long_description": "The city road winds westward through a dense residential area. Several clothes lines hang between buildings, and a cat sits perched on a windowsill to your left. Children play around outside in the street, running along the palace walls. Outside the palace walls a few fountains shaped like fish heads dispense water out into the trough that carries water around the city.",
     "short_description": "The city road winds through a residential area, clothes lines hanging overhead. Children play in the street and the palace walls dispense water into the city water troughs from fountains shaped like fish heads.",
     "forgotten_description": "The city road winds westward through an eerily familiar residential area. Several clothes lines hang between buildings, and a cat sits perched on a windowsill overhead. Children play around outside in the street, running along the palace walls. Outside the palace walls a few fountains shaped like fish heads dispense water out into the trough that carries water around the city.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n                         @@@%@@@@@@&\n                    @@@@/    &@       .@@@\n               .@@/          &@            @@\n             @@              &@               @@\n           @@                &@                 @&\n          @@                 &@.                 @@\n         @&              @@@@@@@@@@%              @@\n         @@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@%@@@@\n         @                    @                    @\n         @                    @                    @\n         @                    @                    @\n         @                    @                    @\n         @                    @                    @\n         @                    @                    @\n         @                    @                    @\n         @                    @      @      @      @\n         @                    %      @@@@@@@@      @\n         @                    @      @@@@@@@@.     @\n         @                    @       @@@@@@       @\n         @                    @      @@@@@@@@      @\n         @                    @     &@@@@@@@@@     @\n         @                    @    @@@@@@@@@@@@    @\n         @                    @    @@@@@@@@@@@@    @\n         @                    @  @@@@@@@@@@@@@@    @\n         @@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@%@@%@\n\n", 
     "features": 
     {
-      "clotheslines" : 
-      {
-          "name" : "clothesline",
-          "description" : "The clothesline overhead hangs between two buildings, holding up a few yellow and blue shirts, a red dress, a pair of pants, and a single white sock."
-      }, 
-      "wall_fountain" : 
-      {
-          "name" : "wall fountain",
-          "description" : "The fountain is shaped like the head of a carp, scales carved with care. Years of sediment have built up in the mouth of the fish. Behind the water is a deep shadow."
-      }, 
-      "shadow" : 
-      {
-          "name" : "shadow",
-          "description" : "The shadow leads to a small opening in the palace walls. It looks like you could fit if you crouched."
-      }
+      "clotheslines" :"The clothesline overhead hangs between two buildings, holding up a few yellow and blue shirts, a red dress, a pair of pants, and a single white sock.", 
+      "wall_fountain" : "The fountain is shaped like the head of a carp, scales carved with care. Years of sediment have built up in the mouth of the fish. Behind the water is a deep shadow.", 
+      "shadow" : "The shadow leads to a small opening in the palace walls. It looks like you could fit if you crouched.", 
+      "cat" : "You approach the cat, and it hisses at you, swatting at your face. "
     }, 
     "npcs" : [], 
-    "enemies" : [],
+    "enemies" : ["cat"],
     "items": []
   },
   "city_road_2":
@@ -204,37 +191,17 @@
     "west": "city_road_1",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The gates lead through a portcullis into a town square. The buildings and road are hewn from clay and stone, with water trickling through a trough that spans the roof of each building. Ahead is a small public sitting area with pergolas to provide shade. Beyond that lies the palace walls. You can hear the hustle and bustle of the marketplace to the northeast. The road continues to the east and to the west under stone archways, crowned by carvings of animal heads. Ahead of you a friendly guide seems to be trying to get your attention.",
+    "long_description": "The gates lead through a portcullis into a town square. The buildings and road are hewn from clay and stone, with water trickling through a trough that spans the roof of each building. Ahead is a small public sitting area with pergolas to provide shade. Beyond that lies the palace walls. You can hear the hustle and bustle of the marketplace to the northeast. The road continues to the east and to the west under stone archways, crowned by carvings of animal heads. Ahead of you a friendly guide seems to be trying to get your attention. Your companion speaks to you as you stand in the square, \"My friend, I must run ahead to do some errands. Please take your time, explore the city, but meet me at the great hall of the castle. If you have any questions, talk to the city guide, I'm sure she can help you.\" He tells you, and waves as he jogs ahead. ",
     "short_description": "The road comes to a town square in the center of the village. To the north is a sitting area under a shaded pergola, beyond that lies the city walls. To the northeast you can hear the marketplace. A friendly guide stands nearby offering trivia and directions to passersby. ",
-    "forgotten_description": "",
-    "ascii_art" : "", 
+    "forgotten_description": "The gates lead through a portcullis into a town square. The buildings and road are hewn from clay and stone, with water trickling through a trough that spans the roof of each building. Ahead is a small public sitting area with pergolas to provide shade. Beyond that lies the palace walls. The sound of the hustle and bustle of the marketplace is drowned out in your mind, as you feel a strong draw to the palace.",
+    "ascii_art" : "\n      &(   &,    &    &&    &&   &(&/#\n    ,,,@&,,,,,,,,,,,,,,,,,,,,,.,,&,,,&((( &&\n       /& ,&      ,(  ,&       ,&&,(,   &,&\n       ,&         ,/(            .,&   &,,\n       (&         ,(             ,,&    &,&\n       ,&         ,(             &,&    &,&\n       ,&%        ,(             &,&    &,&\n       ,&&        ,(             ,,#    &,&\n       ,&         ,(    ,,,,,,,,,,,%,(  &(&\n       ,&         ,(,,((,,,,,,,,,,.&((( &&&\n       ,#         ,( ,#,,,,,,,.,,,(&/(( &&&\n       .&@                       ,,&    &&   &*&\n   ,.&#&&                           &&*    &\n             &&  (&\n       &,& ,,,\n &   (,..\n\n", 
     "features": 
     {
-      "water trough" : 
-      {
-          "name" : "water trough",
-          "description": "The water trough is carefully crafted from baked clay. Gravity is used to propel the water to each building, with the trough dropping a few inches over several feet. Individual spouts spill water into copper basins by each home. Colorful designs of greenery and flowers are painted along the rim of the trough."
-      }, 
-      "pergola" :
-      {
-          "name" : "pergola",
-          "description" : "The wooden pergolas feature hardy vines growing on them, with small yellow and red flowers just beginning to bloom thanks to the water provided by the water troughs overhead. These vines offer plenty of shade for the benches below."
-      }, 
-      "benches" : 
-      {
-          "name" : "benches",
-          "description" : "There are several benches and tables hewn from desert wood under the pergolas. A gentle breeze passes through, and the shade makes the desert heat tolerable."
-      }, 
-      "east arch" : 
-      {
-          "name" : "east arch",
-          "description" : "The eastern arch leads towards the marketplace and is constructed from the same material as the city walls. Crowning the arch is a carving of an eagle head."
-      }, 
-      "west arch" : 
-      {
-          "name" : "west arch",
-          "description" : "The western arch leads to a residential sector and is constructed from the same material as the city walls. Crowning the arch is a carving of a mountain lion's head."
-      }
+      "water trough" : "The water trough is carefully crafted from baked clay. Gravity is used to propel the water to each building, with the trough dropping a few inches over several feet. Individual spouts spill water into copper basins by each home. Colorful designs of greenery and flowers are painted along the rim of the trough.", 
+      "pergola" : "The wooden pergolas feature hardy vines growing on them, with small yellow and red flowers just beginning to bloom thanks to the water provided by the water troughs overhead. These vines offer plenty of shade for the benches below.", 
+      "benches" : "There are several benches and tables hewn from desert wood under the pergolas. A gentle breeze passes through, and the shade makes the desert heat tolerable.", 
+      "east arch" : "The eastern arch leads towards the marketplace and is constructed from the same material as the city walls. Crowning the arch is a carving of an eagle head.", 
+      "west arch" : "The western arch leads to a residential sector and is constructed from the same material as the city walls. Crowning the arch is a carving of a mountain lion's head." 
     }, 
     "npcs" : ["city_guide"], 
     "enemies" : [],
@@ -255,8 +222,12 @@
     "long_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands. A small boy rattles a can asking for change. ",
     "short_description": "The cobbled road heads eastward towards the marketplace. There is a small boy rattling a can asking for change. ",
     "forgotten_description": "The cobbled road winds eastward towards the bustling city market. You can hear music and chatter fill the air as you walk along the road. A few small shops line the walkway, and city folk bustle back and forth, running errands. Over all of the music and talking, you can hear something, like your name is being called.",
-    "ascii_art" : "", 
-    "features": {}, 
+    "ascii_art" : "\n                @////////////////////////////@\n                @////@@//@//(////@//@/@@@////@\n                @////##//#///%%//%//@(&@@////@\n                    @ @                 @\n             @   @/(/(@   @//(/    @*(//@   @(//@\n            @   %////@    @///*    ,////@    @///&\n           /    (////.    /(//*     /////     /////\n            @ @@,@/@@,@ @@*@/@&/@ @&(@*@##@ @#%@/@/\n             @..**************/*/*............,,&\n             @..************@*@*/@............,,&\n             @..**@*********(***/@...@       @,,&\n             @..*@*************//@...@       @,,&\n             @../////////////////@...@ .     @,,&\n             @.......................@       @,,&\n             @..,,,,,,,,,,,,,,,,,,,,,@       @,,&\n\n", 
+    "features": 
+    {
+      "music" : "The music is a peppy guitar tune, coming from a busker standing on the edge of the street with his guitar case open for tips. ", 
+      "shops" : "There are several different stores selling all kinds of home goods, like furniture, rugs, and garden accessories. "
+    }, 
     "npcs" : ["little_boy"], 
     "enemies" : [],
     "items": []
@@ -276,14 +247,11 @@
     "long_description": "The palace walls loom high overhead. The sandstone walls are double-thick, with guard towers spaced every twenty feet or so. There appears to be a walkway along the topside, where red-robed figures transport goods for the royal palace and keep watch on civilians below.",
     "short_description": "The palace walls are guarded, with guards patrolling between guard towers spaced every twenty feet or so.",
     "forgotten_description": "The palace walls loom over you, blocking your view of the royal palace. The guards above your head stare at you from the towers spaced every twenty feet or so. It feels like they know something you don't.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n                         *\n                        #####                         #####\n                         *\n                    //////(((((                  //////((((((\n//////((((/         //////(((//*  ***  ***  **   //////(((///         /////(((((\n//////(((//         //#///((((((**#**(**/**/**#**///#//((((((         /////(((//\n///#//(((((.  ..  .,////////(((***/****(((*******////////((((..  ..  .//#//(((((\n////////((((((((((((//////(((((*****(*******(****//////(((((((((((((((///////(((\n///***(((((*********//////(((((*****/***#***/****//////((((((*********///**(((((\n//////((#((****#****//////((#/(**#**/*******/**#*//////(((#((****#****/////((#/(\n//////(((((****#****//////(((((**#**/****//*/**#*//////((((((****(****/////(((((\n/////////((**//*****//////((///*****/*#####*/****//////(((//(*********/////(//((\n/**///((/((************///(((((*****/#######/****/**///((((((***********///(((((\n///#//(((((*********//#///(((((*****/#######/****///#//((((((*********//#//(((((\n//////(((((*********//////(((((*****/#######/****//////((((((*********/////(((((\n\n", 
     "features": 
     {
-      "guard tower" :
-      {
-          "name" : "guard tower",
-          "description" : "The guard towers are covered, with small portholes allowing the guards an outward view. On either side of the towards are mounted heavy crossbows."
-      }
+      "guard tower" : "The guard towers are covered, with small portholes allowing the guards an outward view. On either side of the towards are mounted heavy crossbows.", 
+      "red robed figures" : "The red robed figures seem to be guards, but they each carry a long staff instead of a sword. It is hard to make out much more detail from this distance, though."
     }, 
     "npcs" : ["wizard"], 
     "enemies" : [],
@@ -304,8 +272,12 @@
     "long_description": "The marketplace is cramped and crowded, filled with stall after stall of goods being sold by local and traveler alike. Exotic meats, rare fruit, gemstones and jewelry, fine cloth, spices, herbal medicines, tinctures, and even armor and weapons can be found in the market. As you walk through the aisles, an old woman in a lonely corner stall stares at you with a single gray eye.",
     "short_description": "The marketplace is cramped and crowded. All manner of goods can be found, from food and clothing to armor and weapons. An old woman watches you from a corner stall with her single gray eye. She smiles at you.",
     "forgotten_description": "The marketplace is cramped and crowded, filled with stall after stall of goods being sold by local and traveler alike. Exotic meats, rare fruit, gemstones and jewelry, fine cloth, spices, herbal medicines, tinctures, and even armor and weapons can be found in the market. As you walk through the aisles, an old woman in a lonely corner stall stares at you with a single gray eye. She frowns and shakes her head, beckoning you over.",
-    "ascii_art" : "", 
-    "features": {}, 
+    "ascii_art" : "\n.,,*,,,,,,/,,,,,,,*/********/*/*////////#/(/(((((#((((((((#(##(##(###\n    .      . .        .        *  .      . ,      . *      . ,    . .\n    .        .        .        .       .                   *      . *\n  . .      . .        .                         .        . ,      . /\n  , .          /        . . (    . , .    * . .        /   .      , #\n  . .          / , *          .         .          / . *          . *\n   .                . .        . / .          . .            . . . .\n . , . . . .                                             . . . ,   .\n . . . .     . .   . . . / ,             . . .   .                 .\n ,   .          .       .    .         .  . (   .   #   , . .      .\n .      . . /          *    .           .  . %              / .    .\n .    .      . . * .       .            .   . /        , . .    .  .\n .       .      ,      ,   /             &     . .      ,    (     .\n .  .  *  *         .                       .     ,    ,    .  .  ..\n .   .     .  ,        ..                       . ./ .  ,  /  /  ...\n      /.  ** /  ,.                            .          %  #  *., .\n ..      %   /   .  ,                           /.   ..  .   .     .\n  .     (,   . .                                       .     #(*#. .\n .. * .  .   , ,.                                    .   . ..,/.,  .\n    ,   .    .       .----..-. .-. .----. .----.         .     . .,.\n . *,, .. .         { {__  | {_} |/  {}  `| {}  }          . ,, ../,\n  #,,, .            .-._} }| { } |`      /| .--'              .*..#.\n %*.                `----' `-' `-' `----' `-'                     *#\n %                                                                 /\n /                                                                */\n (*                                                               /*\n ,%                                                               (#\n\n", 
+    "features": 
+    {
+      "corner stall" : "The corner stall is colorful and stuffed to the brim with oddities and knick knacks. There are beaded curtains covering the entrance way, with a sign that says \"SHOP\". As you approach you can smell cinnamon. ", 
+      "corner shop" : "The corner stall is colorful and stuffed to the brim with oddities and knick knacks. There are beaded curtains covering the entrance way, with a sign that says \"SHOP\". As you approach you can smell cinnamon. "
+    }, 
     "npcs" : ["merchant"], 
     "enemies" : [],
     "items": []
@@ -324,19 +296,11 @@
     "long_description": "The small hole is a tight fit, but you manage to crouch enough to not hit your head. It is dark, seeming to stretch deep into the palace walls. There is a thick dampness in the air, small drips dropping from the plumbing system that is housed inside the walls. The walls of the passage are textured, the sandstone clearly scratched away by some metal tool like a pickaxe.",
     "short_description": "The passage is small, dark, and damp. The rough walls lead through to the otherside of the palace walls.",
     "forgotten_description": "The small hole is a tight fit, but you manage to crouch enough to not hit your head. It is dark, seeming to stretch deep into the palace walls. There is a thick dampness in the air, small drips dropping from the plumbing system that is housed inside the walls. The walls of the passage are textured, the sandstone clearly scratched away by some metal tool like a pickaxe. The textures give way to patterned dots. A-S-H-I-R-A.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@@@@@   @@     @      @       @      @      @   @@@@@@@@\n@@@@@@@@      @      @@@@ .@@&%@@@@ @@@ @     @      @@@@@@@\n@@@@@@@         @(@       /@@@@@@@@       @@@#         @@@@@\n@@@@@  @@      @     @@@@@@@@@@@@@@@@@@@(    @%      @@ @@@@\n@@@@       @&@    @@@@@@@@@@@@@@@@@@@@@@@@@    @(@@      @@@\n@@         @,   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @         @\n@@ @@@@   @    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @   @@@@ *\n@@        @   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @,       *\n@@       ,@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @@@@@@@@@\n@@       @@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@       @/  .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@       @.  /@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@       @   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @@@@@@@@@\n@@       @   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@       @   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@       @   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n@@       @   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   @       *\n\n", 
     "features": 
     {
-      "walls" : 
-      {
-          "name" : "walls",
-          "description" : "The walls are scratched up roughly. There seems to be something written, scratched into the sandstone."
-      }, 
-      "writing" : 
-      {
-          "name" : "writing", 
-          "description" : "You can barely make out the words: YOU'VE BEEN HERE BEFORE."
-      }
+      "walls" : "The walls are scratched up roughly. There seems to be something written, scratched into the sandstone.", 
+      "writing" : "You can barely make out the words: YOU'VE BEEN HERE BEFORE."
     }, 
     "npcs" : [], 
     "enemies" : [],
@@ -356,7 +320,7 @@
     "long_description": "The light is bright as soon as you emerge from the passage, and suddenly you are surrounded by lush greenery. Long trailing vines of red-tipped green leaves dangle on either side of you, shrubs and flowers in front of you. The lawn spawns for dozens of yards, and a grand three-tiered fountain sits at the center of it. To the east is a tower taller than the palace walls, and to the west there is a large, covered well. Birds fly overhead, singing and chirping. A beatiful siamese cat chases the birds playfully before stopping to look at you.",
     "short_description": "The gardens are massive and lucious. In the center of the lawn sits a 3-tiered grand fountain, to the east stands a tall tower, and to the west is a large well. To the south, through the veil of vinery, a secret passage to the outside city is hiddin in the palace walls. The birds sing and chirp from the trees and bushes. The pretty siamese comes up to meow at you for attention.",
     "forgotten_description": "The light is bright as soon as you emerge from the passage, and suddenly you are surrounded by lush greenery. Long trailing vines of red-tipped green leaves dangle on either side of you, shrubs and flowers in front of you. The lawn spawns for dozens of yards, and a grand three-tiered fountain sits at the center of it. To the east is a tower taller than the palace walls, and to the west there is a large, covered well. Birds fly overhead, singing and chirping. These gardens feel like home. Your cat comes and rubs against your legs.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n                        ..,,,,,,,....\n                       ,..   ,,,    ..\n                       ,.    .,.    ..\n                       ..    #%%    ..\n            ///////////**////#%%###(//(###(/////  *\n         *,,,,,..     .,,,,*/////////*   ...,,,,,,*.\n          .,*,, ,(######((((((((((((((((((#*,*,*,...\n          .,,,,,/..,, ../, ..,*.,,(*,**(**/***,,,...\n          .,,,,   (,(,,,(,,,,,*,**#***/*/# ,,,,,,...\n          .,,,,            /(((((((        ,,,,,,...\n          ..,,,              ((((((,#     .,,,,,,..\n          ..,,,              ..,,,*///    .,,,,,,..\n          ..,,, *,           ..,,,*******,,**,,,,..\n       ///**,,,/*//////////,,**#((%%%%%%%%%********///\n            ,,,,,,,,,,,,,,, ..,*//%##///(((*****#     *///\n      #*,///. .. .................,,,,,,,,,,,***/###((.\n       #... /,, *,,,**,,,,**,,***//****//(*/.,(/,*/*(\n         #*,,/.../, ..,,,  .,,*,.,,***,******/#///%\n             #***,/,,,,(,,,,,,*,,**#*****(/(((%\n                        .*//((##((((\n                        . ,*******/#\n                         %#/.,,,/((\n                         ,/./..,.*,,\n                     ( * *,.,..*.,*,/,#\n               / *      ...,...*,,,,.,,,, **/\n              *..          ..........,,,,**//#\n              *...............,,,,,,,******///\n                   ((/........,,,,,,,*(##\n\n", 
     "features": 
     {
       "fountain" : "The fountain is lavish, a three-tiered marble sculpture with cherubs pouring water out of basins down into a pool below. In the pool swim several koi fish.",
@@ -407,7 +371,7 @@
     "long_description": "The tower pierces the sky, the outside walls following a stair-step spiralling pattern, twisting upwards. Every ten verticle feet or so there is a window. Inside there is a lavish sitting area on the first floor, with a warm fireplace just in front of the spiral staircase. There seems to be something hiding under the staircase. ",
     "short_description": "The tower is tall and ornate. Inside there is a lavish sitting area complete with warm fireplace right in front of the spiral staircase. There seems to be something hiding under the staircase. ",
     "forgotten_description": "The tower welcomes you back, the warm fire inside sounds the same. Your chair sits by the fire just close enough to keep you warm on a cold desert night, but not so close as to scald you during the day. The spiral stairscase leads upstairs.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n ..%@@@@@..  @@@@@/  .@@@@@@ .. @@@@@@. \n.  @       ..@    /.. @    @.  .     @ .\n.  @           &    @    *           @ .\n.  @           %    @    ,           @ .\n.  ..@@. *@  @/  @  @@  @  @@  @  @@.  .\n ..  ..  @  @@  @  #@  @, ,@  @# ..  .. \n ..  ..        &    @    *       ..  .. \n ..  ..      .  @       @  #     ..  .. \n ..  ..@         @@@@@@@         (.  .. \n.  ..  @@@@@@@@   @@@@@   @@@@@@@@ ..  .\n.  ..        ,    @@@@@    %       ..  .\n.  ..                              ..  .\n.  .. (             @              ..  .\n   ///////////////////////////////////  \n ..                                   . \n ..                 @                 . \n ..                 @                 . \n .. .    #@@@@@@.         (@@@@@@/  @.. \n.  ..                               .  .\n.  ..&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&.  .\n.  .@      @@@@     @     @@@@      *  .\n.  .@      @@@@           @@@@      @  .\n ..          @      @      @         .. \n ..                                  .. \n ..@                                 &. \n ..@         @ @  @   @  @ @       ( @. \n            @  @   @@@   @  @           \n.          @@  @@@@@@@@@@(  &@         .\n@     @        @@@@@@@@@@@        @     \n@       @      @@@@@@@@@@@      @       \n@       @      @@@@@@@@@@@      @       \n@    .         @@@@@@@@@@@         #    \n@       @      @@@@@@@@@@@      @       \n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@    .         @@@@@@@@@@@         #    \n\n", 
     "features": 
     {
       "fireplace" : "The fireplace is warm, made of red brick, and burning several charred logs.", 
@@ -434,48 +398,20 @@
     "long_description": "The bedroom is larger than one would expect, clean and airy. The four poster bed has a canopy to protect its occupant from the harsh desert sun, and several tables and chairs are scattered around the space. In one corner of the room is a writing desk with a diary on it, and to the side of it sits a large trunk. On the other side of the room there is a large mirror. ",
     "short_description": "The bedroom is large, with a four poster bed and a writing desk. Downstairs is the rest of the tower. In one of the corners of the room there is a large mirror.",
     "forgotten_description": "Your bedroom is just as it should be, though the mirror is covered in cloth. ",
-    "ascii_art" : "", 
+    "ascii_art" : "\n     _   ()\n() .'_`'.||\n||/.| ||` |\n| /|| || ||         _   ()\n|| || || ||    () .'_`'.||\n|| || || ||    ||/.| ||` |\n|| || ||-'`-._ | /|| || ||\n||_|'`_.-||-._`'| || || ||\n|._ <'_  ||   `|| || || ||\n|| `-._`-'|    || || |'-'|\n()     `-._`-._||_''`_.-||\n           `-._` _.-'   ()\n               ||       `\n               ()\n               `\n\n", 
     "features": 
     {
-      "bed" : 
-      {
-          "name" : "bed",
-          "description" : "The four poster bed is made from a rich, dark wood. From the posters hangs a canopy made of red and white silk, lined in gold. There is a divot in the pillow on the right side of the bed, and to the right of the bed is a small bedside table made from matching wood. "
-      }, 
-      "bedside table": 
-      {
-          "name" : "bedisde table",
-          "description" : "The small bedside table is made from the same wood as the bed. Atop the table sits a carefully crafted oil lamp, and a signet ring in a small dish. "
-      }, 
-      "desk" : 
-      {
-          "name" : "desk",
-          "description" : "The desk is still set up with all manner of writing materials. A quill and an ink pot sit out, along with a damaged diary. "
-      }, 
-      "diary" : 
-      {
-          "name" : "diary",
-          "description" : "The diary is bound in red leather, with a signet emblazoned on the cover. Flipping through reveals a lifetime of memories. But there are pages torn out. You recognize the handwriting. "
-      }, 
-      "trunk" : 
-      {
-          "name" : "trunk",
-          "description" : "The trunk is constructed from high quality materials, oak and buffalo leather, and a sturdy lock made from steel. The trunk is locked. "
-      }, 
-      "covered object": 
-      {
-        "name" : "covered object", 
-        "description" : "The cloth is a heavy canvas that has collected quite a bit of dust. The object it covers is about as tall as you are. "
-      }, 
-      "mirror" : 
-      {
-        "name" : "mirror", 
-        "description" : "The mirror is tall and ornate, gilded gold scrolls holding gently onto the fogged surface. It's odd, wiping the surface doesn't seem to remove the fog. Suddenly, a figure appears. "
-      }
+      "bed" : "The four poster bed is made from a rich, dark wood. From the posters hangs a canopy made of red and white silk, lined in gold. There is a divot in the pillow on the right side of the bed, and to the right of the bed is a small bedside table made from matching wood. ", 
+      "bedside table" : "The small bedside table is made from the same wood as the bed. The table is small, with a single drawer in the front.",
+      "drawer" : "Inside the drawer are several little baubles and trinkets. Lip balm, ribbon, a few loose buttons, but what stands out most is a single tattered photo.", 
+      "desk" : "The desk is still set up with all manner of writing materials. A quill and an ink pot sit out, along with a damaged diary. ", 
+      "diary" : "The diary is bound in red leather, with a signet emblazoned on the cover. Flipping through reveals a lifetime of memories. But there are pages torn out. You recognize the handwriting. ", 
+      "trunk" : "The trunk is constructed from high quality materials, oak and buffalo leather, and a sturdy lock made from steel. The trunk is locked. ", 
+      "mirror" :"The mirror is tall and ornate, gilded gold scrolls holding gently onto the fogged surface. It's odd, wiping the surface doesn't seem to remove the fog. Suddenly, a figure appears. "
     }, 
     "npcs" : ["person_in_the_mirror"], 
     "enemies" : [],
-    "items": ["signet_ring"]
+    "items": ["Tattered Photo"]
   },
   "great_hall":
   {
@@ -492,24 +428,12 @@
     "long_description": "The great hall has a vaulted ceiling, allowing cool air to flow through, and the hot air to rise away from the occupants. The floor is polished and checkered, fit for a ball, and leading past rows of armor suits mounted and displayed inside niches carved into the walls. There is a doorway to the east and an even larger double doorway straight ahead. By the armor there is a spectral figure, the ghost of a soldier. ",
     "short_description": "The great hall is fit for a ball, with its high ceilings and polished floor. To the east there is a doorway to the dining hall, and to the north is an even larger doorway to the throne room. The ghost of a soldier floats near the armor. ",
     "forgotten_description": "The great hall is empty, but has been kept in good shape. The suits of armor have been recently polished. To the east there is a doorway that is dwarfed in comparison to the large double doorway ahead.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n  ,   A           {}\n / `, | ,        .--.\n|    =|= >      /.--.`\n ` /` | `       |====|\n  `   |         |`::`|\n      |     .-;``..../`;_.-^-._\n     /\\/  /  |...::..|`   :   `|\n     |:'` |   /'''::''|   .:.   |\n      ` /`;-,/`   ::  |..:::::..|\n      |` <` >  >._::_.| ':::::' |\n      | `'''`  /   ^^  |   ':'   |\n      |       |       `    :    /\n      |       |        `   :   / \n      |       |___/`___|`-.:.-`\n      |        `_ || _/    `\n      |        <_ >< _>\n      |        |  ||  |\n      |        |  ||  |\n      |       _`.:||:./_\n      |      /____/`____`\n\n", 
     "features": 
     {
-      "armor" :
-      {
-          "name" : "armor",
-          "description" : "The armor is polished and made of thin metal, standing with its arms crossed, resting on a long sword. The breastplate bears the crest of the royal family."
-      }, 
-      "small door" : 
-      {
-          "name" : "small door",
-          "description" : "The small door is simple and wooden, suspended by wrought iron hinges. From it flows sweet smells of fruit, cheeses, meat, and breads."
-      }, 
-      "large door" :
-      {
-          "name" : "large door",
-          "description" : "The large doudle doors are grand, with inscriptions carved into them, hung carefully from animal-shaped hinges made of wrought iron plated in gold."
-      }
+      "armor" : "The armor is polished and made of thin metal, standing with its arms crossed, resting on a long sword. The breastplate bears the crest of the royal family.", 
+      "small door" : "The small door is simple and wooden, suspended by wrought iron hinges. From it flows sweet smells of fruit, cheeses, meat, and breads.", 
+      "large door" : "The large doudle doors are grand, with inscriptions carved into them, hung carefully from animal-shaped hinges made of wrought iron plated in gold."
     }, 
     "npcs" : ["soldier_ghost"], 
     "enemies" : [],
@@ -530,26 +454,14 @@
     "long_description": "The throne room you enter is long and ominous. Black drapery hangs over the windows, obscuring the sun, and several advisors turn to look at you as you enter. The throne itself is atop a platform, with several rows of stairs leading up to it. Torches light the room, held from brass and amber sconces. It looks like someone is sitting on the throne. ",
     "short_description": "The throne room is long and dark. Black drapery hangs over the windows, blocking out the sun. The throne sits atop a platform with several stairs leading up to it. The room is lit by torches in brass and amber sconces. Someone is sitting on the throne. ",
     "forgotten_description": "The throne room does not welcome you as it once did. Black drapery blocks the windows, torches dimly lighting the room are hung from brass and amber sconces. The throne is occupied, sitting at a platform with several stairs leading up to it.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n                              .@  #*(  @\n                             @&*%     &*&&\n                           %&,(/       *(,@&\n                     /,&(    . .(,/%(,(. .    (%,(\n                      /@%&%      #%.&%      %&%@*\n                      &# %*&@&(%#&%(///&(&@@*% #%.\n                       .(%(&..&##     #/&.,@*&(.\n                       *%*/(&%           /%/(,%*\n                      (% #%%.%           #,&## %#\n                       @,(#*&&           #&,%#.@\n                       ,#*/%%%           ##@*/(,\n                      .*#&,%%&           ##&,&#*.\n                      /@&&,&%&           ##@,@@@(.\n                  @%%#@@,,/@%&           &%@/.*%@&&#&\n                 &#%%#*@.%&@%@&%%%%&%%&&&%%@&&.@*&&##%\n                @&&%%&*@                       @*&%#&&@\n              &&###%%% (&                    ( %&%##%%&\n               @%%%@&%%%%&                    #%%%%@%%&@\n               &/,**%%%%%%#                  %##%%&(*,/%\n               &(,,((%%%%&###              #&%%%#&##*/,&\n                %@& &&%%%&%%#%%###%%###%%%%%&&%#%&%*&&#\n                .&%#&%%%%&%%%&&%%%%&%%%%&%%%&&%%%&&#&%.\n                ./*/&%%%&&&@&@@@@@@@@@@@@&&&@&&%%%%//.\n                 /.%                               &*.\n                 /.,                               ./\n                #,/#                               #.,#\n\n", 
     "features":
     {
-      "drapery" :
-      {
-          "name" : "drapery",
-          "description" : "The black drapery is trimmed with gold and red, tassels hanging from the edge. The fabric looks to be linen, blocking out the worst of the sun and casting a shadow across the throne room."
-      }, 
-      "throne" : 
-      {
-          "name" : "throne",
-          "description" : "The throne sits atop a pedestal, led up to by sandstone stairs. The throne itself is massive, with animal heads carved into the arms and legs. Red velvet cushions upholster the throne."
-      }, 
-      "torches" : 
-      {
-          "name" : "torches",
-          "description" : "Wooden torches wicked in tar burn brightly, flickering and sparking embers off onto the floor below. There are two in each copper sconce, crossed in the middle to for an X-shape."
-      }
+      "drapery" : "The black drapery is trimmed with gold and red, tassels hanging from the edge. The fabric looks to be linen, blocking out the worst of the sun and casting a shadow across the throne room.", 
+      "throne" : "The throne sits atop a pedestal, led up to by sandstone stairs. The throne itself is massive, with animal heads carved into the arms and legs. Red velvet cushions upholster the throne. In it sits your earlier companion, Proteus.", 
+      "torches" :"Wooden torches wicked in tar burn brightly, flickering and sparking embers off onto the floor below. There are two in each copper sconce, crossed in the middle to for an X-shape."
     }, 
-    "npcs" : [], 
+    "npcs" : ["Impostor"], 
     "enemies" : ["Impostor"],
     "items": []
   },
@@ -568,24 +480,13 @@
     "long_description": "The dining hall is surprisingly empty, considering the amount of food and drink generously sprawled out across the table. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked. In front of the door sits a rat, squeaking and chewing on a piece of toast. ",
     "short_description": "The dining hall is still empty. The table spans the whole room, covered in an array of food and drink. On the wall, there is a large painting depicting a far away forested place. In front of the back door sits a rat chewing on a piece of toast. ",
     "forgotten_description": "The dining hall is not bustling like it once was, though the table is set with a lavish spread. The table is long, spanning almost the length of the whole room, and looks like it could seat upwards of 20 people. There are three silver candelabras on the table, candles burning a low light that reflects off of the metal and porcelain plates. A large painting hangs on the wall depicting a far away forested place. Next to it is a door that must lead to the kitchen, but it is blocked.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n                          (             )\n                  )      (*)           (*)      (\n                 (*)      |             |      (*)\n                  |      |~|           |~|      |\n                 |~|     | |           | |     |~|\n                 | |     | |           | |     | |\n                ,| |a@@@@| |@@@@@@@@@@@| |@@@@a| |.\n           .,a@@@| |@@@@@| |@@@@@@@@@@@| |@@@@@| |@@@@a,.\n         ,a@@@@@@| |@@@@@@@@@@@@.@@@@@@@@@@@@@@| |@@@@@@@a,\n        a@@@@@@@@@@@@@@@@@@@@@' . `@@@@@@@@@@@@@@@@@@@@@@@@a\n        ;`@@@@@@@@@@@@@@@@@@'   .   `@@@@@@@@@@@@@@@@@@@@@';\n        ;@@@`@@@@@@@@@@@@@'     .     `@@@@@@@@@@@@@@@@'@@@;\n        ;@@@;,.aaaaaaaaaa       .       aaaaa,,aaaaaaa,;@@@;\n        ;;@;;;;@@@@@@@@;@      @.@      ;@@@;;;@@@@@@;;;;@@;\n        ;;;;;;;@@@@;@@;;@    @@ . @@    ;;@;;;;@@;@@@;;;;;;;\n        ;;;;;;;;@@;;;;;;;  @@   .   @@  ;;;;;;;;;;;@@;;;;@;;\n        ;;;;;;;;;;;;;;;;;@@     .     @@;;;;;;;;;;;;;;;;@@a;\n    ,%%%;;;;;;;;@;;;;;;;;       .       ;;;;;;;;;;;;;;;;@@;;%%%,\n .%%%%%%;;;;;;;a@;;;;;;;;     ,%%%,     ;;;;;;;;;;;;;;;;;;;;%%%%%%,\n.%%%%%%%;;;;;;;@@;;;;;;;;   ,%%%%%%%,   ;;;;;;;;;;;;;;;;;;;;%%%%%%%,\n%%%%%%%%`;;;;;;;;;;;;;;;;  %%%%%%%%%%%  ;;;;;;;;;;;;;;;;;;;'%%%%%%%%\n%%%%%%%%%%%%`;;;;;;;;;;;;,%%%%%%%%%%%%%,;;;;;;;;;;;;;;;'%%%%%%%%%%%%\n`%%%%%%%%%%%%%%%%%,,,,,,,%%%%%%%%%%%%%%%,,,,,,,%%%%%%%%%%%%%%%%%%%%'\n  `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'\n      `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'\n             \"\"\"\"\"\"\"\"\"\"\"\"\"\"`,,,,,,,,,'\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\n                            `%%%%%%%'\n                             `%%%%%'\n                               %%%\n                              %%%%%\n                           .,%%%%%%%,.\n                      ,%%%%%%%%%%%%%%%%%%%,\n          ---------------------------------------------\n", 
     "features":
     {
-      "candelabra" : 
-      {
-          "name" : "candelabra",
-          "description" : "Each silver candelabra holds 5 tall, white candles. Each burns dimly, dripping wax down onto a porcelain dish below each candelabra. They are simple, but elegantly designed."
-      }, 
-      "food" : 
-      {
-          "name" : "food",
-          "description" : "Sprawled across the table are generous helpings of wine and mead, pitchers of ice water for drink. There are roasts of ham and beef, entire pheasants that have been basted and grilled, served alongside carrots and beets and rolls with butter. There is a green salad, tossed with goat cheese. The spread is entirely untouched."
-      }, 
-      "painting" : 
-      {
-          "name" : "painting",
-          "description" : "The painting is a fine oil painting, depicting a forested mountainside. The sky is a light blue, depicting sunrise, glinting off of the river flowing through the valley."
-      }
+      "candelabra" : "Each silver candelabra holds 5 tall, white candles. Each burns dimly, dripping wax down onto a porcelain dish below each candelabra. They are simple, but elegantly designed.", 
+      "food" :"Sprawled across the table are generous helpings of wine and mead, pitchers of ice water for drink. There are roasts of ham and beef, entire pheasants that have been basted and grilled, served alongside carrots and beets and rolls with butter. There is a green salad, tossed with goat cheese. The spread is entirely untouched, aside from a large chocolate cake which has one slice cut.",
+      "cake" : "The chocolate cake is rich and decadent, and the candles on the cake are still lit, wax melting onto the icing. A single slice is served at the head of the table.", 
+      "painting" :"The painting is a fine oil painting, depicting a forested mountainside. The sky is a light blue, depicting sunrise, glinting off of the river flowing through the valley."
     }, 
     "npcs" : [], 
     "enemies" : ["rat"],
