@@ -25,7 +25,7 @@
       "other" : "Let's not waste time, now. "
     }
   }, 
-  "City Gate Guard": 
+  "City_Gate_Guard": 
   {
     "aliases" : ["City Guard", "Guard", "Jace"],
     "name" : "Jace", 
@@ -47,7 +47,7 @@
       "other" : "What do I look like, an encyclopedia? "
     }
   }, 
-  "City Guide":
+  "City_Guide":
   {
     "aliases" : ["City Guide", "Town Guide", "Tour Guide", "Artie"], 
     "name" : "Artie", 
@@ -74,7 +74,7 @@
       "other" : "Hmm, I'm not certain? I'll have to read about it in the city library! "
     }
   }, 
-  "Little Boy":
+  "Little_Boy":
   {
     "aliases" : ["boy", "child", "kid", "Luca"], 
     "name" : "Luca", 
@@ -96,7 +96,6 @@
   }, 
   "Wizard":
   {
-    "game_numer" : 0, 
     "aliases" : ["witch", "magician", "Alex", "red robed figure"], 
     "name" : "Alex", 
     "description" : "The red-robed figure stands still, looking down from the palace walls", 
@@ -128,7 +127,7 @@
       "other" : "Well, I can't turn a buck on that, now can I? "
     }
   }, 
-  "Person in the Mirror":
+  "Person_in_the_Mirror":
   {
     "aliases" : ["mirror self", "mirror man", "Elisab", "man in mirror", "man in the mirror", "person in the mirror", "person in mirror"], 
     "name" : "Elisab", 
@@ -145,9 +144,10 @@
       "other" : ".wonk ton od I diarfa ma I "
     }
   }, 
-  "Solider Ghost":
+  "Soldier_Ghost":
   {
-    "aliases" : ["Cecilia", "ghost", "soldier"], 
+    "id" : "Soldier_Ghost", 
+    "aliases" : ["Cecilia", "ghost", "soldier", "ghost solider", "soldier ghost"], 
     "name" : "Cecilia", 
     "description" : "A floating figure appears in the hall. The ghostly woman is dressed in armor bearing the city crest, and she seems to be reminiscing, looking over the hall. She turns to see you and startles.", 
     "location" : "great_hall", 
