@@ -1,7 +1,7 @@
 {
   "Impostor" : 
   {
-    "aliases" : ["Guide", "Boss", "Proteus"], 
+    "aliases" : ["Guide", "Boss", "Proteus", "stranger", "shrouded stranger"], 
     "name" : "Proteus",
     "description" : "The man is tall, handsome, and broad-shouldered, with short blond hair worn slicked back. A friendly, gentle smile shines on his freckled face. ", 
     "location" : "desert_camp", 
@@ -19,9 +19,10 @@
       "relation" : "I am an old friend of yours! ", 
       "pc memory" : "I'm afraid I don't know what happened to you, Basile. ", 
       "you made me forget" : "Basile, you and I both know I would never do something to hurt you. Look, you are here, alive and well. Don't let this line of questioning get you in trouble. ",
-      "why did you do this" : "Because you weren't fit for the role of King, Basile. It is bettery this way. ", 
+      "why did you do this" : "Because you weren't fit for the role of King, Basile. I was hoping we could try again to be friends, but I see now that I was a fool. ",  
       "before combat" : "Fine. You leave me no choice, brother. ", 
       "bye" : "Goodbye, Basile. ", 
+      "defeat" : "Forgive me, Basile. ", 
       "other" : "Let's not waste time, now. "
     }
   }, 
@@ -123,7 +124,11 @@
       "name" : "My name is Marianna, it is my pleasure to serve you. ", 
       "pc" : "You are my humble guest! ", 
       "bye" : "Be back soon, dear! ", 
-      "selling" : "I have many wares for sale, you see? Spellscrolls, food, weapons, clothing, and more! Take a look! ",
+      "selling" : "I have many wares for sale, you see? Weapons, magic items, clothing, armor, and more! What would you like? ",
+      "sale" : "I have many wares for sale, you see? Spellscrolls, food, weapons, clothing, armor, and more! What would you like? ", 
+      "weapons" : "I have a War Hammer and a Katana for sale.",
+      "magic" : "I have a Wizard's Robe, a Weathered Staff, and a Wand for sale. ", 
+      "clothing" : "I have a Wizard's Robe and Chainmail for sale. ", 
       "other" : "Well, I can't turn a buck on that, now can I? "
     }
   }, 
