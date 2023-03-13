@@ -10,36 +10,22 @@
     "west": "desert_wilderness",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "You awaken at an abandoned desert camp. As far as the eye can see, there is the red horizon, with the view of a city to the far north. Beside you, a low fire is burning out. There is also a ragged tent and a small satchel. There is a path to a north, which must lead to the city. Beyond this camp is wilderness. Standing nearby is a shrouded stranger.",
+    "long_description": "You awaken at an abandoned desert camp. Hot air stands stagnant around you, and the sun is bright in your eyes. As far as the eye can see there is the red horizon of a barren desert, air shimmering from the heat. To the north there is a walled city off in the distance. Beside you, a low fire is burning out. Behind you there is a ragged, knocked-over tent made of tattered green cloth, and a small brown leather satchel. There seems to be a path to a north, which must lead to the city. Beyond this camp appears to be nothing but wilderness. Standing ahead of you there is a shrouded stranger.",
     "short_description": "The desert camp has a low fire and a ragged tent. The path to the city lies to the north. Nearby a shrouded man watches you. ",
     "forgotten_description": "You awaken to see a desert camp, long since abandoned. Beside you there are the remnants of a fire, a knocked over tent, and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness. It seems familiar somehow.",
-    "ascii_art" : "", 
+    "ascii_art" : "              .  /  .\n            /*  ///  */\n             ///////\n          /**//,////,/**/\n        //,//,*//,,*//*//\n        ///,/,,*//,,,,/////\n        ///,/,,,/,,,,,,////\n         //,,,,,,,,,.,,,//\n    ..,**.*/,,..,. ,.,,,*.**,..\n   .*,%%%%%&&&&*.. ,&&&&%%%%%,*.\n,.*,,,%//#/..**&(/#&**,./#//%,,,,.*\n.,***,,,#&&&******,****&&&#,,****,.\n\n", 
     "features": 
     {
-      "fire" : 
-      {
-        "name" : "fire",
-        "description" : "The fire is smoldering, low embers whisping up into the air. Inside it there are some red-hot coals that once were logs."
-      }, 
-      "tent" : 
-      {
-          "name" : "tent", 
-          "description" : "The tent is made of a ragged red cloth, propped up by a dry branch."
-      }, 
-      "path" : 
-      {
-          "name" : "path", 
-          "description" : "The shifting sands have been shuffled and settled to make this compacted trail. It leads north to the city."
-      },
-      "wilderness" : 
-      {
-          "name" : "wilderness",
-          "description" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water."
-      }
+      "fire" : "The fire is smoldering, low embers whisping up into the air. Inside it there are some red-hot coals that once were logs.", 
+      "tent" : "The tent is made of a ragged green cloth, once propped up by a dry branch. There isn't much left here. ",
+      "satchel" : "The satchel itself is not very large, and it is made of a worn brown leather, with a long shoulder strap. Inside there is a wooden sword, like that a child would play with. There is also a cloth tunic, which may be able to protect you at least somewhat. Lastly, there is a small oil lamp that somehow has not gone out, despite seeming to be empty.",  
+      "path" : "The shifting sands have been shuffled and settled to make this compacted trail. It leads north to the city.",
+      "wilderness" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water.", 
+      "stranger" : "The stranger turns to look at you. He lowers his hood to reveal his face, and greets you.\n \"Ah, you're finally awake. I'll walk with you.\""
     },
     "npcs" : ["Impostor"], 
     "enemies" : [], 
-    "items": []
+    "items": ["Wooden Sword", "Cloth Armor", "Everburning Lamp"]
   },
   "desert_wilderness":
   {
@@ -52,12 +38,16 @@
     "west": "desert_camp",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. There is something moving in the distance, though.",
+    "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. A few small scrubby bushes eke out survival here, but there seems to be something moving in the distance.",
     "short_description": "The sandy desert wilderness goes on as far as the eye can see. Something rustles a dry bush in the distance. ",
     "forgotten_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. It seems familiar, in some way.",
-    "ascii_art" : "", 
-    "features": {}, 
-    "npcs" : [], 
+    "ascii_art" : "\n                ()\n               *%(/\n            () *%(/\n            *) *%(/ ()  ()\n          /%)  %#%) (%  %&\n          (#   %#/ /%,  %&)\n           %&  %%#%#   #/,\n           %%(  %%/    %(,\n             %%%%%/   %(,\n                %%/ /%%\n                %%##                   (#\n                %%/                  * %#\n                %%/                  % %(\n      /%)       %#/                   %\n    ************%#/*******************%                           ******************\n    *******,**(#%%/*****************************************************************\n    ,*****,,,,,,,,,,,,,,,***********************,,,,,,,,,,,,***,,,,,,,,,,,,,,,,,,,,,\n    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\n\n", 
+    "features": 
+    {
+      "bushes" : "The bushes are small and twiggy, and covered in thorns. They don't look like they would be good for much. ", 
+      "thing" : "The movement in the distance suddenly gets closer and closer. You realize that you are being rushed by a wild hog! "
+    }, 
+    "npcs" : ["Impostor"], 
     "enemies": ["wild_hog"],
     "items": []
   },
@@ -76,21 +66,13 @@
     "long_description": "Just outside the camp is a shifting, sandy road. Along the side of the road is a palm tree and some flowering cacti, whose blooms shine a bright reddish pink color in the moonlight.",
     "short_description": "There is a shifting sandy road, just outside the desert camp. You can smell the cacti blooms",
     "forgotten_description": "Just outside the desert camp is a familiar road, though it seems fairly untravelled. There's a palm tree on the side of the road, as well as a few cacti that are blooming bright reddish pink.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n                                    /////(\n                             //// //    //////(\n                           //(((((//////// ./////(          /////\n                            (((/////(   ((//*/////(    ////((((((((//\n                         ,//////////////// (//////( //((((   ///\n                              //////// ///// (///(/((, //////((/////\n                          ////////(((((((/////(//( //((*//////\n                         //((((              /////(((((((((/(((////,\n                        (                   **///      (((((////((((//\n                                          *//#//           /(((//// ((/\n                                         **///                (((///\n                                       **//#                   ((///\n                                       **///                   (//,\n                                      *///                     (/\n                                     ***//\n                                    **///.\n                                    ***//\n                                    **///\n                                   ***///\n                                   ***///\n                                   ****//\n                                   **////\n                                  *****//,\n                                   */////\n                                  *****///\n                         ,,,,,,,,,*//(/////,,,,,,,,*****\n                 ,,,,,,,,,,,,,,,,///***//##/,,,,,,,,,,*******\n             ,,,,,,,,,,,,,,,,,,,,,//,,,,,,,,,,,,,,,,,,,*********,***\n          ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.\n                                       ,,,,,,,,,,,,,,,,,,\n\n", 
     "features": 
     {
-      "palm tree" : 
-      {
-          "name" : "palm tree",
-          "description" : "The palm tree leans and sways in the gentle breeze. From it hang a few coconuts."
-      },
-      "cacti" : 
-      {
-          "name" : "cacti",
-          "description": "The cactus is covered in long spikes. It has a few sweet-smelling reddish-pink flowers that are blooming."
-      }
+      "palm tree" : "The palm tree leans and sways in the gentle breeze. From it hang a few coconuts.",
+      "cactus" : "The cactus is covered in long spikes. It has a few sweet-smelling reddish-pink flowers that are blooming."
     }, 
-    "npcs" : [], 
+    "npcs" : ["Impostor"], 
     "enemies" : [], 
     "items": []
   },
@@ -106,13 +88,17 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The path is long and winds through the dunes. There isn't much but sand and open sky. To the south is the camp, and to the north lies the city.",
+    "long_description": "The path is long and winds through the dunes. There isn't much but sand and open sky. To the south is the camp, and to the north lies the city. Along the side of the path lie some bones. ",
     "short_description": "The path is vacant, winding through the sandy dunes. To the south is the camp and to the north is the city.",
     "forgotten_description": "The sandy path winds through the dunes in a rhythm that seems familiar. To the north is the city, and to the south is the camp.",
-    "ascii_art" : "", 
-    "features": {}, 
-    "npcs" : [], 
-    "enemies" : [], 
+    "ascii_art" : "\n       .                                               ..              .  .      \n    .....,//,       ........   .       ........   ./////// ....   . ,. //////    \n   ...////////// ........../////****.............////////////...******/////////  \n ,////(((((/////////,*////////*********////*,,///////,,**********,****//((///////\n /////(/*,*******,.,******,,,**************//((*,*******,***************,*/(((///\n *********,,*,***********,.,*****,,******,,********************,,,,,***,.,*******\n ,,************************************,,************,.,,**********************,,\n ********************************************************************************\n ********************************************************************************\n ********************************************************************************\n\n", 
+    "features": 
+    {
+      "sky" : "Overhead you can see the sky is devoid of clouds. The sun is swelteringly hot.", 
+      "bones" : "The bones look to be cow bones, old and sun bleached to a pure white. Looking closer, you see there is a snake, ready to strike. "
+    }, 
+    "npcs" : ["Impostor"], 
+    "enemies" : ["snake"], 
     "items": []
   },
   "path_3":
@@ -127,12 +113,16 @@
     "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The sandy dunes gives way to sandstone, short scrubby bushes cling on for life in the cracks of the rock. In the distance you can see the city gates.",
+    "long_description": "The sandy dunes gives way to sandstone, short scrubby bushes cling on for life in the cracks of the rock. In the distance you can see the city gates. Under your feet the path begins to turn to cobblestone, and alongside the path there is a small wooden sign. You can see strewn across the path are several shriveled flowers, bundled.",
     "short_description": "Scrubby bushes cling to the sandstone. In the distance, the city gates loom.",
     "forgotten_description": "The sandy dunes gives way to sandstone, short scrubby bushes cling on for life in the cracks of the rock. In the distance you can see the city gates. It feels like coming home.",
-    "ascii_art" : "", 
-    "features": {}, 
-    "npcs" : [], 
+    "ascii_art" : "\n       /(((((((((.,\n    //(#(#%%%%%##((##%\n    ((#   %&@&&   #(#()\n    /##  %(%&&@#   %##\n     ##%%%%%&%%%%%%%(   .//**,\n        ###%%%%%%#      #(/((\n            %          #\n            %        #\n             #      (#\n     ..,*/(  %     (#\n         */(# #   /%\n         .*/(#%# /\n       ,,*,  ((.(.\n            /*(#(\n               (*\n               ,,\n               .,\n\n", 
+    "features": 
+    {
+      "sign" : "The wooden sign is small and handmade. On it, painted in large letters reads:\nMONI KIVA -- 1 MILE NORTH\nKATOLISS -- 50 MILES SOUTH", 
+      "flowers" : "The flowers are bunched in bouquets, with ribbons tied around them. They look to have been left behind after some kind of parade or event. Most of the flowers look to be poppies, tied with dark blue ribbon. "
+    }, 
+    "npcs" : ["Impostor"], 
     "enemies" : [],
     "items": []
   },
@@ -369,16 +359,8 @@
     "ascii_art" : "", 
     "features": 
     {
-      "fountain" : 
-      {
-          "name" : "fountain",
-          "description" : "The fountain is lavish, a three-tiered marble sculpture with cherubs pouring water out of basins down into a pool below. In the pool swim several koi fish."
-      }, 
-      "koi fish" : 
-      {
-          "name" : "koi fish",
-          "description" : "There are three koi fish. Each has unique orange and black markings on top of pearly white scales."
-      }
+      "fountain" : "The fountain is lavish, a three-tiered marble sculpture with cherubs pouring water out of basins down into a pool below. In the pool swim several koi fish.",
+      "koi fish" : "There are three koi fish. Each has unique orange and black markings on top of pearly white scales."
     }, 
     "npcs" : [], 
     "enemies" : [],
@@ -398,15 +380,14 @@
     "long_description": "The well is large, round, and deep, carefully constructed from riverstone and copper, expensive imported materials. Overhead an awning crafted from fine hardwoods and thatch roofing protects the well from the sweltering glare of the sun. From the basin of the well several copper pipes run up and out of the gardens, over the palace walls. The pipes are disguised by hedges and flowering vines.",
     "short_description": "The well is large, round, and deep. It rests under an awning made from imported hardwoods and thatched roofing, which protects the well from the sun. The well feeds the water throughout the whole city.",
     "forgotten_description": "The well digs deep under the city to source water from an ancient spring that has sustained the city for many years. The aged awning with the thatched roof protects the well from the harsh sunlight. You remember.",
-    "ascii_art" : "", 
+    "ascii_art" : "\n            /@,#&\n         *%..,,,,***/&\n      *%,,..,,,,,*******@\n    &,,,....,,,,,********,&\n  (,,,,....,,,,,,*********,,@\n%&&&%%%%%%&&&&&&&&&&&&&&&&&&&&@\n    @@                   ##\n    @@    * * * * / /    ##\n    @@  @/&@&@&&%&%%#%%  ##@/\n    @@%%@(&@&@&&%&%&#%#%%@#(@###(\n    @@   # @ @ @ @ @#@*  ##    #(\n    @@              #(   ##    #%@%%%&,\n   ,@@,,,,,,,,,,,,,,%#,,,%%,,\n  ((##((/*///(&&&@&&&@&##&&&@\n   /////*/*///(%((((&####((@\n   /*//****///((((((##%##((@\n   /*//*#**///((((((&#####(@\n   /*/#***////((((((#####((@\n   /*//*#**//#((((((&#####(@\n   /*//****///((((((##%##((@\n   /*//*#**//#((((((#####((@\n(/(******////((((((##########(@\n\n", 
     "features": 
     {
-      "basin" : 
-      {
-          "name" : "basin",
-          "description" : "The basin is constructed carefully from copper. There seems to be a mechanical pump that pushes the water through to the city."
-      }
-    }, 
+      "basin" : "The basin is constructed carefully from copper. There seems to be a mechanical pump that pushes the water through to the city.",
+      "vines" : "The vines are long and green, with tiny heart-shaped leaves. Little white flowers with five petals sprout from nodes on the vine", 
+      "pipes" : "The pipes are old, but well maintained. They are crafted from copper, and are around three inches in diameter. ", 
+      "well" : "The well itself is very deep, looking down it leads to a pitch black hole. "
+    },
     "npcs" : [], 
     "enemies" : [],
     "items": []
@@ -423,12 +404,15 @@
     "west": "gardens",
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The tower pierces the sky, the outside walls following a stair-step spiralling pattern, twisting upwards. Every ten verticle feet or so there is a window and balcony. Inside there is a lavish sitting area on the first floor, with a warm fireplace just in front of the spiral staircase. There seems to be something hiding under the staircase. ",
+    "long_description": "The tower pierces the sky, the outside walls following a stair-step spiralling pattern, twisting upwards. Every ten verticle feet or so there is a window. Inside there is a lavish sitting area on the first floor, with a warm fireplace just in front of the spiral staircase. There seems to be something hiding under the staircase. ",
     "short_description": "The tower is tall and ornate. Inside there is a lavish sitting area complete with warm fireplace right in front of the spiral staircase. There seems to be something hiding under the staircase. ",
     "forgotten_description": "The tower welcomes you back, the warm fire inside sounds the same. Your chair sits by the fire just close enough to keep you warm on a cold desert night, but not so close as to scald you during the day. The spiral stairscase leads upstairs.",
     "ascii_art" : "", 
     "features": 
     {
+      "fireplace" : "The fireplace is warm, made of red brick, and burning several charred logs.", 
+      "staircase" : "You peer behind the staircase. It's dark, and there are a lot of cobwebs back there. Suddenly, a large spider jumps out at you! ", 
+      "window" : "Looking out the window, you can see the city, all the way to the gate. A few people are milling about. It appears the sun is starting to set. "
     }, 
     "npcs" : ["giant_spider"], 
     "enemies" : [],
