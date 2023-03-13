@@ -1,9 +1,7 @@
 """
 Fugue Map 
 Hayley Leavitt 2023
-Version 3.0
-
-
+Version 4.0
 """
 
 # libraries
@@ -55,12 +53,12 @@ class Fugue_NPC:
         self.dialogue = None
 
     def load_info(self, npc_info:dict) -> None: 
-        self.aliases = npc_info.get("aliases")
         self.name = npc_info.get("name")
         self.description = npc_info.get("description")
         self.location = npc_info.get("location") 
         self.is_impostor = npc_info.get("is_impostor")
         self.dialogue = npc_info.get("dialogue")
+        self.aliases = npc_info.get("aliases")
 
     def talk_to(self, keyword) -> str: 
         says = self.dialogue.get("other")
@@ -140,8 +138,6 @@ class Fugue_Location:
             location_description = self.long_description
         elif (self.times_visited <= 0) and (self.was_forgotten is True): 
             location_description = self.forgotten_description
-        else:
-            location_description = self.short_description
 
         return location_description
 
@@ -191,10 +187,6 @@ class Fugue_Location:
             return True
         else:
             return False
-        
-    def play_music(self) -> None: 
-        jukebox.stop_song()
-        jukebox.play_song(self.song)
 
 
 class Fugue_Map:
@@ -340,7 +332,7 @@ class Fugue_Map:
         self.soldier_ghost = Fugue_NPC("Soldier Ghost")
 
         # create an array of our npcs ids and npc objects
-        self.npc_ids = ["Impostor", "City Gate Guard", "City Guide", "Little Boy", "Wizard", "Merchant", "Person in the Mirror", "Soldier Ghost"]
+        self.npc_ids = ["Impostor", "City_Gate_Guard", "City_Guide", "Little_Boy", "Wizard", "Merchant", "Person_in_the_Mirror", "Soldier_Ghost"]
         self.npc_array = [self.impostor, self.city_gate_guard, self.city_guide, self.little_boy, self.wizard, self.merchant, self.person_in_mirror, self.soldier_ghost]
 
         return
@@ -362,7 +354,8 @@ class Fugue_Map:
         # fill in the npc data
         for i in range(len(self.npc_array)): 
             npc = self.npc_array[i]
-            npc.location(npc_dictionary.get(self.npc_ids[i]))
+            npc_name = self.npc_ids[i]
+            npc.load_info(npc_dictionary.get(npc_name))
         
         return
     
@@ -424,7 +417,7 @@ class Fugue_Map:
 def main():
     my_map = Fugue_Map()
     my_map.prep_data()
-    my_map.print_info()
+    print("SUCCESS")
     return
 
 
