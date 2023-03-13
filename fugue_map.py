@@ -1,8 +1,12 @@
 """
 Fugue Map 
 Hayley Leavitt 2023
-Version 4.0
+Version 5.0
 """
+
+# bed ascii art from https://asciiart.website/index.php?art=objects/furniture/beds 
+# armor ascii art from https://www.asciiart.eu/people/occupations/knights 
+# cake ascii art from https://www.asciiart.eu/food-and-drinks/other 
 
 # libraries
 import json
@@ -187,6 +191,12 @@ class Fugue_Location:
             return True
         else:
             return False
+
+    def look_at(self, keyword) -> str: 
+        if keyword in self.features:
+            return self.features.get(keyword)
+        else: 
+            return "You can't search for that."
 
 
 class Fugue_Map:
@@ -417,7 +427,18 @@ class Fugue_Map:
 def main():
     my_map = Fugue_Map()
     my_map.prep_data()
-    print("SUCCESS")
+
+    print(my_map.dining_hall.ascii_art)
+    print()
+
+    print(my_map.dining_hall.get_description())
+    print()
+
+    print(my_map.dining_hall.look_at("cake"))
+    print()
+
+    # print(my_map.impostor.talk_to("why did you do this"))
+    # print()
     return
 
 
