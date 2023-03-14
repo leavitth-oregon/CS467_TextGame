@@ -22,7 +22,7 @@
       "path" : "The shifting sands have been shuffled and settled to make this compacted trail. It leads north to the city.",
       "wilderness" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water."
     },
-    "npcs" : ["Impostor"], 
+    "npcs" : ["Impostor", "stranger], 
     "enemies" : [], 
     "items": ["Wooden Sword", "Cloth Armor", "Everburning Lamp"]
   },
