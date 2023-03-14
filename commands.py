@@ -23,14 +23,15 @@ def enter_room(new_room):
     for room in my_map.map_array:
         if room.is_current_location:
             current_room = room
+            current_room.times_visited += 1
 
             if new_room == "north" or new_room == "up":
                 if current_room.north is not None:
                     current_room.is_current_location = False
                     current_room = current_room.north
+                    current_room.times_visited += 1
                     current_room.is_current_location = True
-                    print(current_room.name)
-                    # return
+
                 else:
                     print("You can't go that way\n")
                     return
@@ -39,9 +40,9 @@ def enter_room(new_room):
                 if current_room.south is not None:
                     current_room.is_current_location = False
                     current_room = current_room.south
+                    current_room.times_visited += 1
                     current_room.is_current_location = True
-                    print(current_room.name)
-                    # return
+
                 else:
                     print("You can't go that way\n")
                     return
@@ -50,9 +51,9 @@ def enter_room(new_room):
                 if current_room.east is not None:
                     current_room.is_current_location = False
                     current_room = current_room.east
+                    current_room.times_visited += 1
                     current_room.is_current_location = True
-                    print(current_room.name)
-                    # return
+
                 else:
                     print("You can't go that way\n")
                     return
@@ -61,9 +62,9 @@ def enter_room(new_room):
                 if current_room.west is not None:
                     current_room.is_current_location = False
                     current_room = current_room.west
+                    # current_room.times_visted += 1
                     current_room.is_current_location = True
-                    print(current_room.name)
-                    # return
+
                 else:
                     print("You can't go that way\n")
                     return
@@ -71,27 +72,25 @@ def enter_room(new_room):
                 print("You can't go that way\n")
                 return
 
-
-            if current_room.been_to == False:
+            if current_room.times_visited == 1:
                 os.system('cls')
-                print("###############################################################################################")
+                print("###############################################################################################\n")
+                # print(current_room.long_description)
                 print("\n".join(textwrap.wrap(current_room.long_description, width=100, replace_whitespace=False)))
                 print("###############################################################################################")
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
-                current_room.been_to = True
                 player_prompt()
-
             else:
-                # Print short description
                 os.system('cls')
-                print("###############################################################################################")
+                print("###############################################################################################\n")
+                # print(current_room.short_description)
+                # print("\n".join(textwrap.wrap(current_room.get_description(), width=100, replace_whitespace=False)))
                 print("\n".join(textwrap.wrap(current_room.short_description, width=100, replace_whitespace=False)))
                 print("###############################################################################################")
                 print(current_room.ascii_art.center(30) + "\n")
                 print("###############################################################################################")
                 player_prompt()
-
 
 
 def take(noun):
@@ -151,32 +150,32 @@ def look(noun):
                 print(current_room.look_at(noun))
 
             elif noun in current_room.npcs:
-                if noun in my_map.impostor.aliases:
+                if noun in my_map.impostor.aliases and "Imposter" in current_room.npcs:
                     print(my_map.impostor.description)
 
-                elif noun in my_map.city_gate_guard.aliases:
+                elif noun in my_map.city_gate_guard.aliases and "City Gate Guard" in current_room.npcs:
                     print(my_map.city_gate_guard.description)
 
-                elif noun in my_map.city_guide.aliases:
+                elif noun in my_map.city_guide.aliases and "City Guide" in current_room.npcs:
                     print(my_map.city_guide.description)
 
-                elif noun in my_map.little_boy.aliases:
+                elif noun in my_map.little_boy.aliases and "Little Boy" in current_room.npcs:
                     print(my_map.little_boy.description)
 
-                elif noun in my_map.wizard.aliases:
+                elif noun in my_map.wizard.aliases and "Wizard" in current_room.npcs:
                     print(my_map.wizard.description)
 
-                elif noun in my_map.merchant.aliases:
+                elif noun in my_map.merchant.aliases and "Merchant" in current_room.npcs:
                     print(my_map.merchant.description)
 
-                elif noun in my_map.person_in_mirror.aliases:
+                elif noun in my_map.person_in_mirror.aliases and "Person in the Mirror" in current_room.npcs:
                     print(my_map.person_in_mirror.description)
 
-                elif noun in my_map.soldier_ghost.aliases:
+                elif noun in my_map.soldier_ghost.aliases and "Soldier Ghost" in current_room.npcs:
                     print(my_map.soldier_ghost.description)
 
             else:
-                print("You cannon search for that\n")
+                print("You cannot search for that\n")
 
 
 
