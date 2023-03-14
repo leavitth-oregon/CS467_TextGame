@@ -128,14 +128,14 @@ class Player(Character):
         with open("player.json", "w") as outfile:
             outfile.write(inv_json)
 
-    def LoadPlayer(self):
+    def LoadPlayer(self, file_name):
         # Loads the contents of player.json, loads player data, loads the saved inventory, and equips gear
 
         # load inventory
         self.inventory.LoadInventory()
 
         # import player data from player.json file
-        with open("player.json") as in_file:
+        with open(file_name) as in_file:
             unparsed_player = in_file.read()
 
         # parse the json data into a dictionary in Python format

@@ -1,0 +1,13 @@
+{
+    "name": "You",
+    "hp": 20,
+    "defense": 10,
+    "atk": 10,
+    "mag": 10,
+    "mana": 30,
+    "sword_eqp": "None",
+    "armor_eqp": "None",
+    "staff_eqp": "None",
+    "money": 50,
+    "cur_location": "desert_camp"
+}

@@ -289,7 +289,7 @@ class Inventory:
         with open("inventory.json", "w") as outfile:
             outfile.write(inv_json)
             
-    def LoadInventory(self):
+    def LoadInventory(self, file_name):
         # Clears the contents of the inventory then loads the contents of inventory.json, creates objects of the correct
         # type for each item, and adds them to the inventory.
 
@@ -301,7 +301,7 @@ class Inventory:
         self.items.clear()
 
         # import item data from inventory.json file
-        with open("inventory.json") as in_file:
+        with open(file_name) as in_file:
             unparsed_inv = in_file.read()
 
         # parse the json data into a dictionary in Python format
