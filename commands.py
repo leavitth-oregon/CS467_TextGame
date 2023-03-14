@@ -137,41 +137,47 @@ def look(noun):
     tree it will print a different description that doesn't mention a backpack hanging on the tree.)
     Then prints the description of the noun.
     """
+    for room in my_map.map_array:
+        if room.is_current_location:
+            current_room = room
 
-    if noun == "satchel":
-        print("You see a wooden sword, some cloth armor and an everburning lamp!")
-        my_inventory.AddItem(world_inventory.GetItem('Wooden Sword'))
-        my_inventory.AddItem(world_inventory.GetItem('Cloth Armor'))
-        my_inventory.AddItem(world_inventory.GetItem('Everburning Lamp'))
+            if noun == "satchel":
+                print("You see a wooden sword, some cloth armor and an everburning lamp!")
+                my_inventory.AddItem(world_inventory.GetItem('Wooden Sword'))
+                my_inventory.AddItem(world_inventory.GetItem('Cloth Armor'))
+                my_inventory.AddItem(world_inventory.GetItem('Everburning Lamp'))
 
-    # for room in my_map.map_array:
-    #     if room.is_current_location:
-    #         current_room = room
-    #
-    #         if noun in current_room.items:
-    #             print(current_room)
+            elif noun in current_room.features:
+                print(current_room.look_at(noun))
 
-            # for i in range(len(inventory_item.game_items)):
-            #     if inventory_item.game_items[i].name == noun:
-            #         if inventory_item.game_items[i] in current_room.items:
-            #             if inventory_item.game_items[i] == inventory_item.tree and current_room == fugue_map.campfire:
-            #                 # if inventory_item.backpack.equipped:
-            #                 if inventory_item.backpack not in my_map.desert_camp.items:
-            #                     print(fugue_map.campfire.short_description)
-            #                     return
-            #                 else:
-            #                     print("You see your backpack on the tree's branch. It is as if someone had placed"
-            #                           " it there with care.\n")
-            #                     return
-            #             print(inventory_item.game_items[i].description)
-            #             return
-            #
-            #         # If the user wants to "look in backpack", display inventory
-            #         elif inventory_item.game_items[i] == inventory_item.backpack:
-            #             inventory.Inventory.DisplayInventory(my_inventory)
-            #             return
-            #
-            # print("There is no", noun + "\n")
+            elif noun in current_room.npcs:
+                if noun in my_map.impostor.aliases:
+                    print(my_map.impostor.description)
+
+                elif noun in my_map.city_gate_guard.aliases:
+                    print(my_map.city_gate_guard.description)
+
+                elif noun in my_map.city_guide.aliases:
+                    print(my_map.city_guide.description)
+
+                elif noun in my_map.little_boy.aliases:
+                    print(my_map.little_boy.description)
+
+                elif noun in my_map.wizard.aliases:
+                    print(my_map.wizard.description)
+
+                elif noun in my_map.merchant.aliases:
+                    print(my_map.merchant.description)
+
+                elif noun in my_map.person_in_mirror.aliases:
+                    print(my_map.person_in_mirror.description)
+
+                elif noun in my_map.soldier_ghost.aliases:
+                    print(my_map.soldier_ghost.description)
+
+            else:
+                print("You cannon search for that\n")
+
 
 
 # ###############################################################################################
