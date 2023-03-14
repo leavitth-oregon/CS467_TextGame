@@ -20,8 +20,7 @@
       "tent" : "The tent is made of a ragged green cloth, once propped up by a dry branch. There isn't much left here. ",
       "satchel" : "The satchel itself is not very large, and it is made of a worn brown leather, with a long shoulder strap. Inside there is a wooden sword, like that a child would play with. There is also a cloth tunic, which may be able to protect you at least somewhat. Lastly, there is a small oil lamp that somehow has not gone out, despite seeming to be empty.",  
       "path" : "The shifting sands have been shuffled and settled to make this compacted trail. It leads north to the city.",
-      "wilderness" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water.", 
-      "stranger" : "The stranger turns to look at you. He lowers his hood to reveal his face, and greets you.\n \"Ah, you're finally awake. I'll walk with you.\""
+      "wilderness" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water."
     },
     "npcs" : ["Impostor"], 
     "enemies" : [], 
@@ -64,7 +63,7 @@
     "times_visited": 0,
     "was_forgotten": false,
     "long_description": "Just outside the camp is a shifting, sandy road. Along the side of the road is a palm tree and some flowering cacti, whose blooms shine a bright reddish pink color in the moonlight.",
-    "short_description": "There is a shifting sandy road, just outside the desert camp. You can smell the cacti blooms",
+    "short_description": "There is a shifting sandy road, just outside the desert camp. You can smell the cacti blooms. ",
     "forgotten_description": "Just outside the desert camp is a familiar road, though it seems fairly untravelled. There's a palm tree on the side of the road, as well as a few cacti that are blooming bright reddish pink.",
     "ascii_art" : "\n                                    /////(\n                             //// //    //////(\n                           //(((((//////// ./////(          /////\n                            (((/////(   ((//*/////(    ////((((((((//\n                         ,//////////////// (//////( //((((   ///\n                              //////// ///// (///(/((, //////((/////\n                          ////////(((((((/////(//( //((*//////\n                         //((((              /////(((((((((/(((////,\n                        (                   **///      (((((////((((//\n                                          *//#//           /(((//// ((/\n                                         **///                (((///\n                                       **//#                   ((///\n                                       **///                   (//,\n                                      *///                     (/\n                                     ***//\n                                    **///.\n                                    ***//\n                                    **///\n                                   ***///\n                                   ***///\n                                   ****//\n                                   **////\n                                  *****//,\n                                   */////\n                                  *****///\n                         ,,,,,,,,,*//(/////,,,,,,,,*****\n                 ,,,,,,,,,,,,,,,,///***//##/,,,,,,,,,,*******\n             ,,,,,,,,,,,,,,,,,,,,,//,,,,,,,,,,,,,,,,,,,*********,***\n          ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.\n                                       ,,,,,,,,,,,,,,,,,,\n\n", 
     "features": 
@@ -437,7 +436,7 @@
     }, 
     "npcs" : ["soldier_ghost"], 
     "enemies" : [],
-    "items": []
+    "items": ["Royal Staff"]
   },
   "throne_room":
   {
@@ -463,7 +462,7 @@
     }, 
     "npcs" : ["Impostor"], 
     "enemies" : ["Impostor"],
-    "items": []
+    "items": ["King's Crown"]
   },
   "dining_hall":
   {
