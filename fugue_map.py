@@ -143,6 +143,8 @@ class Fugue_Location:
         elif (self.times_visited <= 0) and (self.was_forgotten is True): 
             location_description = self.forgotten_description
 
+        self.times_visited += 1
+
         return location_description
 
     def get_direction(self, direction: str) -> str:
@@ -197,6 +199,14 @@ class Fugue_Location:
             return self.features.get(keyword)
         else: 
             return "You can't search for that."
+
+    def remove_item(self, thing) -> None: 
+        if thing in self.items:
+            self.items.drop(thing)
+
+    def add_item(self, thing) -> None: 
+        if thing not in self.items:
+            self.items.append(thing)
 
 
 class Fugue_Map:
@@ -428,17 +438,52 @@ def main():
     my_map = Fugue_Map()
     my_map.prep_data()
 
-    print(my_map.dining_hall.ascii_art)
-    print()
-
-    print(my_map.dining_hall.get_description())
-    print()
-
-    print(my_map.dining_hall.look_at("cake"))
-    print()
-
-    # print(my_map.impostor.talk_to("why did you do this"))
+    # print(my_map.desert_camp.ascii_art)
     # print()
+
+    # print(my_map.desert_camp.get_description())
+    # print()
+
+    # print("Look at satchel")
+    # print()
+
+    # print(my_map.desert_camp.look_at("satchel"))
+    # print()
+
+    # print("Look at shrouded stranger")
+    # print()
+
+    # print(my_map.impostor.description)
+    # print()
+
+    # print("Ask shrouded stranger his name")
+    # print()
+
+    # print(my_map.impostor.talk_to("name"))
+    # print()
+
+    print()
+    print()
+    print()
+
+    print(my_map.desert_wilderness.ascii_art)
+    print()
+
+    print(my_map.desert_wilderness.get_description())
+    my_map.desert_wilderness.times_visited += 1
+    print() 
+    print()
+    print()
+    print()
+    print()
+
+    print(my_map.desert_wilderness.ascii_art)
+    print()
+
+    print(my_map.desert_wilderness.get_description())
+    print()
+    print()
+    print()
     return
 
 
