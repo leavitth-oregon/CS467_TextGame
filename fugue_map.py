@@ -389,6 +389,14 @@ class Fugue_Map:
 
         # create an array of our npcs ids and npc objects
         self.npc_ids = ["Impostor", "City_Gate_Guard", "City_Guide", "Little_Boy", "Wizard", "Merchant", "Person_in_the_Mirror", "Soldier_Ghost"]
+        self.npc_aliases = ["impostor", "guide", "boss", "proteus", "stranger", "shrouded stranger", 
+                            "city guard", "city gate guard", "guard", "jace",
+                            "city guide", "town guide", "tour guide", "artie",
+                            "little boy", "boy", "child", "kid", "luca",
+                            "witch", "wizard", "magician", "alex", "red robed figure", "magic guard",
+                            "old woman", "store owner", "shopkeep", "shopkeeper", "marianna", "merchant", "old lady", 
+                            "mirror self", "mirror man", "elisab", "man in mirror", "man in the mirror", "person in the mirror", "person in mirror", "person", 
+                            "cecilia", "ghost", "soldier", "ghost solider", "soldier ghost"]
         self.npc_array = [self.impostor, self.city_gate_guard, self.city_guide, self.little_boy, self.wizard, self.merchant, self.person_in_mirror, self.soldier_ghost]
 
         self.jukebox = Jukebox()
@@ -414,75 +422,84 @@ class Fugue_Map:
             npc = self.npc_array[i]
             npc_name = self.npc_ids[i]
             npc.load_info(npc_dictionary.get(npc_name))
+            
+    def save_map(self, locfile, npcfile):
+        """
+        save_map() Converts the contents of the Map, Locations, and NPC objects and saves them to the specified file
+        """
         
-        return
-    
-    def save_map(self):
-        
-        # Converts the contents of the inventory into JSON format and saves to inventory.json
-
         # Create dictionaries to store inventory that will be converted to JSON
         location_dict = {}
         npc_dict = {}
 
         # Add locations to dictionary
-        for item in self.map_array:
+        for loc in self.map_array:
             info = {
-                "name": item.name,
-                "song" : item.song, 
-                "is_start": item.is_start,
-                "is_current_location": item.is_current_location,
-                "north": item.north,
-                "east": item.east,
-                "south": item.south,
-                "west": item.west,
-                "times_visited": item.times_visited,
-                "was_forgotten": item.was_forgotten,
-                "long_description": item.long_description,
-                "short_description": item.short_description,
-                "forgotten_description": item.forgotten_description, 
-                "ascii_art": item.ascii_art, 
-                "features": item.features, 
-                "npcs": item.npcs,
-                "enemies": item.enemies, 
-                "items": item.items
+                "name": loc.name,
+                "song" : loc.song, 
+                "is_start": loc.is_start,
+                "is_current_location": loc.is_current_location,
+                "north": loc.north,
+                "east": loc.east,
+                "south": loc.south,
+                "west": loc.west,
+                "times_visited": loc.times_visited,
+                "was_forgotten": loc.was_forgotten,
+                "long_description": loc.long_description,
+                "short_description": loc.short_description,
+                "forgotten_description": loc.forgotten_description, 
+                "ascii_art": loc.ascii_art, 
+                "features": loc.features, 
+                "npcs": loc.npcs,
+                "enemies": loc.enemies, 
+                "items": loc.items
                 }
 
-            location_dict[item.name] = info
+            location_dict[loc.name] = info
 
         # Add npcs to dictionary
-        for item in self.npc_array:
+        for character in self.npc_array:
             info = {
-                "name": item.name,
-                "aliases": item.aliases,
-                "description": item.description,
-                "location": item.location,
-                "is_impostor": item.is_impostor,
-                "dialogue": item.dialogue
+                "name": character.name,
+                "aliases": character.aliases,
+                "description": character.description,
+                "location": character.location,
+                "is_impostor": character.is_impostor,
+                "dialogue": character.dialogue
                 }
 
-            npc_dict[item.name] = info
+            npc_dict[character.name] = info
 
         loc_json = json.dumps(location_dict, indent=4)
         npc_json = json.dumps(npc_dict, indent=4)
 
-        with open("fugue_locations.json", "w") as outfile:
+        with open(locfile, "w") as outfile:
             outfile.write(loc_json)
 
-        with open("npc.json", "w") as outfile: 
+        with open(npcfile, "w") as outfile: 
             outfile.write(npc_json)
 
     def display_location(self) -> None:
+        """
+        Prints out the location display info
+        """
+        if self.current.name == "city road 2" and self.current.times_visited <2: 
+            print("".join(textwrap.wrap("Your companion turns to you and speaks, \"You continue on, I must run ahead. If you have any questions, ask the city guide. I'll meet you in the Great Hall of the Palace!\", then he runs ahead, out of your sight. \n")))
+
         print(self.current.ascii_art.center(30) + "\n")
         print("".join(textwrap.wrap(self.current.get_description() + "\n\n", width=100, replace_whitespace=False)))
-
-        return
   
     def begin_map(self) -> str: 
+        """
+        Prints out the starting locaton and its information
+        """
         print(self.desert_camp.ascii_art + "\n")
         print(self.desert_camp.long_description + "\n\n")
 
     def navigate(self, nput): 
+        """
+        Receives user input and changes the location, then displays the new location information
+        """
         if "north" in nput or "up" in nput and self.current.north: 
                 self.current = self.current.north
                 self.display_location()
@@ -505,24 +522,131 @@ class Fugue_Map:
         return
 
     def look(self, nput):
+        """
+        Displays the description of the feature or npc that the user wants to look at 
+        """
         nput = nput.split(" ")
         if len(nput) < 2: 
             print("".join(textwrap.wrap(self.current.get_description() + "\n\n", width=100, replace_whitespace=False)))
 
         else: 
             for word in nput: 
-                if word in self.current.npcs: 
-                    print("".join(textwrap.wrap(self.current.npcs(word)+"\n\n", width=100, replace_whitespace=False)))
+                # check if the word is an NPC
+                if word in self.impostor.aliases and "Imposter" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.impostor.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.city_gate_guard.aliases and "City Gate Guard" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.city_gate_guard.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.city_guide.aliases and "City Guide" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.city_guide.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.little_boy.aliases and "Little Boy" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.little_boy.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.wizard.aliases and "Wizard" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.wizard.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.merchant.aliases and "Merchant" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.merchant.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.person_in_mirror.aliases and "Person in the Mirror" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.person_in_mirror.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
+
+                elif word in self.soldier_ghost.aliases and "Soldier Ghost" in self.current.npcs:
+                    print("".join(textwrap.wrap(self.soldier_ghost.description) + "\n\n", width=100, replace_whitespace=False))
+                    break
                     
+                # check if the word is a feature
                 elif word in self.current.features: 
                     print("".join(textwrap.wrap(self.current.look_at(word) + "\n\n", width=100, replace_whitespace=False)))
+                    break 
 
-                
+            return
+
+        print ("You can't do that\n")
 
     def help(self):
+        """
+        Displays the command word info to the user
+        """
         print("".join(textwrap.wrap("The keywords are as follows: go, head, up, down, left, right, north, south, east, west, exit, quit, look, examine", width=100, replace_whitespace=False)))
 
-    def talk(self, npc, noun): 
+    def talk(self, sentence):
+        sentence = sentence.lower()
+        sentence = sentence.split(" ")
+
+        npc = None
+
+        # figure out what npc the user wants to talk to and if that npc is in this location
+        for word in sentence: 
+            if word in self.npc_aliases:
+                
+                # figure out which npc is being referred to
+                if word in self.impostor.aliases:
+                    npc = self.impostor
+                    break
+
+                elif word in self.city_gate_guard.aliases:
+                    npc = self.city_gate_guard
+                    break
+
+                elif word in self.city_guide.aliases:
+                    npc = self.city_guide
+                    break
+
+                elif word in self.little_boy.aliases:
+                    npc = self.little_boy
+                    break
+
+                elif word in self.wizard.aliases:
+                    npc = self.wizard
+                    break
+
+                elif word in self.merchant.aliases:
+                    npc = self.merchant
+                    break
+
+                elif word in self.person_in_mirror.aliases:
+                    npc = self.person_in_mirror
+                    break
+
+                elif word in self.soldier_ghost.aliases:
+                    npc = self.soldier_ghost
+                    break
+
+        # If none of the words in the sentence referred to an npc 
+        if npc is None: 
+            print("I don't know who you're referring to\n")
+            return
+
+        # If that npc is not here
+        if npc and npc.name not in self.current.npcs: 
+            print("They are not here right now\n")
+            return
+        
+        # If we know the npc and that npc is here, what is the user asking about?
+        for word in sentence: 
+            if word in npc.dialogue:
+                print(npc.talk_to(word) + "\n")
+                return
+
+        # If none of the user's input is in the npc's dialogue tree, print their other dialogue option
+        print(npc.dialogue.get("other") + "\n")
+        return
+
+
+    def talk_to_npc(self, npc, noun): 
+        """
+        Allows the user to interact with the npc dialogue
+        """
         if npc in self.impostor.aliases and "Impostor" in self.current.npcs:
             print(self.impostor.talk_to(noun))
 
@@ -597,6 +721,9 @@ def main():
 
                 elif "look" in user_input: 
                     my_map.look(user_input)
+
+                elif "talk" in user_input or "ask" in user_input:
+                    my_map.talk(user_input)
 
                 else: 
                     print("I don't understand, please try again.\n")
