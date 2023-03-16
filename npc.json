@@ -1,7 +1,7 @@
 {
   "Impostor" : 
   {
-    "aliases" : ["Guide", "Boss", "Proteus","stranger", "shrouded stranger"], 
+    "aliases" : ["guide", "boss", "proteus","stranger", "shrouded stranger"], 
     "name" : "Proteus",
     "description" : "The man is tall, handsome, and broad-shouldered, with short blond hair worn slicked back. A friendly, gentle smile shines on his freckled face. ", 
     "location" : "desert_camp", 
@@ -26,7 +26,7 @@
   }, 
   "City_Gate_Guard": 
   {
-    "aliases" : ["City Guard", "Guard", "Jace"],
+    "aliases" : ["city guard", "city gate guard", "guard", "jace"],
     "name" : "Jace", 
     "description": "The guard is decked from head to toe in dusty armor, face obscured by a helmet bearing a large blue feather crest. The breastplate of the guard's armor is emblazoned with the symbol of the city. ", 
     "location" : "city_gates", 
@@ -46,7 +46,7 @@
   }, 
   "City_Guide":
   {
-    "aliases" : ["City Guide", "Town Guide", "Tour Guide", "Artie"], 
+    "aliases" : ["city guide", "town guide", "tour guide", "artie"], 
     "name" : "Artie", 
     "description" : "The guide looks to be a young woman with a friendly smile on her face. She has a head full of curly brown hair, pulled back into a poofy ponytail. She wears a uniform that is embroidered with the city crest. ", 
     "location" : "", 
@@ -71,7 +71,7 @@
   }, 
   "Little_Boy":
   {
-    "aliases" : ["boy", "child", "kid", "Luca"], 
+    "aliases" : ["little boy", "boy", "child", "kid", "luca"], 
     "name" : "Luca", 
     "description" : "The little boy is clothed in rags, holding out a cup to ask for change. ", 
     "location" : "", 
@@ -92,7 +92,7 @@
   }, 
   "Wizard":
   {
-    "aliases" : ["witch", "magician", "Alex", "red robed figure"], 
+    "aliases" : ["witch", "wizard", "magician", "alex", "red robed figure", "magic guard"], 
     "name" : "Alex", 
     "description" : "The red-robed figure stands still, looking down from the palace walls", 
     "location" : "palace_walls", 
@@ -109,7 +109,7 @@
   }, 
   "Merchant":
   {
-    "aliases" : ["old woman", "store owner", "shopkeep", "shopkeeper", "Marianna"], 
+    "aliases" : ["old woman", "store owner", "shopkeep", "shopkeeper", "marianna", "merchant", "old lady"], 
     "name" : "Marianna", 
     "description" : "The old woman sits at a stall behind crystal bead chains hanging from the frame of her tent. She catches your eye and beckons you over. She has a beautiful face, with striking blue eyes and dark hair. She offers you her wares. ", 
     "location" : "marketplace", 
@@ -129,7 +129,7 @@
   }, 
   "Person_in_the_Mirror":
   {
-    "aliases" : ["mirror self", "mirror man", "Elisab", "man in mirror", "man in the mirror", "person in the mirror", "person in mirror"], 
+    "aliases" : ["mirror self", "person", "mirror man", "elisab", "man in mirror", "man in the mirror", "person in the mirror", "person in mirror"], 
     "name" : "Elisab", 
     "description" : "The man in the mirror hardly notices you, standing there in a robe waxing poetic amongst the shadows. He's muttering to himself, but the slightest twitch of your hand catches his attention. His attention snaps to you and he rushes towards you. ", 
     "location" : "bedroom", 
@@ -146,7 +146,7 @@
   }, 
   "Soldier_Ghost":
   {
-    "aliases" : ["Cecilia", "ghost", "soldier", "ghost solider", "soldier ghost"], 
+    "aliases" : ["cecilia", "ghost", "soldier", "ghost solider", "soldier ghost"], 
     "name" : "Cecilia", 
     "description" : "A floating figure appears in the hall. The ghostly woman is dressed in armor bearing the city crest, and she seems to be reminiscing, looking over the hall. She turns to see you and startles.", 
     "location" : "great_hall", 
