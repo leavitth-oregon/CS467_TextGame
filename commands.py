@@ -209,6 +209,11 @@ def parse(user_input):
             noun = None
             verb = None
             user_input = user_input.lower()
+            
+            # Hayley wrote this code
+            if "talk" in user_input or "ask" in user_input or "question" in user_input: 
+                my_map.talk(user_input)
+                return
 
             command_list = user_input.split(" ")
             
