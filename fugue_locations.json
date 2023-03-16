@@ -2,6 +2,7 @@
   "desert_camp":
   {
     "name": "desert camp",
+    "song": "fugue_memories.mp3",
     "is_start": true,
     "is_current_location": true,
     "north": "path_1",
@@ -11,7 +12,7 @@
     "times_visited": 1,
     "was_forgotten": false,
     "long_description": "You awaken at an abandoned desert camp. Hot air stands stagnant around you, and the sun is bright in your eyes. As far as the eye can see there is the red horizon of a barren desert, air shimmering from the heat. To the north there is a walled city off in the distance. Beside you, a low fire is burning out. Behind you there is a ragged, knocked-over tent made of tattered green cloth, and a small brown leather satchel. There seems to be a path to a north, which must lead to the city. Beyond this camp appears to be nothing but wilderness. Standing ahead of you there is a shrouded stranger.",
-    "short_description": "The desert camp has a low fire and a ragged tent. The path to the city lies to the north. Nearby a shrouded man watches you. ",
+    "short_description": "The desert camp has a low fire and a ragged tent. The path to the city lies to the north, beyond that is just wilderness. Nearby a shrouded man watches you. ",
     "forgotten_description": "You awaken to see a desert camp, long since abandoned. Beside you there are the remnants of a fire, a knocked over tent, and a small satchel. Standing nearby is a shrouded stranger. To the north seems to be a path of some kind, outside of that is just wilderness. It seems familiar somehow.",
     "ascii_art" : "              .  /  .\n            /*  ///  */\n             ///////\n          /**//,////,/**/\n        //,//,*//,,*//*//\n        ///,/,,*//,,,,/////\n        ///,/,,,/,,,,,,////\n         //,,,,,,,,,.,,,//\n    ..,**.*/,,..,. ,.,,,*.**,..\n   .*,%%%%%&&&&*.. ,&&&&%%%%%,*.\n,.*,,,%//#/..**&(/#&**,./#//%,,,,.*\n.,***,,,#&&&******,****&&&#,,****,.\n\n", 
     "features": 
@@ -22,23 +23,24 @@
       "path" : "The shifting sands have been shuffled and settled to make this compacted trail. It leads north to the city.",
       "wilderness" : "The wilderness goes on as far as the eye can see, without a single speck of greenery or drop of water."
     },
-    "npcs" : ["Impostor", "stranger"], 
+    "npcs" : ["Impostor"], 
     "enemies" : [], 
     "items": ["Wooden Sword", "Cloth Armor", "Everburning Lamp"]
   },
   "desert_wilderness":
   {
     "name": "desert wilderness",
+    "song" : "fugue_memories.mp3", 
     "is_start": false,
     "is_current_location": false,
     "north": "desert_camp",
-    "east": "desert_camp",
+    "east": null,
     "south": null,
-    "west": "desert_camp",
+    "west": null,
     "times_visited": 0,
     "was_forgotten": false,
-    "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. A few small scrubby bushes eke out survival here, but there seems to be something moving in the distance.",
-    "short_description": "The sandy desert wilderness goes on as far as the eye can see. Something rustles a dry bush in the distance. ",
+    "long_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight, save for the camp to the north. A few small scrubby bushes eke out survival here, but there seems to be something moving in the distance.",
+    "short_description": "The sandy desert wilderness goes on as far as the eye can see. Something rustles a dry bush in the distance. The camp lies back to the north.",
     "forgotten_description": "The desert wilderness is hot and sweltering, the air shimmering from the heat. The sand goes on for ages, with no end in sight. It seems familiar, in some way.",
     "ascii_art" : "\n                ()\n               *%(/\n            () *%(/\n            *) *%(/ ()  ()\n          /%)  %#%) (%  %&\n          (#   %#/ /%,  %&)\n           %&  %%#%#   #/,\n           %%(  %%/    %(,\n             %%%%%/   %(,\n                %%/ /%%\n                %%##                   (#\n                %%/                  * %#\n                %%/                  % %(\n      /%)       %#/                   %\n    ************%#/*******************%                           ******************\n    *******,**(#%%/*****************************************************************\n    ,*****,,,,,,,,,,,,,,,***********************,,,,,,,,,,,,***,,,,,,,,,,,,,,,,,,,,,\n    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\n\n", 
     "features": 
@@ -284,6 +286,7 @@
   "secret_passage":
   {
     "name": "secret passage",
+    "song" : "fugue_throne_room.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": "gardens",
@@ -308,6 +311,7 @@
   "gardens":
   {
     "name": "gardens",
+    "song" : "fugue_throne_room.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": null,
@@ -332,6 +336,7 @@
   "well":
   {
     "name": "well",
+    "song" : "fugue_throne_room.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": null,
@@ -441,7 +446,7 @@
   "throne_room":
   {
     "name": "throne room",
-    "song" : "fugue_throne_room.mp3",
+    "song" : "fugue_combat.mp3",
     "is_start": false,
     "is_current_location": false,
     "north": null,
