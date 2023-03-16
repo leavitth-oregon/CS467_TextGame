@@ -62,7 +62,7 @@ def enter_room(new_room):
                 if current_room.west is not None:
                     current_room.is_current_location = False
                     current_room = current_room.west
-                    # current_room.times_visted += 1
+                    current_room.times_visited += 1
                     current_room.is_current_location = True
 
                 else:
@@ -211,6 +211,13 @@ def parse(user_input):
             user_input = user_input.lower()
 
             command_list = user_input.split(" ")
+            
+            # The user wants to save their game
+
+            if command_list[0] == "save" or command_list[0] == "savegame":
+                my_inventory.SaveInventory()
+                fugue_map.save_file_info(my_map)
+                sys.exit("Thank you for playing!")
 
             # The user wants to exit
 
@@ -251,7 +258,6 @@ def parse(user_input):
             for word in command_list:
                 if word in current_room.items:
                     noun = word
-                    # my_inventory.AddItem(noun)
 
                 elif word in current_room.npcs:
                     noun = word
