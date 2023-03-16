@@ -12,5 +12,4 @@ my_inventory = inventory.Inventory()
 current_room = my_map.desert_camp
 os.system('cls')
 title_screen.title_screen()
-print(current_room.items)
 commands.player_prompt()
