@@ -2,40 +2,63 @@ import ascii_art
 import textwrap
 import os
 import fugue_map
+import sys
+import inventory
+import character
+import player
 
 
 def title_screen():
+
     print("#############################")
     print("#          FUGUE            #")
     print("#############################")
     print(ascii_art.castle.center(30))
     print("        1 NEW GAME           ")
     print("        2 CONTINUE           ")
-    print("        3 SETTINGS           ")
-    print("        4 CREDITS            \n")
+    print("        3 CREDITS            ")
+    print("        4 EXIT             \n")
 
     choice = input("What would you like to do?: \n")
 
-# Choices:
-    
- 
+    # Choices:
+
     if choice == "1" or choice == "new game".lower():
+        my_map = fugue_map.Fugue_Map()
+        my_map.prep_data()
+        my_inventory = inventory.Inventory()
+        my_player = player.Player(inventory, 20, 10, 10, 10, 30, None, None, None, 50, "desert camp")
         os.system('cls')
-        new_room = fugue_map.campfire
-        new_room.in_current_room = True
+
+        current_room = my_map.desert_camp
+        current_room.times_visited += 1
+        os.system('cls')
         print("###############################################################################################")
-        print("\n".join(textwrap.wrap(new_room.long_description, width=100, replace_whitespace=False)))
+        print("\n".join(textwrap.wrap(current_room.long_description, width=100, replace_whitespace=False)))
         print("###############################################################################################")
-        print(new_room.ascii_art.center(30) + "\n")
+        print(current_room.ascii_art.center(30) + "\n")
         print("###############################################################################################")
 
         return
-    
-    
+
+
 #
     elif choice == "2" or choice.lower == "continue":
-        #  Load Game
-        pass
+        my_map = fugue_map.Fugue_Map()
+        my_map.prep_data()
+        my_inventory = inventory.Inventory()
+        my_inventory.LoadInventory("inventory.json")
+
+        current_room = my_map.current
+        # current_room.times_visited += 1
+        os.system('cls')
+        print("###############################################################################################")
+        print("\n".join(textwrap.wrap(current_room.long_description, width=100, replace_whitespace=False)))
+        print("###############################################################################################")
+        print(current_room.ascii_art.center(30) + "\n")
+        print("###############################################################################################")
+
+        return
 
 
 #
