@@ -10,6 +10,7 @@ Version 5.0
 
 # libraries
 import json
+import textwrap
 from fugue_jukebox import Jukebox
 
 # global variables
@@ -18,7 +19,6 @@ npc_file = "npc.json"
 enemy_file = "enemies.json"
 item_file = "items.json"
 game_files = [location_file, npc_file, enemy_file, item_file]
-jukebox = Jukebox()
 
 def get_file_info(nfile) -> dict:
     """
@@ -43,7 +43,7 @@ def save_file_info(ofile, file_dict) -> None:
 
     # write the info to the json file
     with open(ofile) as out_file:
-        out_file.write(file_dict)
+        out_file.write(json_object)
 
 
 class Fugue_NPC: 
@@ -237,28 +237,39 @@ class Fugue_Map:
 
         # link all of the locations in the map 
         self.desert_camp.north = self.path_1
-        self.desert_camp.east  = self.desert_wilderness
+        self.desert_camp.east  = None
         self.desert_camp.south = self.desert_wilderness
-        self.desert_camp.west  = self.desert_wilderness
+        self.desert_camp.west  = None
 
         self.desert_wilderness.north = self.desert_camp
-        self.desert_wilderness.east  = self.desert_camp
-        self.desert_wilderness.west  = self.desert_camp
+        self.desert_wilderness.east  = None
+        self.desert_wilderness.south = None
+        self.desert_wilderness.west  = None
 
         self.path_1.north = self.path_2
+        self.path_1.east = None
         self.path_1.south = self.desert_camp
+        self.path_1.west = None
         
         self.path_2.north = self.path_3
+        self.path_2.east = None
         self.path_2.south = self.path_1
+        self.path_2.west = None
 
         self.path_3.north = self.city_gates
+        self.path_3.east = None
         self.path_3.south = self.path_2
+        self.path_3.west = None
 
         self.city_gates.north = self.city_road_2
+        self.city_gates.east = None
         self.city_gates.south = self.path_3
+        self.city_gates.west = None
 
         self.city_road_1.north = self.secret_passage
-        self.city_road_1.west = self.city_road_2
+        self.city_road_1.east = self.city_road_2
+        self.city_road_1.south = None
+        self.city_road_1.west = None
 
         self.city_road_2.north = self.palace_walls
         self.city_road_2.east  = self.city_road_3
@@ -266,34 +277,59 @@ class Fugue_Map:
         self.city_road_2.west  = self.city_road_1
 
         self.city_road_3.north = self.marketplace
+        self.city_road_3.east = None
+        self.city_road_3.south = None
         self.city_road_3.west  = self.city_road_2
 
+        self.palace_walls.north = None
+        self.palace_walls.east = self.marketplace
         self.palace_walls.south = self.city_road_2
-        self.palace_walls.west  = self.marketplace
+        self.palace_walls.west  = None
 
+        self.marketplace.north = None
+        self.marketplace.east = None
         self.marketplace.south = self.city_road_3
         self.marketplace.west  = self.palace_walls
 
         self.secret_passage.north = self.gardens
+        self.secret_passage.east = None 
         self.secret_passage.south = self.city_road_1
+        self.secret_passage.west = None
 
+        self.gardens.north = None
         self.gardens.east  = self.tower
         self.gardens.south = self.secret_passage
         self.gardens.west  = self.well
 
+        self.well.north = None
         self.well.east = self.gardens
+        self.well.south = None
+        self.well.west = None
         
-        self.tower.west  = self.gardens
         self.tower.north = self.great_hall
-        self.tower.east = self.bedroom
+        self.tower.east  = self.bedroom
+        self.tower.south = None
+        self.tower.west = self.gardens
+
+        self.bedroom.north = None
+        self.bedroom.east = None
+        self.bedroom.south = None
+        self.bedroom.west = self.tower
 
         self.great_hall.north = self.throne_room
         self.great_hall.east  = self.dining_hall
         self.great_hall.south = self.tower
+        self.great_hall.west = None
 
-        self.dining_hall.west = self.great_hall
-
+        self.throne_room.north = None
+        self.throne_room.east = None
         self.throne_room.south = self.great_hall
+        self.throne_room.west = None
+
+        self.dining_hall.north = None
+        self.dining_hall.east = None
+        self.dining_hall.south = None
+        self.dining_hall.west = self.great_hall
 
         # create location tracking data
         self.start   = self.desert_camp
@@ -355,15 +391,17 @@ class Fugue_Map:
         self.npc_ids = ["Impostor", "City_Gate_Guard", "City_Guide", "Little_Boy", "Wizard", "Merchant", "Person_in_the_Mirror", "Soldier_Ghost"]
         self.npc_array = [self.impostor, self.city_gate_guard, self.city_guide, self.little_boy, self.wizard, self.merchant, self.person_in_mirror, self.soldier_ghost]
 
+        self.jukebox = Jukebox()
+
         return
     
-    def prep_data(self) -> None:
+    def prep_data(self, locationfile = game_files[0], npcfile = game_files[1]) -> None:
         """
         :param map_dictionary: a dictionary that contains all of the json data that has not yet been prepared to be loaded into the location variables 
         """
         # get the data from the original location json file (template)
-        map_dictionary = get_file_info(game_files[0])
-        npc_dictionary = get_file_info(game_files[1])
+        map_dictionary = get_file_info(locationfile)
+        npc_dictionary = get_file_info(npcfile)
 
         # fill in the location data, correcting strings to objects as needed
         for i in range(len(self.map_array)):
@@ -380,6 +418,7 @@ class Fugue_Map:
         return
     
     def save_map(self):
+        
         # Converts the contents of the inventory into JSON format and saves to inventory.json
 
         # Create dictionaries to store inventory that will be converted to JSON
@@ -433,58 +472,143 @@ class Fugue_Map:
         with open("npc.json", "w") as outfile: 
             outfile.write(npc_json)
 
+    def display_location(self) -> None:
+        print(self.current.ascii_art.center(30) + "\n")
+        print("".join(textwrap.wrap(self.current.get_description() + "\n\n", width=100, replace_whitespace=False)))
+
+        return
+  
+    def begin_map(self) -> str: 
+        print(self.desert_camp.ascii_art + "\n")
+        print(self.desert_camp.long_description + "\n\n")
+
+    def navigate(self, nput): 
+        if "north" in nput or "up" in nput and self.current.north: 
+                self.current = self.current.north
+                self.display_location()
+        
+        elif "south" in nput or "down" in nput and self.current.south: 
+                self.current = self.current.south
+                self.display_location()
+
+        elif "east" in nput or "right" in nput and self.current.east: 
+                self.current = self.current.east
+                self.display_location()
+
+        elif "west" in nput or "left" in nput and self.current.west: 
+                self.current = self.current.west
+                self.display_location()
+
+        else: 
+            print("You can't go that direction")
+
+        return
+
+    def look(self, nput):
+        nput = nput.split(" ")
+        if len(nput) < 2: 
+            print("".join(textwrap.wrap(self.current.get_description() + "\n\n", width=100, replace_whitespace=False)))
+
+        else: 
+            for word in nput: 
+                if word in self.current.npcs: 
+                    print("".join(textwrap.wrap(self.current.npcs(word)+"\n\n", width=100, replace_whitespace=False)))
+                    
+                elif word in self.current.features: 
+                    print("".join(textwrap.wrap(self.current.look_at(word) + "\n\n", width=100, replace_whitespace=False)))
+
+                
+
+    def help(self):
+        print("".join(textwrap.wrap("The keywords are as follows: go, head, up, down, left, right, north, south, east, west, exit, quit, look, examine", width=100, replace_whitespace=False)))
+
+    def talk(self, npc, noun): 
+        if npc in self.impostor.aliases and "Impostor" in self.current.npcs:
+            print(self.impostor.talk_to(noun))
+
+        elif npc in self.city_gate_guard.aliases and "City Gate Guard" in self.current.npcs:
+            print(self.city_gate_guard.talk_to(noun))
+
+        elif npc in self.city_guide.aliases and "City Guide" in self.current.npcs:
+            print(self.city_guide.talk_to(noun))
+
+        elif npc in self.little_boy.aliases and "Little Boy" in self.current.npcs:
+            print(self.little_boy.talk_to(noun))
+
+        elif npc in self.wizard.aliases and "Wizard" in self.current.npcs:
+            print(self.wizard.talk_to(noun))
+
+        elif npc in self.merchant.aliases and "Merchant" in self.current.npcs:
+            print(self.merchant.talk_to(noun))
+
+        elif npc in self.person_in_mirror.aliases and "Person in the Mirror" in self.current.npcs:
+            print(self.person_in_mirror.talk_to(noun))
+
+        elif npc in self.soldier_ghost.aliases and "Soldier Ghost" in self.current.npcs:
+            print(self.soldier_ghost.talk_to(noun))
+
+        else:
+            print("You cannot do that\n")
+
+
 
 def main():
     my_map = Fugue_Map()
     my_map.prep_data()
 
-    # print(my_map.desert_camp.ascii_art)
-    # print()
+    while(1):
+        print("Welcome to the Map of Fugue! What would you like to do today?")
+        print("1.) Explore the map")
+        print("2.) Talk to an npc")
+        print("3.) Save the Map and NPCS to a new file")
+        print("4.) Exit")
+        print("Please enter a number\n")
 
-    # print(my_map.desert_camp.get_description())
-    # print()
+        nput = input()
 
-    # print("Look at satchel")
-    # print()
+        if nput == "4": 
+            print("Thank you for exploring Fugue!")
+            break;
+        
+        elif nput == "1": 
+            print("The navigation keywords are \"go\" and \"head\"")
+            print("The interaction keywords are \"look\", \"examine\", \"check\", \"inspect\", \"investigate\", and \"search\"")
+            print("".join(textwrap.wrap("Direction keywords are \"north\", \"east\", \"south\", \"west\", \"up\", \"down\", \"left\", and \"right\"", width=100, replace_whitespace=False)))
+            
+            print("So, you can type \"go north\" or \"Head Left\" and it will navigate")
+            print("At any time, type \"exit\" or \"quit\" to stop exploring the map and return to the menu.")
+            print("Lastly, if you need to see a list of keywords, just type \"help\"")
+            print() 
+            print("====================================================================================================")
 
-    # print(my_map.desert_camp.look_at("satchel"))
-    # print()
+            my_map.begin_map()
 
-    # print("Look at shrouded stranger")
-    # print()
+            while(1): 
+                print("What would you like to do?")
+                user_input = input()
+                user_input = user_input.lower()
 
-    # print(my_map.impostor.description)
-    # print()
+                if "exit" in user_input or "quit" in user_input: 
+                    print("Exiting Map...")
+                    break
 
-    # print("Ask shrouded stranger his name")
-    # print()
+                elif "go" in user_input or "head" in user_input:
+                    my_map.navigate(user_input)
 
-    # print(my_map.impostor.talk_to("name"))
-    # print()
+                elif "look" in user_input: 
+                    my_map.look(user_input)
 
-    print()
-    print()
-    print()
+                else: 
+                    print("I don't understand, please try again.\n")
 
-    print(my_map.desert_wilderness.ascii_art)
-    print()
+                
 
-    print(my_map.desert_wilderness.get_description())
-    my_map.desert_wilderness.times_visited += 1
-    print() 
-    print()
-    print()
-    print()
-    print()
+        else: 
+            print("Number input here only, please.")
 
-    print(my_map.desert_wilderness.ascii_art)
-    print()
+            
 
-    print(my_map.desert_wilderness.get_description())
-    print()
-    print()
-    print()
-    return
+
 
 
 if __name__ == "__main__":
